@@ -1,0 +1,22 @@
+{
+  "name": "weather-graphics",
+  "version": "1.0.0",
+  "description": "Weather Graphics - Full stack application",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && cd backend && npm install && cd ../frontend/web && npm install && cd ../mobile && npm install",
+    "dev": "concurrently -n \"backend,web\" -c \"blue,green\" \"npm run dev:backend\" \"npm run dev:web\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:web": "cd frontend/web && npm run dev",
+    "dev:mobile": "cd frontend/mobile && npm start",
+    "dev:all": "concurrently -n \"backend,web,mobile\" -c \"blue,green,yellow\" \"npm run dev:backend\" \"npm run dev:web\" \"npm run dev:mobile\"",
+    "start:backend": "cd backend && npm start",
+    "start:web": "cd frontend/web && npm run preview",
+    "build:web": "cd frontend/web && npm run build",
+    "test:backend": "cd backend && npm test"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
