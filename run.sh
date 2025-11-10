@@ -38,10 +38,22 @@ case $COMMAND in
         echo -e "${YELLOW}Web app will run on: http://localhost:3001${NC}"
         echo ""
         
-        # Check if concurrently is installed
+        # Check if root dependencies are installed
         if [ ! -d "node_modules" ] || [ ! -d "node_modules/concurrently" ]; then
-            echo -e "${YELLOW}Installing dependencies...${NC}"
+            echo -e "${YELLOW}Installing root dependencies...${NC}"
             npm install
+        fi
+        
+        # Check if backend dependencies are installed
+        if [ ! -d "backend/node_modules" ]; then
+            echo -e "${YELLOW}Installing backend dependencies...${NC}"
+            cd backend && npm install && cd ..
+        fi
+        
+        # Check if web frontend dependencies are installed
+        if [ ! -d "frontend/web/node_modules" ]; then
+            echo -e "${YELLOW}Installing web frontend dependencies...${NC}"
+            cd frontend/web && npm install && cd ../..
         fi
         
         # Run backend + web
@@ -56,10 +68,28 @@ case $COMMAND in
         echo -e "${YELLOW}Mobile app will start Expo dev server${NC}"
         echo ""
         
-        # Check if concurrently is installed
+        # Check if root dependencies are installed
         if [ ! -d "node_modules" ] || [ ! -d "node_modules/concurrently" ]; then
-            echo -e "${YELLOW}Installing dependencies...${NC}"
+            echo -e "${YELLOW}Installing root dependencies...${NC}"
             npm install
+        fi
+        
+        # Check if backend dependencies are installed
+        if [ ! -d "backend/node_modules" ]; then
+            echo -e "${YELLOW}Installing backend dependencies...${NC}"
+            cd backend && npm install && cd ..
+        fi
+        
+        # Check if web frontend dependencies are installed
+        if [ ! -d "frontend/web/node_modules" ]; then
+            echo -e "${YELLOW}Installing web frontend dependencies...${NC}"
+            cd frontend/web && npm install && cd ../..
+        fi
+        
+        # Check if mobile dependencies are installed
+        if [ ! -d "frontend/mobile/node_modules" ]; then
+            echo -e "${YELLOW}Installing mobile dependencies...${NC}"
+            cd frontend/mobile && npm install && cd ../..
         fi
         
         # Run all services
@@ -69,17 +99,38 @@ case $COMMAND in
     backend)
         echo -e "${GREEN}🚀 Starting backend only...${NC}"
         echo -e "${YELLOW}Backend will run on: http://localhost:3000${NC}"
+        
+        # Check if backend dependencies are installed
+        if [ ! -d "backend/node_modules" ]; then
+            echo -e "${YELLOW}Installing backend dependencies...${NC}"
+            cd backend && npm install && cd ..
+        fi
+        
         cd backend && npm run dev
         ;;
     
     web)
         echo -e "${GREEN}🚀 Starting web frontend only...${NC}"
         echo -e "${YELLOW}Web app will run on: http://localhost:3001${NC}"
+        
+        # Check if web frontend dependencies are installed
+        if [ ! -d "frontend/web/node_modules" ]; then
+            echo -e "${YELLOW}Installing web frontend dependencies...${NC}"
+            cd frontend/web && npm install && cd ../..
+        fi
+        
         cd frontend/web && npm run dev
         ;;
     
     mobile)
         echo -e "${GREEN}🚀 Starting mobile app...${NC}"
+        
+        # Check if mobile dependencies are installed
+        if [ ! -d "frontend/mobile/node_modules" ]; then
+            echo -e "${YELLOW}Installing mobile dependencies...${NC}"
+            cd frontend/mobile && npm install && cd ../..
+        fi
+        
         cd frontend/mobile && npm start
         ;;
     
