@@ -37,3 +37,22 @@
   font-size: 1rem;
 }
 
+.weather-data {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  backdrop-filter: blur(10px);
+  font-weight: 700;
+  align-items: left;
+}
+.weather-data h2 {
+  margin-bottom: 1rem;
+  align-items: left;
+
+}
+.weather-data p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  align-items: left;
+}

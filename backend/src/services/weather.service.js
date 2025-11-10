@@ -29,7 +29,7 @@ export async function getCurrentWeather(location) {
   // Placeholder implementation
   return {
     location,
-    temperature: 22,
+    temperature: 67,
     condition: 'Sunny',
     humidity: 65,
     windSpeed: 10,
