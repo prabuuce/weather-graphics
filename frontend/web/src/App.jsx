@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import { use } from 'react'
 
 function App() {
   const [health, setHealth] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [location, setLocation] = useState('92692')
   const [locationWeather, setLocationWeather] = useState(null)
 
 
@@ -19,8 +21,8 @@ function App() {
         console.error('Error connecting to backend:', err)
         setLoading(false)
       })
-    // Get Example Weather data
-    fetch('/api/weather/92692')
+    // Get weather data for a specific location (e.g., zip code 92692)
+    fetch(`/api/weather/${location}`)
       .then(res => res.json())
       .then(data => {
         setLocationWeather(data)
@@ -29,14 +31,23 @@ function App() {
         console.error('Error connecting to backend:', err)
         setLoading(false)
       })
-  }, [])
+  }, [location])
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1> Ozone Weather Graphics Channel</h1>
-        <p>This is the web Client</p>
-        
+        <h1> Ozone Weather Channel</h1>
+        <div className='search'>
+          <label for="location">Zip Code:</label>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            setLocation(document.getElementById('location').value);
+          }}>
+            <input type="text" id="location" value={location} onChange={(e) => setLocation(e.target.value)} />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+
         {loading ? (
           <p>Connecting to backend...</p>
         ) : health ? (
@@ -51,7 +62,7 @@ function App() {
         {locationWeather && (
           <div className="weather-data">
             <h2>Weather Data</h2>
-            <p> LocationL {locationWeather.location}</p>
+            <p>Location: {locationWeather.location}</p>
             <p>Temperature: {locationWeather.temperature}°F</p>
             <p>Condition: {locationWeather.condition}</p>
             <p>Humidity: {locationWeather.humidity}%</p>

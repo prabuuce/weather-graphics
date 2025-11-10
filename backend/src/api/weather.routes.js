@@ -26,7 +26,7 @@ export async function weatherRoutes(fastify, options) {
   // GET /api/weather/:location
   fastify.get('/:location', async (request, reply) => {
     const { location } = request.params;
-    
+
     // Validate input
     if (!validateLocation(location)) {
       return reply.code(400).send({
