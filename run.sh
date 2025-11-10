@@ -21,6 +21,60 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+# Function to kill process on a specific port
+kill_port() {
+    local port=$1
+    local pid
+    
+    # Try lsof first (works on macOS and Linux)
+    if command_exists lsof; then
+        pid=$(lsof -ti:$port 2>/dev/null)
+        if [ -n "$pid" ]; then
+            echo -e "${YELLOW}⚠️  Killing process on port $port (PID: $pid)...${NC}"
+            kill -9 $pid 2>/dev/null || true
+            sleep 1
+            return 0
+        fi
+    # Fallback to netstat (Linux)
+    elif command_exists netstat; then
+        pid=$(netstat -tlnp 2>/dev/null | grep ":$port " | awk '{print $7}' | cut -d'/' -f1 | head -1)
+        if [ -n "$pid" ]; then
+            echo -e "${YELLOW}⚠️  Killing process on port $port (PID: $pid)...${NC}"
+            kill -9 $pid 2>/dev/null || true
+            sleep 1
+            return 0
+        fi
+    # Fallback to ss (modern Linux)
+    elif command_exists ss; then
+        pid=$(ss -tlnp 2>/dev/null | grep ":$port " | awk '{print $6}' | cut -d',' -f2 | cut -d'=' -f2 | head -1)
+        if [ -n "$pid" ]; then
+            echo -e "${YELLOW}⚠️  Killing process on port $port (PID: $pid)...${NC}"
+            kill -9 $pid 2>/dev/null || true
+            sleep 1
+            return 0
+        fi
+    fi
+    
+    return 1
+}
+
+# Function to kill processes on required ports
+kill_ports() {
+    local ports=("$@")
+    local killed_any=false
+    
+    for port in "${ports[@]}"; do
+        if kill_port $port; then
+            killed_any=true
+        fi
+    done
+    
+    if [ "$killed_any" = true ]; then
+        echo -e "${GREEN}✅ Ports cleared${NC}"
+        echo ""
+    fi
+}
+
 # Check if Node.js is installed
 if ! command_exists node; then
     echo -e "${YELLOW}❌ Node.js is not installed. Please install Node.js first.${NC}"
@@ -37,6 +91,9 @@ case $COMMAND in
         echo -e "${YELLOW}Backend will run on: http://localhost:3000${NC}"
         echo -e "${YELLOW}Web app will run on: http://localhost:3001${NC}"
         echo ""
+        
+        # Kill any existing processes on required ports
+        kill_ports 3000 3001
         
         # Check if root dependencies are installed
         if [ ! -d "node_modules" ] || [ ! -d "node_modules/concurrently" ]; then
@@ -67,6 +124,9 @@ case $COMMAND in
         echo -e "${YELLOW}Web app will run on: http://localhost:3001${NC}"
         echo -e "${YELLOW}Mobile app will start Expo dev server${NC}"
         echo ""
+        
+        # Kill any existing processes on required ports
+        kill_ports 3000 3001
         
         # Check if root dependencies are installed
         if [ ! -d "node_modules" ] || [ ! -d "node_modules/concurrently" ]; then
@@ -99,6 +159,10 @@ case $COMMAND in
     backend)
         echo -e "${GREEN}🚀 Starting backend only...${NC}"
         echo -e "${YELLOW}Backend will run on: http://localhost:3000${NC}"
+        echo ""
+        
+        # Kill any existing process on port 3000
+        kill_ports 3000
         
         # Check if backend dependencies are installed
         if [ ! -d "backend/node_modules" ]; then
@@ -112,6 +176,10 @@ case $COMMAND in
     web)
         echo -e "${GREEN}🚀 Starting web frontend only...${NC}"
         echo -e "${YELLOW}Web app will run on: http://localhost:3001${NC}"
+        echo ""
+        
+        # Kill any existing process on port 3001
+        kill_ports 3001
         
         # Check if web frontend dependencies are installed
         if [ ! -d "frontend/web/node_modules" ]; then
@@ -139,6 +207,13 @@ case $COMMAND in
         npm run install:all
         ;;
     
+    kill|stop)
+        echo -e "${GREEN}🛑 Stopping all services...${NC}"
+        echo ""
+        kill_ports 3000 3001
+        echo -e "${GREEN}✅ All services stopped${NC}"
+        ;;
+    
     help|--help|-h)
         echo -e "${BLUE}Usage: ./run.sh [command]${NC}"
         echo ""
@@ -148,6 +223,7 @@ case $COMMAND in
         echo "  backend       - Start backend only"
         echo "  web           - Start web frontend only"
         echo "  mobile        - Start mobile app only"
+        echo "  kill, stop    - Kill processes on ports 3000 and 3001"
         echo "  install       - Install all dependencies"
         echo "  help          - Show this help message"
         echo ""
