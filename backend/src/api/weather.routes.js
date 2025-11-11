@@ -27,13 +27,6 @@ export async function weatherRoutes(fastify, options) {
   fastify.get('/:location', async (request, reply) => {
     const { location } = request.params;
 
-    // Validate input
-    if (!validateLocation(location)) {
-      return reply.code(400).send({
-        error: 'Invalid location',
-        message: 'Location must be a valid string'
-      });
-    }
     
     try {
       // Call service for business logic

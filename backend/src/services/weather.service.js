@@ -1,15 +1,9 @@
 /**
  * Weather Service
- * 
- * This is where you should implement your business logic for weather data.
- * 
- * Business logic includes:
- * - Fetching data from external APIs (OpenWeatherMap, WeatherAPI, etc.)
- * - Data transformation and processing
- * - Caching strategies
- * - Data validation and error handling
- * - Business rules and calculations
  */
+
+import { fetchWeatherDataFromAPI } from '../utils/externalApi.util.js';
+import { getCachedWeatherData, cacheWeatherData } from '../utils/cache.util.js';
 
 /**
  * Get current weather for a location
@@ -25,16 +19,37 @@ export async function getCurrentWeather(location) {
   // 4. Transform data to your format
   // 5. Cache the result
   // 6. Return formatted data
-  
-  // Placeholder implementation
-  return {
-    location,
-    temperature: 67,
-    condition: 'Sunny',
-    humidity: 65,
-    windSpeed: 10,
-    timestamp: new Date().toISOString()
-  };
+
+  // Validate input
+  // TODO: Implement proper validation
+  if (!validateLocation(location)) {
+    return {
+      error: 'Invalid location',
+      message: 'Location must be a valid string'
+    };
+  }
+
+  // Check cache for recent data
+  const cachedData = await getCachedWeatherData(location);
+  if (cachedData) {
+    return cachedData;
+  }
+
+  // Fetch from external weather API
+  const apiResponse = await fetchWeatherDataFromAPI(location);
+  if (apiResponse.error) {
+    return {
+      error: 'Failed to fetch weather data',
+      message: apiResponse.message
+    };
+  }
+
+  // Transform data to your format
+  const transformedData = transformWeatherData(apiResponse);
+  // Cache the result
+  await cacheWeatherData(location, transformedData);
+  // Return formatted data
+  return transformedData;
 }
 
 /**
@@ -79,7 +94,6 @@ export async function getWeatherForecast(location, days = 5) {
  * @returns {boolean} True if valid
  */
 export function validateLocation(location) {
-  // TODO: Implement location validation logic
   // Check if location is a valid city name, coordinates, etc.
   return location && location.trim().length > 0;
 }
