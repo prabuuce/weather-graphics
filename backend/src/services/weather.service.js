@@ -3,7 +3,7 @@
  */
 
 import { fetchWeatherDataFromAPI } from '../utils/externalApi.util.js';
-import { getCachedWeatherData, cacheWeatherData } from '../utils/cache.util.js';
+import { setCache, getCache } from '../utils/cache.util.js';
 
 /**
  * Get current weather for a location
@@ -30,7 +30,7 @@ export async function getCurrentWeather(location) {
   }
 
   // Check cache for recent data
-  const cachedData = await getCachedWeatherData(location);
+  const cachedData = await getCache(location);
   if (cachedData) {
     return cachedData;
   }
@@ -44,12 +44,10 @@ export async function getCurrentWeather(location) {
     };
   }
 
-  // Transform data to your format
-  const transformedData = transformWeatherData(apiResponse);
   // Cache the result
-  await cacheWeatherData(location, transformedData);
+  await setCache(location, apiResponse);
   // Return formatted data
-  return transformedData;
+  return apiResponse;
 }
 
 /**

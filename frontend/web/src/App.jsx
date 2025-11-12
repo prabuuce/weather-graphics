@@ -5,7 +5,7 @@ import { use } from 'react'
 function App() {
   const [health, setHealth] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [location, setLocation] = useState('92692')
+  const [location, setLocation] = useState('1600 Pennsylvania Avenue NW, Washington, DC 20500')
   const [locationWeather, setLocationWeather] = useState(null)
 
 
@@ -25,6 +25,7 @@ function App() {
     fetch(`/api/weather/${location}`)
       .then(res => res.json())
       .then(data => {
+        console.log("Weather data:", data);
         setLocationWeather(data)
       })
       .catch(err => {
@@ -38,7 +39,7 @@ function App() {
       <header className="App-header">
         <h1> Ozone Weather Channel</h1>
         <div className='search'>
-          <label for="location">Zip Code:</label>
+          <label htmlFor="location">Zip Code:</label>
           <form onSubmit={(e) => {
             e.preventDefault();
             setLocation(document.getElementById('location').value);
