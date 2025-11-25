@@ -2,8 +2,10 @@
  * Weather Service
  */
 
-import { fetchWeatherDataFromAPI } from '../utils/externalApi.util.js';
 import { setCache, getCache } from '../utils/cache.util.js';
+import { getWeatherClient } from './weatherApiFactory.js';
+
+const weatherClient = getWeatherClient();
 
 /**
  * Get current weather for a location
@@ -11,17 +13,6 @@ import { setCache, getCache } from '../utils/cache.util.js';
  * @returns {Promise<Object>} Weather data
  */
 export async function getCurrentWeather(location) {
-  // TODO: Implement your business logic here
-  // Example:
-  // 1. Validate location input
-  // 2. Check cache for recent data
-  // 3. Fetch from external weather API
-  // 4. Transform data to your format
-  // 5. Cache the result
-  // 6. Return formatted data
-
-  // Validate input
-  // TODO: Implement proper validation
   if (!validateLocation(location)) {
     return {
       error: 'Invalid location',
@@ -29,25 +20,23 @@ export async function getCurrentWeather(location) {
     };
   }
 
-  // Check cache for recent data
-  const cachedData = await getCache(location);
+  const cacheKey = `current:${location.trim().toLowerCase()}`;
+  const cachedData = await getCache(cacheKey);
   if (cachedData) {
     return cachedData;
   }
 
-  // Fetch from external weather API
-  const apiResponse = await fetchWeatherDataFromAPI(location);
-  if (apiResponse.error) {
+  try {
+    const apiResponse = await weatherClient.getUniqueCurrentWeather(location);
+    //.getCurrentWeather(location);
+    await setCache(cacheKey, apiResponse);
+    return apiResponse;
+  } catch (error) {
     return {
       error: 'Failed to fetch weather data',
-      message: apiResponse.message
+      message: error.message
     };
   }
-
-  // Cache the result
-  await setCache(location, apiResponse);
-  // Return formatted data
-  return apiResponse;
 }
 
 /**
@@ -57,33 +46,30 @@ export async function getCurrentWeather(location) {
  * @returns {Promise<Object>} Forecast data
  */
 export async function getWeatherForecast(location, days = 5) {
-  // TODO: Implement your business logic here
-  // Example:
-  // 1. Validate location and days parameters
-  // 2. Check cache
-  // 3. Fetch forecast from external API
-  // 4. Process and format forecast data
-  // 5. Apply business rules (e.g., max days limit)
-  // 6. Cache the result
-  // 7. Return formatted forecast
-  
-  // Placeholder implementation
-  const forecast = [];
-  for (let i = 0; i < days; i++) {
-    forecast.push({
-      date: new Date(Date.now() + i * 24 * 60 * 60 * 1000).toISOString(),
-      temperature: { min: 15 + i, max: 25 + i },
-      condition: ['Sunny', 'Cloudy', 'Rainy'][i % 3],
-      precipitation: Math.random() * 10
-    });
+  if (!validateLocation(location)) {
+    return {
+      error: 'Invalid location',
+      message: 'Location must be a valid string'
+    };
   }
-  
-  return {
-    location,
-    days,
-    forecast,
-    generatedAt: new Date().toISOString()
-  };
+
+  const normalizedDays = Math.max(1, Math.min(days, 10));
+  const cacheKey = `forecast:${location.trim().toLowerCase()}:${normalizedDays}`;
+  const cachedData = await getCache(cacheKey);
+  if (cachedData) {
+    return cachedData;
+  }
+
+  try {
+    const apiResponse = await weatherClient.getWeatherForecast(location, normalizedDays);
+    await setCache(cacheKey, apiResponse);
+    return apiResponse;
+  } catch (error) {
+    return {
+      error: 'Failed to fetch weather forecast',
+      message: error.message
+    };
+  }
 }
 
 /**

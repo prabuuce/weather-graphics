@@ -27,10 +27,19 @@ export async function weatherRoutes(fastify, options) {
   fastify.get('/:location', async (request, reply) => {
     const { location } = request.params;
 
-    
+    if (!validateLocation(location)) {
+      return reply.code(400).send({
+        error: 'Invalid location',
+        message: 'Location must be a valid string'
+      });
+    }
+
     try {
-      // Call service for business logic
       const weatherData = await getCurrentWeather(location);
+      if (weatherData?.error) {
+        const statusCode = weatherData.error === 'Invalid location' ? 400 : 502;
+        return reply.code(statusCode).send(weatherData);
+      }
       return reply.code(200).send(weatherData);
     } catch (error) {
       fastify.log.error(error);
@@ -45,7 +54,7 @@ export async function weatherRoutes(fastify, options) {
   fastify.get('/forecast/:location', async (request, reply) => {
     const { location } = request.params;
     const { days = 5 } = request.query;
-    const daysNum = parseInt(days);
+    const daysNum = parseInt(days, 10);
     
     // Validate input
     if (!validateLocation(location)) {
@@ -55,16 +64,19 @@ export async function weatherRoutes(fastify, options) {
       });
     }
     
-    if (isNaN(daysNum) || daysNum < 1 || daysNum > 14) {
+    if (Number.isNaN(daysNum) || daysNum < 1 || daysNum > 10) {
       return reply.code(400).send({
         error: 'Invalid days parameter',
-        message: 'Days must be a number between 1 and 14'
+        message: 'Days must be a number between 1 and 10'
       });
     }
     
     try {
-      // Call service for business logic
       const forecastData = await getWeatherForecast(location, daysNum);
+      if (forecastData?.error) {
+        const statusCode = forecastData.error === 'Invalid location' ? 400 : 502;
+        return reply.code(statusCode).send(forecastData);
+      }
       return reply.code(200).send(forecastData);
     } catch (error) {
       fastify.log.error(error);
