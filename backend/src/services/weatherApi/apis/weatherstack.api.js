@@ -1,4 +1,4 @@
-import { WeatherAPI } from './genericapi.model.js';
+import { WeatherAPI } from '../genericapi.model.js';
 
 /**
  * WeatherStack API implementation mirroring the WeatherAPI contract.
