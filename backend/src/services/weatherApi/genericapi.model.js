@@ -28,16 +28,25 @@ export class WeatherAPI {
   async getCurrentWeather(/* location */) {
     throw new Error('getCurrentWeather must be implemented by subclasses');
   }
-  async getUniqueCurrentWeather(/* location */) {
-    throw new Error('getCurrentWeather must be implemented by subclasses');
-  }
+
   /**
    * "Virtual" method that should be overridden by subclasses
-   * to retrieve a weather forecast.
+   * to retrieve weather forecast for a location.
    */
+
   // eslint-disable-next-line class-methods-use-this
-  async getWeatherForecast(/* location, days */) {
-    throw new Error('getWeatherForecast must be implemented by subclasses');
+  async getMinutelyForecast(/* location, days */) {
+    throw new Error('getMinutelyForecast must be implemented by subclasses');
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  async getHourlyForecast(/* location, days */) {
+    throw new Error('getHourlyForecast must be implemented by subclasses');
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  async getDailyForecast(/* location, days */) {
+    throw new Error('getDailyForecast must be implemented by subclasses');
   }
 
   /**
