@@ -1,4 +1,4 @@
-import { WeatherAPI } from './weatherAPI.js';
+import { WeatherAPI } from '../genericapi.model.js';
 
 /**
  * OpenWeather API implementation that satisfies the WeatherAPI contract.
