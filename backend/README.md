@@ -2,7 +2,7 @@
 ## How to Set this Up to Work Properly
 I'm not sure what else to put in this for now (comments quite serve the purpose of explaining code) so I'm just gonna tell you how to get this working
 
-You need an .env file with the following data.
+You need an config folder with the following data.
 ```
 # Server Configuration
 PORT=

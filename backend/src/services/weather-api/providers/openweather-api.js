@@ -1,49 +1,52 @@
-import { WeatherAPI } from '../genericapi.model.js';
+import { WeatherAPI } from '../baseweatherprovider-api.js';
 
 /**
 * OpenWeather API implementation that satisfies the WeatherAPI contract.
 */
 export class OpenWeatherAPI extends WeatherAPI {
   constructor(options = {}) {
-    super({
-      baseUrl: options.baseUrl || process.env.WEATHER_API_URL || 'https://api.openweathermap.org/data/2.5',
-      apiKey: options.apiKey || process.env.WEATHER_API_KEY,
-      units: options.units || process.env.WEATHER_API_UNITS || 'metric'
-    });
+    super(
+      options.baseUrl || 'https://api.openweathermap.org/data/2.5',
+      options.apiKey || '',
+      options.units || 'metric',
+      'appid'
+    )
+
+    this.units = options.units || this.config.WEATHER_API_UNITS || 'metric';
+    this.apiKey = options.apiKey || this.keys.OPENWEATHER_API_KEY;
+    this.baseUrl = options.baseUrl || 'https://api.openweathermap.org/data/2.5';
   }
   
-  async getWeather(location = {}, params = { timeframe: 'current', units: this.units }) {
-    const exclude = 'current,minutely,hourly,daily,alerts'.replace(params.timeframe + ',', '');
-
-    // Run validation on arguments
-    if (exclude === 'current,minutely,hourly,daily,alerts') {
-      throw new Error('Invalid timeframe specified');
-    }
-
-    response = await this.request('/onecall', {
-      ...buildLocationParams(location),
-      exclude,
-      units: params.units
-    });
-
-    return response;
-
-  }
-
   async getCurrentWeather(location) {
-    this.getWeather(location, { timeframe: 'current', units: this.units });
-  }
-  
-  async getMinutelyWeather(location) {
-    this.getWeather(location, { timeframe: 'minutely', units: this.units });
+    await this.validateOptions();
+    
+    const params = {
+      [this.authParamName]: this.apiKey,
+      units: this.units,
+      ...buildLocationParams(location)
+    };
+    
+    const url = new URL(`${this.baseUrl}/weather`);
+    Object.entries(params).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) {
+        url.searchParams.append(key, value);
+      }
+    });
+    
+    console.log(`Requesting URL: ${url.toString()}`);
+    
+    const response = await fetch(url.toString());
+    if (!response.ok) {
+      const body = await response.text();
+      throw new Error(`OpenWeatherAPI getCurrentWeather error: ${response.status} ${response.statusText} - ${body}`);
+    }
+    
+    const data = await response.json();
+    return data; //this.normalizeCurrentWeather(data);
   }
 
-  async getHourlyWeather(location) {
-    this.getWeather(location, { timeframe: 'hourly', units: this.units });
-  }
-
-  async getDailyWeather(location) {
-    this.getWeather(location, { timeframe: 'daily', units: this.units });
+  async getWeatherForecast(location, days = 5) {
+    // TODO: Implement forecast fetching logic
   }
 }
 

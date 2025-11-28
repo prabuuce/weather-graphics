@@ -1,5 +1,5 @@
-import { OpenWeatherAPI } from './apis/openweather.api.js';
-import { WeatherStackAPI } from './weatherstack.api.js';
+import { OpenWeatherAPI } from './providers/openweather-api.js';
+import { WeatherStackAPI } from './providers/weatherstack-api.js';
 
 let cachedClient;
 let cachedProvider;

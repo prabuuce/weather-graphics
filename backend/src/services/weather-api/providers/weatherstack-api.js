@@ -1,4 +1,4 @@
-import { WeatherAPI } from '../genericapi.model.js';
+import { WeatherAPI } from '../baseweatherprovider-api.js';
 
 /**
  * WeatherStack API implementation mirroring the WeatherAPI contract.
@@ -19,11 +19,7 @@ export class WeatherStackAPI extends WeatherAPI {
     const payload = await this.request('/current', params);
     return normalizeCurrent(payload);
   }
-
-  async getUniqueFunction() {
- 
-    return 0;
-  }
+  
   async getWeatherForecast(location, days = 5) {
     const params = buildLocationParams(location);
     params.units = this.units;

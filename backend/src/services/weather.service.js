@@ -3,9 +3,9 @@
  */
 
 import { setCache, getCache } from '../utils/cache.util.js';
-import { getWeatherClient } from './weatherApiFactory.js';
+import { getWeatherClient } from './weather-api/factory.service.js';
 
-const weatherClient = getWeatherClient();
+const weatherClient = getWeatherClient("openweather");
 
 /**
  * Get current weather for a location
@@ -27,7 +27,7 @@ export async function getCurrentWeather(location) {
   }
 
   try {
-    const apiResponse = await weatherClient.getUniqueCurrentWeather(location);
+    const apiResponse = await weatherClient.getCurrentWeather(location);
     //.getCurrentWeather(location);
     await setCache(cacheKey, apiResponse);
     return apiResponse;

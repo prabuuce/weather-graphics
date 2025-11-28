@@ -88,3 +88,5 @@ android/local.properties
 coverage/
 .nyc_output/
 
+# Config
+config/keys.json

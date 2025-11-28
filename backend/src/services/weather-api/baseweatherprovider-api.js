@@ -1,4 +1,6 @@
 import fetch from 'node-fetch';
+import { json } from 'stream/consumers';
+import fs from 'fs';
 
 /**
  * Base class describing the contract for any weather API client.
@@ -6,18 +8,24 @@ import fetch from 'node-fetch';
  * network calls and data normalization.
  */
 export class WeatherAPI {
-  constructor({ baseUrl, apiKey, units = 'metric', authParamName = 'appid' } = {}) {
+  constructor( baseUrl, apiKey, units = 'metric', authParamName = 'appid') {
+
+    this.config = JSON.parse(fs.readFileSync(`${process.cwd()}/../config/config.json`, 'utf-8'));
+    this.keys = JSON.parse(fs.readFileSync(`${process.cwd()}/../config/keys.json`, 'utf-8'));
+
+    this.baseUrl = baseUrl.replace(/\/$/, '');
+    this.apiKey = apiKey;
+    this.units = units;
+    this.authParamName = authParamName;
+  }
+
+  async validateOptions(baseUrl = this.baseUrl, apiKey = this.apiKey) {
     if (!baseUrl) {
       throw new Error('WeatherAPI requires a baseUrl');
     }
     if (!apiKey) {
       throw new Error('WeatherAPI requires an apiKey');
     }
-
-    this.baseUrl = baseUrl.replace(/\/$/, '');
-    this.apiKey = apiKey;
-    this.units = units;
-    this.authParamName = authParamName;
   }
 
   /**
@@ -66,6 +74,8 @@ export class WeatherAPI {
         url.searchParams.set(key, value);
       }
     });
+
+    console.log(`Requesting URL: ${url.toString()}`);
 
     const response = await fetch(url.toString());
     if (!response.ok) {

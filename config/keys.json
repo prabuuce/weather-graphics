@@ -1,0 +1,5 @@
+{
+    "OPENWEATHER_API_KEY": "5f449295e7315bdbe889ccaa900ac82a",
+    "OPENWEATHER_API_BASE_URL": "https://api.openweathermap.org/data/2.5",
+    "WEATHERSTACK_API_KEY": "your_weatherstack_api_key_here"
+}

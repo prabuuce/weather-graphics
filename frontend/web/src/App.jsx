@@ -63,12 +63,7 @@ function App() {
         {locationWeather && (
           <div className="weather-data">
             <h2>Weather Data</h2>
-            <p>Location: {locationWeather.location}</p>
-            <p>Temperature: {locationWeather.temperature}°F</p>
-            <p>Condition: {locationWeather.condition}</p>
-            <p>Humidity: {locationWeather.humidity}%</p>
-            <p>Wind Speed: {locationWeather.windSpeed} mph</p>
-            <p>Timestamp: {new Date(locationWeather.timestamp).toLocaleString()}</p>
+            <p>Raw Json: {JSON.stringify(locationWeather)}</p>
           </div>
         )}
       </header>
