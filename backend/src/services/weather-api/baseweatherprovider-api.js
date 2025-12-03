@@ -65,6 +65,8 @@ export class WeatherAPI {
    * @returns {Promise<any>}
    */
   async request(path, params = {}) {
+    console.log("Running this.request()")
+
     const url = new URL(`${this.baseUrl}${path}`);
     url.searchParams.set(this.authParamName, this.apiKey);
     url.searchParams.set('units', this.units);

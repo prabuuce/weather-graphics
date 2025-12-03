@@ -5,7 +5,7 @@ import { use } from 'react'
 function App() {
   const [health, setHealth] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [location, setLocation] = useState('1600 Pennsylvania Avenue NW, Washington, DC 20500')
+  const [location, setLocation] = useState('92692')
   const [locationWeather, setLocationWeather] = useState(null)
 
 

@@ -4,6 +4,7 @@ import { WeatherStackAPI } from './providers/weatherstack-api.js';
 let cachedClient;
 let cachedProvider;
 
+
 function createClient(provider) {
   switch (provider) {
     case 'openweather':
