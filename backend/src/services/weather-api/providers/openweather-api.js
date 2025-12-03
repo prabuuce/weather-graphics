@@ -26,15 +26,8 @@ export class OpenWeatherAPI extends WeatherAPI {
       ...buildLocationParams(location)
     };
     
-    const response = await this.request("/current", params)
-
-    if (!response.ok) {
-      const body = await response.text();
-      throw new Error(`OpenWeatherAPI getCurrentWeather error: ${response.status} ${response.statusText} - ${body}`);
-    }
-    
-    const data = await response.json();
-    return data; //this.normalizeCurrentWeather(data);
+    const response = await this.request("/weather", params)
+    return response; //this.normalizeCurrentWeather(data);
   }
 
   async getHourlyForecast(location, days = 5) {
@@ -48,14 +41,8 @@ export class OpenWeatherAPI extends WeatherAPI {
     };
 
     const response = await this.request("/forecast", params);
-
-    if (!response.ok) {
-      const body = await response.text();
-      throw new Error(`OpenWeatherAPI getCurrentWeather error: ${response.status} ${response.statusText} - ${body}`);
-    }
     
-    const data = await response.json();
-    return data; 
+    return response; 
   }
 }
 

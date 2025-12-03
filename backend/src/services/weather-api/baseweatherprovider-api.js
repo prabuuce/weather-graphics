@@ -81,7 +81,6 @@ export class WeatherAPI {
 
     const response = await fetch(url.toString());
     if (!response.ok) {
-      const body = await response.text();
       throw new Error(`Weather API error (${response.status}): ${body}`);
     }
 
