@@ -30,7 +30,7 @@ export class OpenWeatherAPI extends WeatherAPI {
     return response; //this.normalizeCurrentWeather(data);
   }
 
-  async getHourlyForecast(location, days = 5) {
+  async getWeatherForecast(location) {
     // TODO: Implement forecast fetching logic
     await this.validateOptions();
     

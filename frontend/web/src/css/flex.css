@@ -1,0 +1,22 @@
+.App {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    margin: 10px;
+}
+
+.large-container {
+    margin: 10px;
+    padding: 5px;
+}
+
+.menu {
+    float: left;
+    
+    flex-basis: 15%;
+}
+
+.body {
+    flex-grow: 1;
+}
