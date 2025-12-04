@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import './App.css'
 import { use } from 'react'
 
 function WeatherRender() {
@@ -27,7 +26,7 @@ function WeatherRender() {
       .then(res => res.json())
       .then(data => {
         console.log("Weather data:", data);
-        setLocationWeather(data)
+        setLocationWeather(data);
       })
       .catch(err => {
         console.error('Error connecting to backend:', err)
@@ -36,10 +35,9 @@ function WeatherRender() {
   }, [location])
 
   return (
-    <div className="WeatherRender">
-      
-    </div>
+    <p>Raw Json: {JSON.stringify(locationWeather)}</p>
   )
+
 }
 
 export default WeatherRender

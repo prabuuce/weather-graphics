@@ -11,10 +11,9 @@
     padding: 5px;
 }
 
-.menu {
-    float: left;
-    
+.menu { 
     flex-basis: 15%;
+    min-width: 15%;
 }
 
 .body {
