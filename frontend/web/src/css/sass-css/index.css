@@ -1,19 +1,47 @@
 * {
-  margin: 10px;
+  margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: Archivo, 'Libre Franklin', 'Schibsted Grotesk', Lato, open-sans, 'Roboto Condensed', 'Nunito Sans', Arial, Helvetica, sans-serif;
+  color: #E3E3E3; }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; }
 
+body {
+  background-color: #E3E3E3;
+  border-radius: 5px; }
+
+h1, h2, h3 {
+  font-family: 'DM Sans', 'PT Serif', 'Noto Serif', 'Libre Franklin', 'Noto Sans Simplified Chinese', Arial, sans-serif;
+  font-size: 50px;
+  padding: 10px; }
+
+p {
+  font-size: 17.5px; }
+
 /* Custom classes */
 .App {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #1d2b55; }
+  color: #E3E3E3; }
 
 .large-container {
-  background-color: #2d3f75; }
+  background-color: #234C6A;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px; }
+
+.menu {
+  flex-basis: 15%;
+  min-width: 15%;
+  display: flex;
+  flex-direction: column; }
+
+.menu-item {
+  background-color: #456882;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px; }
 
 /*# sourceMappingURL=index.css.map */

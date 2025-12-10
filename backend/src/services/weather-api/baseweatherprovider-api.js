@@ -8,7 +8,7 @@ import fs from 'fs';
  * network calls and data normalization.
  */
 export class WeatherAPI {
-  constructor( baseUrl, apiKey, units = 'metric', authParamName = 'appid') {
+  constructor(baseUrl, apiKey, units = 'metric', authParamName = '', mapping) {
 
     this.config = JSON.parse(fs.readFileSync(`${process.cwd()}/../config/config.json`, 'utf-8'));
     this.keys = JSON.parse(fs.readFileSync(`${process.cwd()}/../config/keys.json`, 'utf-8'));
@@ -17,9 +17,13 @@ export class WeatherAPI {
     this.apiKey = apiKey;
     this.units = units;
     this.authParamName = authParamName;
+
+    /* this.mapping is a dictionary that maps the JSON object returned from a weather API to a format universal to our program
+       ex. { "temp": "main.temp", "windSpeed": "wind_speed" } */
+    this.mapping = mapping
   }
 
-  async validateOptions(baseUrl = this.baseUrl, apiKey = this.apiKey) {
+  async validateOptions(baseUrl = this.baseUrl, apiKey = this.apiKey, mapping = this.mapping) {
     if (!baseUrl) {
       throw new Error('WeatherAPI requires a baseUrl');
     }
@@ -28,19 +32,12 @@ export class WeatherAPI {
     }
   }
 
-  /**
-   * "Virtual" method that should be overridden by subclasses
-   * to retrieve current conditions for a location.
-   */
+  /* Virtual Methods */
+
   // eslint-disable-next-line class-methods-use-this
   async getCurrentWeather(/* location */) {
     throw new Error('getCurrentWeather must be implemented by subclasses');
   }
-
-  /**
-   * "Virtual" method that should be overridden by subclasses
-   * to retrieve weather forecast for a location.
-   */
 
   // eslint-disable-next-line class-methods-use-this
   async getMinutelyForecast(/* location, days */) {
@@ -85,5 +82,27 @@ export class WeatherAPI {
     }
 
     return response.json();
+  }
+
+  async format(json, mapping = this.mapping) {
+    for (let i = 0; i < mapping.length; i++){
+      mapKey = mapping[i];
+      mapping[i] = json[mapKey]
+    }
+
+    return mapping
+  }
+
+  async getAPIEndpoint(location, url) {
+    await this.validateOptions();
+    
+    const params = {
+      [this.authParamName]: this.apiKey,
+      units: this.units,
+      ...buildLocationParams(location)
+    };
+    
+    const response = await this.request(url, params)
+    return response; 
   }
 }

@@ -6,16 +6,6 @@
     margin: 10px;
 }
 
-.large-container {
-    margin: 10px;
-    padding: 5px;
-}
-
-.menu { 
-    flex-basis: 15%;
-    min-width: 15%;
-}
-
 .body {
     flex-grow: 1;
 }

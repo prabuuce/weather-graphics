@@ -20,6 +20,8 @@
   },
   "dependencies": {
     "node-fetch": "^3.3.2",
+    "plotly.js": "^3.3.0",
+    "react-plotly.js": "^2.6.0",
     "sass": "^1.94.2"
   }
 }
