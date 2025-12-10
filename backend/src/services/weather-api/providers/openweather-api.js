@@ -17,8 +17,22 @@ export class OpenWeatherAPI extends WeatherAPI {
     this.baseUrl = options.baseUrl || 'https://api.openweathermap.org/data/2.5';
   }
   
+  async getCurrentTemparture(location) {
+      
+    const data = await this.openweathermap_weather_API(location);
+    const temparature = data.main.temp
+    return temparature ?? null;
+  }
+
+  async getCurrentWind(location) {
+      
+    const data = await this.openweathermap_weather_API(location);
+    const wind = data.wind
+    return wind ?? null;
+  }
+
   async getCurrentWeather(location) {
-    await this.validateOptions();
+     await this.validateOptions();
     
     const params = {
       [this.authParamName]: this.apiKey,
@@ -27,22 +41,21 @@ export class OpenWeatherAPI extends WeatherAPI {
     };
     
     const response = await this.request("/weather", params)
-    return response; //this.normalizeCurrentWeather(data);
+    return response;
+     //this.normalizeCurrentWeather(data);
   }
 
-  async getWeatherForecast(location) {
-    // TODO: Implement forecast fetching logic
-    await this.validateOptions();
-    
-    const params = {
-      [this.authParamName]: this.apiKey,
-      units: this.units,
-      ...buildLocationParams(location)
-    };
-
-    const response = await this.request("/forecast", params);
-    
-    return response; 
+  // Wrapper functions corresponding to the REST API Endpoints
+  async openweathermap_weather_API(location) {  
+      await this.validateOptions();  
+      const params = {
+        [this.authParamName]: this.apiKey,
+        units: this.units,
+        ...buildLocationParams(location)
+      };
+      
+      const response = await this.request("/weather", params)
+      return response;
   }
 }
 
@@ -61,58 +74,3 @@ function buildLocationParams(location) {
   
   return { q: typeof location === 'string' ? location : JSON.stringify(location) };
 }
-
-/* 
-function normalizeCurrentWeather(data) {
-  return {
-    location: data.name,
-    temperature: data.main?.temp ?? null,
-    condition: data.weather?.[0]?.main ?? '',
-    humidity: data.main?.humidity ?? null,
-    windSpeed: data.wind?.speed ?? null,
-    timestamp: new Date((data.dt ?? Date.now() / 1000) * 1000).toISOString()
-  };
-}
-
-function normalizeForecast(data, days) {
-  if (!Array.isArray(data.list)) {
-    return {
-      location: data.city?.name,
-      days,
-      forecast: [],
-      generatedAt: new Date().toISOString()
-    };
-  }
-  
-  const daily = new Map();
-  data.list.forEach((entry) => {
-    const date = entry.dt_txt?.split(' ')[0];
-    if (!date) {
-      return;
-    }
-    if (!daily.has(date)) {
-      daily.set(date, {
-        date,
-        temperature: {
-          min: entry.main?.temp_min ?? null,
-          max: entry.main?.temp_max ?? null
-        },
-        condition: entry.weather?.[0]?.main ?? '',
-        precipitation: entry.pop != null ? entry.pop * 100 : null
-      });
-      return;
-    }
-    const existing = daily.get(date);
-    existing.temperature.min = Math.min(existing.temperature.min ?? Infinity, entry.main?.temp_min ?? Infinity);
-    existing.temperature.max = Math.max(existing.temperature.max ?? -Infinity, entry.main?.temp_max ?? -Infinity);
-  });
-  
-  const forecast = Array.from(daily.values()).slice(0, days);
-  return {
-    location: data.city?.name,
-    days,
-    forecast,
-    generatedAt: new Date().toISOString()
-  };
-}
-*/

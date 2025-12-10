@@ -35,24 +35,33 @@ export class WeatherAPI {
   /* Virtual Methods */
 
   // eslint-disable-next-line class-methods-use-this
+  async getCurrentTemparture(/* location */) {
+    throw new Error('getCurrentTemparture must be implemented by subclasses');
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  async getCurrentWind(/* location */) {
+    throw new Error('getCurrentWind must be implemented by subclasses');
+  }
+
+  // eslint-disable-next-line class-methods-use-this
   async getCurrentWeather(/* location */) {
     throw new Error('getCurrentWeather must be implemented by subclasses');
   }
+  // // eslint-disable-next-line class-methods-use-this
+  // async getMinutelyForecast(/* location, days */) {
+  //   throw new Error('getMinutelyForecast must be implemented by subclasses');
+  // }
 
-  // eslint-disable-next-line class-methods-use-this
-  async getMinutelyForecast(/* location, days */) {
-    throw new Error('getMinutelyForecast must be implemented by subclasses');
-  }
+  // // eslint-disable-next-line class-methods-use-this
+  // async getHourlyForecast(/* location, days */) {
+  //   throw new Error('getHourlyForecast must be implemented by subclasses');
+  // }
 
-  // eslint-disable-next-line class-methods-use-this
-  async getHourlyForecast(/* location, days */) {
-    throw new Error('getHourlyForecast must be implemented by subclasses');
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  async getDailyForecast(/* location, days */) {
-    throw new Error('getDailyForecast must be implemented by subclasses');
-  }
+  // // eslint-disable-next-line class-methods-use-this
+  // async getDailyForecast(/* location, days */) {
+  //   throw new Error('getDailyForecast must be implemented by subclasses');
+  // }
 
   /**
    * Helper that performs the HTTP request with shared auth/query params.

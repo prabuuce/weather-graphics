@@ -21,4 +21,4 @@ class ForecastLineChart extends React.Component {
   }
 }
 
-export default ForecastLineChart
+export default ForecastLineChart;
