@@ -98,19 +98,19 @@ case $COMMAND in
         # Check if root dependencies are installed
         if [ ! -d "node_modules" ] || [ ! -d "node_modules/concurrently" ]; then
             echo -e "${YELLOW}Installing root dependencies...${NC}"
-            npm install
+            npm install --package-lock && npm install  
         fi
         
         # Check if backend dependencies are installed
         if [ ! -d "backend/node_modules" ]; then
             echo -e "${YELLOW}Installing backend dependencies...${NC}"
-            cd backend && npm install && cd ..
+            cd backend && npm install --package-lock && npm install   && cd ..
         fi
         
         # Check if web frontend dependencies are installed
         if [ ! -d "frontend/web/node_modules" ]; then
             echo -e "${YELLOW}Installing web frontend dependencies...${NC}"
-            cd frontend/web && npm install && cd ../..
+            cd frontend/web && npm install --package-lock && npm install   && cd ../..
         fi
         
         # Run backend + web
@@ -131,25 +131,25 @@ case $COMMAND in
         # Check if root dependencies are installed
         if [ ! -d "node_modules" ] || [ ! -d "node_modules/concurrently" ]; then
             echo -e "${YELLOW}Installing root dependencies...${NC}"
-            npm install
+            npm install --package-lock && npm install  
         fi
         
         # Check if backend dependencies are installed
         if [ ! -d "backend/node_modules" ]; then
             echo -e "${YELLOW}Installing backend dependencies...${NC}"
-            cd backend && npm install && cd ..
+            cd backend && npm install --package-lock && npm install   && cd ..
         fi
         
         # Check if web frontend dependencies are installed
         if [ ! -d "frontend/web/node_modules" ]; then
             echo -e "${YELLOW}Installing web frontend dependencies...${NC}"
-            cd frontend/web && npm install && cd ../..
+            cd frontend/web && npm install --package-lock && npm install   && cd ../..
         fi
         
         # Check if mobile dependencies are installed
         if [ ! -d "frontend/mobile/node_modules" ]; then
             echo -e "${YELLOW}Installing mobile dependencies...${NC}"
-            cd frontend/mobile && npm install && cd ../..
+            cd frontend/mobile && npm install --package-lock && npm install   && cd ../..
         fi
         
         # Run all services
@@ -167,7 +167,7 @@ case $COMMAND in
         # Check if backend dependencies are installed
         if [ ! -d "backend/node_modules" ]; then
             echo -e "${YELLOW}Installing backend dependencies...${NC}"
-            cd backend && npm install && cd ..
+            cd backend && npm install --package-lock && npm install   && cd ..
         fi
         
         cd backend && npm run dev
@@ -184,7 +184,7 @@ case $COMMAND in
         # Check if web frontend dependencies are installed
         if [ ! -d "frontend/web/node_modules" ]; then
             echo -e "${YELLOW}Installing web frontend dependencies...${NC}"
-            cd frontend/web && npm install && cd ../..
+            cd frontend/web && npm install --package-lock && npm install   && cd ../..
         fi
         
         cd frontend/web && npm run dev
@@ -196,7 +196,7 @@ case $COMMAND in
         # Check if mobile dependencies are installed
         if [ ! -d "frontend/mobile/node_modules" ]; then
             echo -e "${YELLOW}Installing mobile dependencies...${NC}"
-            cd frontend/mobile && npm install && cd ../..
+            cd frontend/mobile && npm install --package-lock && npm install   && cd ../..
         fi
         
         cd frontend/mobile && npm start
