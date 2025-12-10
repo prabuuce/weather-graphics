@@ -32,17 +32,8 @@ export class OpenWeatherAPI extends WeatherAPI {
   }
 
   async getCurrentWeather(location) {
-     await this.validateOptions();
-    
-    const params = {
-      [this.authParamName]: this.apiKey,
-      units: this.units,
-      ...buildLocationParams(location)
-    };
-    
-    const response = await this.request("/weather", params)
-    return response;
-     //this.normalizeCurrentWeather(data);
+    const data = await this.openweathermap_weather_API(location);
+    return data;
   }
 
   // Wrapper functions corresponding to the REST API Endpoints
