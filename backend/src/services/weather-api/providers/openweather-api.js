@@ -17,27 +17,34 @@ export class OpenWeatherAPI extends WeatherAPI {
     this.baseUrl = options.baseUrl || 'https://api.openweathermap.org/data/2.5';
   }
   
-  async getCurrentTemparture(location) {
+  async getCurrentTemperature(location) {
       
-    const data = await this.openweathermap_weather_API(location);
-    const temparature = data.main.temp
-    return temparature ?? null;
+    const data = await this.getCurrentWeatherData(location);
+    const temperature = data.main.temp
+    return temperature ?? null;
   }
 
   async getCurrentWind(location) {
       
-    const data = await this.openweathermap_weather_API(location);
+    const data = await this.getCurrentWeatherData(location);
     const wind = data.wind
     return wind ?? null;
   }
 
   async getCurrentWeather(location) {
-    const data = await this.openweathermap_weather_API(location);
+    const data = await this.getCurrentWeatherData(location);
+    return data;
+  }
+
+  /////////////////////////////////////////////////////////////
+
+  async getForecastWeather(location) {
+    const data = await this.getForecastWeatherData(location);
     return data;
   }
 
   // Wrapper functions corresponding to the REST API Endpoints
-  async openweathermap_weather_API(location) {  
+  async getCurrentWeatherData(location) {  
       await this.validateOptions();  
       const params = {
         [this.authParamName]: this.apiKey,
@@ -47,6 +54,18 @@ export class OpenWeatherAPI extends WeatherAPI {
       
       const response = await this.request("/weather", params)
       return response;
+  }
+
+  async getForecastWeatherData(location) {
+    await this.validateOptions();
+    const params = {
+      [this.authParamName]: this.apiKey,
+      units: this.units,
+      ...buildLocationParams(location)
+    };
+    
+    const response = await this.request("/forecast", params)
+    return response;
   }
 }
 

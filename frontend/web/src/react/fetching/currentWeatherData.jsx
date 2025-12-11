@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import { use } from 'react'
 
-function GetTemperatureValue({type, location}) {
+function GetCurTempVal({type, location}) {
   const [temperatureValue, setTemperatureValue] = useState(null)
 
 
   useEffect(() => {
     // Get weather data for a specific location (e.g., zip code 92692)
-    fetch(`/api/weather/temperature/${location}`)
+    fetch(`/api/weather/current/temperature/${location}`)
       .then(res => res.json())
       .then(data => {
         console.log("Temperature value: ", data);
@@ -22,13 +22,13 @@ function GetTemperatureValue({type, location}) {
 
 }
 
-function GetWindData({type, location}) {
+function GetCurWindVal({type, location}) {
   const [windValue, setWindValue] = useState(null)
 
 
   useEffect(() => {
     // Get weather data for a specific location (e.g., zip code 92692)
-    fetch(`/api/weather/wind/${location}`)
+    fetch(`/api/weather/current/wind/${location}`)
       .then(res => res.json())
       .then(data => {
         console.log("Wind value: ", data);
@@ -43,13 +43,13 @@ function GetWindData({type, location}) {
 
 }
 
-function GetWeatherData({type, location}) {
+function GetCurWeatherDat({type, location}) {
   const [weatherData, setWeatherData] = useState(null)
 
 
   useEffect(() => {
     // Get weather data for a specific location (e.g., zip code 92692)
-    fetch(`/api/weather/${location}`)
+    fetch(`/api/weather/current/${location}`)
       .then(res => res.json())
       .then(data => {
         console.log("Weather data: ", data);
@@ -64,4 +64,4 @@ function GetWeatherData({type, location}) {
 
 }
 
-export { GetWeatherData, GetTemperatureValue, GetWindData };
+export { GetCurWeatherDat, GetCurTempVal, GetCurWindVal };

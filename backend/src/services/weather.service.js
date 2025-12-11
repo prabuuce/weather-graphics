@@ -36,7 +36,7 @@ export async function getCurrentWind(location) {
  * @param {string} location - Location name or coordinates
  * @returns {Promise<Object>} Temperature data
  */
-export async function getCurrentTemparture(location) {
+export async function getCurrentTemperature(location) {
   if (!validateLocation(location)) {
     return {
       error: 'Invalid location',
@@ -45,7 +45,7 @@ export async function getCurrentTemparture(location) {
   }
 
   try {
-    const apiResponse = await weatherClient.getCurrentTemparture(location);
+    const apiResponse = await weatherClient.getCurrentTemperature(location);
     return apiResponse;
   } catch (error) {
     return {
@@ -60,7 +60,7 @@ export async function getCurrentTemparture(location) {
  * @param {string} location - Location name or coordinates
  * @returns {Promise<Object>} Weather data
  */
-export async function getCurrentWeather(location) {
+export async function getCurrentWeatherData(location) {
   if (!validateLocation(location)) {
     return {
       error: 'Invalid location',
@@ -78,6 +78,26 @@ export async function getCurrentWeather(location) {
     };
   }
 }
+
+export async function getForecastWeatherData(location) {
+  if (!validateLocation(location)) {
+    return {
+      error: 'Invalid location',
+      message: 'Location must be a valid string'
+    };
+  }
+
+  try {
+    const apiResponse = await weatherClient.getForecastWeatherData(location);
+    return apiResponse;
+  } catch (error) {
+    return {
+      error: 'Failed to fetch weather data',
+      message: error.message
+    };
+  }
+}
+
 
 
 /**

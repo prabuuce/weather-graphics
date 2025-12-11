@@ -7,7 +7,7 @@ function Gauge({ location }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`/api/weather/temperature/${location}`)
+    fetch(`/api/weather/current/temperature/${location}`)
       .then(res => res.json())
       .then(data => {
         if (data.error) {
@@ -39,7 +39,7 @@ function Gauge({ location }) {
   return (
     <GaugeChart
       id="gauge-chart"
-      nrOfLevels={20}
+      nrOfLevels={20}c
       percent={normalizedTemperature}
       arcWidth={0.3}
       colors={['#667eea', '#f56565']}

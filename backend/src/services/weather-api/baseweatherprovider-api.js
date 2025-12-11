@@ -35,8 +35,8 @@ export class WeatherAPI {
   /* Virtual Methods */
 
   // eslint-disable-next-line class-methods-use-this
-  async getCurrentTemparture(/* location */) {
-    throw new Error('getCurrentTemparture must be implemented by subclasses');
+  async getCurrentTemperature(/* location */) {
+    throw new Error('getCurrentTemperature must be implemented by subclasses');
   }
 
   // eslint-disable-next-line class-methods-use-this
