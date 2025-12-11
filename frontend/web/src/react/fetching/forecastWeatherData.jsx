@@ -39,7 +39,7 @@ function GetForecastTempVal({type, location}) {
       })
   }, [location, type])
 
-  return <pre className='pretty-json'>{JSON.stringify(temperatureValue, null, 2)+'°C'}</pre>
+  return JSON.stringify(temperatureValue, null, 2)+"°C"
 
 }
 

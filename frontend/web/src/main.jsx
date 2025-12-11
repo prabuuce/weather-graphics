@@ -7,8 +7,7 @@ import './css/json.css'
 import {GetCurrentWeatherData, GetCurrentTempVal, GetCurrentWindVal} from './react/fetching/currentWeatherData.jsx'
 import {GetForecastWeatherData, GetForecastTempVal} from './react/fetching/forecastWeatherData.jsx'
 
-import ForecastLineChart from './react/graphs/forecastLineChart.jsx'
-import Gauge from './react/graphs/gauge.jsx'
+import ForecastLineChart from './react/graphs/forecastLineCharts.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -20,10 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </div>   
       <div className='large-container body'>
         <div className='menu-item'>
-          <ForecastLineChart />
-        </div>
-        <div className="menu-item">
-          <Gauge location="92692"/>
+          <ForecastLineChart/>
         </div>
       </div>
     </div>
