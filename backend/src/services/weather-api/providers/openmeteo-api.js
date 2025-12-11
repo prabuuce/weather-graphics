@@ -24,14 +24,14 @@ export class OpenWeatherAPI extends WeatherAPI {
     return temparature ?? null;
   }
 
-  async getCurrentWind(location) {
+  async GetCurrentWindVal(location) {
       
     const data = await this.openweathermap_weather_API(location);
     const wind = data.wind
     return wind ?? null;
   }
 
-  async getCurrentWeather(location) {
+  async GetCurrentWeatherData(location) {
     const data = await this.openweathermap_weather_API(location);
     return data;
   }

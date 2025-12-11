@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { use } from 'react'
 
-function GetForeWeatherDat({type, location}) {
+function GetForecastWeatherData({type, location}) {
   const [weatherForecastData, setWeatherForecastData] = useState(null)
 
 
@@ -22,13 +22,13 @@ function GetForeWeatherDat({type, location}) {
 
 }
 
-function GetForeTempVal({type, location}) {
+function GetForecastTempVal({type, location}) {
   const [temperatureValue, setTemperatureValue] = useState(null)
 
 
   useEffect(() => {
     // Get weather data for a specific location (e.g., zip code 92692)
-    fetch(`/api/weather/current/temperature/${location}`)
+    fetch(`/api/weather/forecast/temperature/${location}`)
       .then(res => res.json())
       .then(data => {
         console.log("Temperature value: ", data);
@@ -43,7 +43,7 @@ function GetForeTempVal({type, location}) {
 
 }
 
-function GetForeWindVal({type, location}) {
+function GetForecastWindVal({type, location}) {
   const [windValue, setWindValue] = useState(null)
 
 
@@ -64,4 +64,4 @@ function GetForeWindVal({type, location}) {
 
 }
 
-export { GetForeWeatherDat, GetForeTempVal, GetForeWindVal };
+export { GetForecastWeatherData, GetForecastTempVal, GetForecastWindVal };

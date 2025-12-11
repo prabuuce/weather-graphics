@@ -1,6 +1,6 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-import { GetCurTempVal } from '../fetching/currentWeatherData';
+import { GetCurrentTempVal } from '../fetching/currentWeatherData';
 
 function ForecastLineChart() {
   var trace1 = {

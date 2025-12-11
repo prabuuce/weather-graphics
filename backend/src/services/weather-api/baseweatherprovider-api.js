@@ -35,18 +35,18 @@ export class WeatherAPI {
   /* Virtual Methods */
 
   // eslint-disable-next-line class-methods-use-this
-  async getCurrentTemperature(/* location */) {
-    throw new Error('getCurrentTemperature must be implemented by subclasses');
+  async GetCurrentWeatherData(/* location */) {
+    throw new Error('GetCurrentWeatherData must be implemented by subclasses');
   }
 
   // eslint-disable-next-line class-methods-use-this
-  async getCurrentWind(/* location */) {
-    throw new Error('getCurrentWind must be implemented by subclasses');
+  async GetCurrentTempVal(/* location */) {
+    throw new Error('GetCurrentTempVal must be implemented by subclasses');
   }
 
   // eslint-disable-next-line class-methods-use-this
-  async getCurrentWeather(/* location */) {
-    throw new Error('getCurrentWeather must be implemented by subclasses');
+  async GetCurrentWindVal(/* location */) {
+    throw new Error('GetCurrentWindVal must be implemented by subclasses');
   }
   // // eslint-disable-next-line class-methods-use-this
   // async getMinutelyForecast(/* location, days */) {

@@ -8,11 +8,11 @@ import { getWeatherClient } from './weather-api/factory.service.js';
 const weatherClient = getWeatherClient("openweather");
 
 /**
- * Get current wind data for a location
+ * Get current all weather data for a location
  * @param {string} location - Location name or coordinates
- * @returns {Promise<Object>} Temperature data
+ * @returns {Promise<Object>} Weather data
  */
-export async function getCurrentWind(location) {
+async function GetCurrentWeatherData(location) {
   if (!validateLocation(location)) {
     return {
       error: 'Invalid location',
@@ -21,7 +21,31 @@ export async function getCurrentWind(location) {
   }
 
   try {
-    const apiResponse = await weatherClient.getCurrentWind(location);
+    const apiResponse = await weatherClient.GetCurrentWeatherData(location);
+    return apiResponse;
+  } catch (error) {
+    return {
+      error: 'Failed to fetch weather data',
+      message: error.message
+    };
+  }
+}
+
+/**
+ * Get current wind data for a location
+ * @param {string} location - Location name or coordinates
+ * @returns {Promise<Object>} Temperature data
+ */
+async function GetCurrentWindVal(location) {
+  if (!validateLocation(location)) {
+    return {
+      error: 'Invalid location',
+      message: 'Location must be a valid string'
+    };
+  }
+
+  try {
+    const apiResponse = await weatherClient.GetCurrentWindVal(location);
     return apiResponse;
   } catch (error) {
     return {
@@ -36,7 +60,7 @@ export async function getCurrentWind(location) {
  * @param {string} location - Location name or coordinates
  * @returns {Promise<Object>} Temperature data
  */
-export async function getCurrentTemperature(location) {
+async function GetCurrentTempVal(location) {
   if (!validateLocation(location)) {
     return {
       error: 'Invalid location',
@@ -45,7 +69,7 @@ export async function getCurrentTemperature(location) {
   }
 
   try {
-    const apiResponse = await weatherClient.getCurrentTemperature(location);
+    const apiResponse = await weatherClient.GetCurrentTempVal(location);
     return apiResponse;
   } catch (error) {
     return {
@@ -55,12 +79,14 @@ export async function getCurrentTemperature(location) {
   }
 }
 
+/////////////////////////////////////////////////////////
 /**
- * Get current all weather data for a location
- * @param {string} location - Location name or coordinates
- * @returns {Promise<Object>} Weather data
+ * Get Forecast weather data for a location
+ * @param {*} location 
+ * @returns 
  */
-export async function getCurrentWeatherData(location) {
+
+async function GetForecastWeatherData(location) {
   if (!validateLocation(location)) {
     return {
       error: 'Invalid location',
@@ -69,7 +95,7 @@ export async function getCurrentWeatherData(location) {
   }
 
   try {
-    const apiResponse = await weatherClient.getCurrentWeather(location);
+    const apiResponse = await weatherClient.GetForecastWeatherData(location);
     return apiResponse;
   } catch (error) {
     return {
@@ -79,7 +105,7 @@ export async function getCurrentWeatherData(location) {
   }
 }
 
-export async function getForecastWeatherData(location) {
+async function GetForecastTempVal(location) {
   if (!validateLocation(location)) {
     return {
       error: 'Invalid location',
@@ -88,25 +114,24 @@ export async function getForecastWeatherData(location) {
   }
 
   try {
-    const apiResponse = await weatherClient.getForecastWeatherData(location);
+    const apiResponse = await weatherClient.GetForecastTempValue(location);
     return apiResponse;
   } catch (error) {
     return {
-      error: 'Failed to fetch weather data',
+      error: 'Failed to fetch weather data in weather.service',
       message: error.message
     };
   }
 }
-
-
 
 /**
  * Validate location input
  * @param {string} location - Location to validate
  * @returns {boolean} True if valid
  */
-export function validateLocation(location) {
+function validateLocation(location) {
   // Check if location is a valid city name, coordinates, etc.
   return location && location.trim().length > 0;
 }
 
+export { GetCurrentWeatherData, GetCurrentWindVal, GetCurrentTempVal, GetForecastWeatherData, GetForecastTempVal };

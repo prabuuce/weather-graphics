@@ -13,7 +13,7 @@ export class WeatherStackAPI extends WeatherAPI {
     });
   }
 
-  async getCurrentWeather(location) {
+  async GetCurrentWeatherData(location) {
     const params = buildLocationParams(location);
     params.units = this.units;
     const payload = await this.request('/current', params);

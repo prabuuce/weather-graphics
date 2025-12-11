@@ -17,34 +17,34 @@ export class OpenWeatherAPI extends WeatherAPI {
     this.baseUrl = options.baseUrl || 'https://api.openweathermap.org/data/2.5';
   }
   
-  async getCurrentTemperature(location) {
+  async GetCurrentTempVal(location) {
       
-    const data = await this.getCurrentWeatherData(location);
+    const data = await this.GetCurrentWeatherData(location);
     const temperature = data.main.temp
     return temperature ?? null;
   }
 
-  async getCurrentWind(location) {
+  async GetCurrentWindVal(location) {
       
-    const data = await this.getCurrentWeatherData(location);
+    const data = await this.GetCurrentWeatherData(location);
     const wind = data.wind
     return wind ?? null;
   }
 
-  async getCurrentWeather(location) {
-    const data = await this.getCurrentWeatherData(location);
+  async GetCurrentWeatherData(location) {
+    const data = await this.GetCurrentWeatherData(location);
     return data;
   }
 
   /////////////////////////////////////////////////////////////
 
-  async getForecastWeather(location) {
-    const data = await this.getForecastWeatherData(location);
+  async GetForecastWeatherData(location) {
+    const data = await this.GetForecastWeatherData(location);
     return data;
   }
 
   // Wrapper functions corresponding to the REST API Endpoints
-  async getCurrentWeatherData(location) {  
+  async GetCurrentWeatherData(location) {  
       await this.validateOptions();  
       const params = {
         [this.authParamName]: this.apiKey,
@@ -56,7 +56,7 @@ export class OpenWeatherAPI extends WeatherAPI {
       return response;
   }
 
-  async getForecastWeatherData(location) {
+  async GetForecastWeatherData(location) {
     await this.validateOptions();
     const params = {
       [this.authParamName]: this.apiKey,
@@ -66,6 +66,16 @@ export class OpenWeatherAPI extends WeatherAPI {
     
     const response = await this.request("/forecast", params)
     return response;
+  }
+
+  async GetForecastTempValue(location) {
+    const data = await this.GetForecastWeatherData(location);
+    const temperatures = {};
+
+    for (const timestamp of data.list) {
+      temperatures[timestamp.dt_txt] = timestamp.main.temp;
+    }  
+    return temperatures ?? null;
   }
 }
 

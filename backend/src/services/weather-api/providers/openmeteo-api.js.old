@@ -16,7 +16,7 @@ export class OpenMeteoAPI extends WeatherAPI {
     this.baseUrl = options.baseUrl
   }
   
-  async getCurrentWeather(location) {
+  async GetCurrentWeatherData(location) {
     await this.validateOptions();
     
     const params = {
