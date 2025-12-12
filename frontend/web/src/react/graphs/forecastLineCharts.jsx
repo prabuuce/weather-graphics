@@ -5,6 +5,7 @@ import { Line } from 'react-chartjs-2';
 import { GetForecastTempVal } from '../fetching/forecastWeatherData';
 
 Chart.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
+Chart.defaults.color = '#ffffff';
 
 function ForecastLineChart() {
   const forecastTempVal = GetForecastTempVal({type: 'temperature', location: '92692'});
@@ -19,7 +20,10 @@ function ForecastLineChart() {
       {
         label: 'Temperature Forecast (°C)',
         data: datapoints,
-        borderColor: 'rgb(255, 99, 132)',
+        borderColor: '#e38455ff',
+        pointStyle: 'circle',
+        pointRadius: 5,
+        pointHoverRadius: 7,
         fill: false,
         cubicInterpolationMode: 'monotone',
         tension: 0.4
