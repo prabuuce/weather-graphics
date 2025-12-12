@@ -22,9 +22,8 @@ function GetForecastWeatherData({type, location}) {
 
 }
 
-function GetForecastTempVal({type, location}) {
-  const [temperatureValue, setTemperatureValue] = useState(null)
-
+function GetForecastTempVal({location}) {
+  const [tempValue, setTempValue] = useState()
 
   useEffect(() => {
     // Get weather data for a specific location (e.g., zip code 92692)
@@ -32,15 +31,18 @@ function GetForecastTempVal({type, location}) {
       .then(res => res.json())
       .then(data => {
         console.log("Temperature value: ", data);
-        setTemperatureValue(data);
+        setTempValue(data);
       })
       .catch(err => {
         console.error('Error connecting to backend:', err)
       })
-  }, [location, type])
+  }, [location])
 
-  return JSON.stringify(temperatureValue, null, 2)+"°C"
+  if (tempValue === undefined) {
+    return {"Never": 16, "Gonna": 15, "Give": 17, "You": 13, "Up": 12}
+  }
 
+  return tempValue
 }
 
 function GetForecastWindVal({type, location}) {

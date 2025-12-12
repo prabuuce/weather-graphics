@@ -29,7 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <GetCurrentWindVal type='main.temp' location="92692"/>
         </div> 
         <div className="menu-item">
-          <GetForecastTempVal location="92692"/>
+          Plz insert forecast temp val here
         </div> 
       </div>
       <div className='large-container body'>
