@@ -12,6 +12,8 @@ const TempForecastLineChart = ({ location }) => {
     const tempObj = GetForecastTempVal({ location });
     const rangeObj = GetForecastTempRange({ location });
 
+    console.log(rangeObj)
+
     // Build aligned arrays sorted by date so the arearange matches the line
     const tempDates = Object.keys(tempObj || {}).sort((a,b) => new Date(a) - new Date(b));
     const tempEntries = tempDates.map(dateStr => [new Date(dateStr).getTime(), Number(tempObj[dateStr]) || 0]);

@@ -69,10 +69,9 @@ function GetForecastTempRange({location}) {
 function GetForecastWindVal({type, location}) {
   const [windValue, setWindValue] = useState(null)
 
-
   useEffect(() => {
     // Get weather data for a specific location (e.g., zip code 92692)
-    fetch(`/api/weather/current/wind/${location}`)
+    fetch(`/api/weather/forecast/wind/${location}`)
       .then(res => res.json())
       .then(data => {
         console.log("Wind value: ", data);

@@ -8,6 +8,7 @@ import {GetCurrentWeatherData, GetCurrentTempVal, GetCurrentWindVal} from './rea
 import {GetForecastWeatherData} from './react/fetching/forecastWeatherData.jsx'
 
 import TempForecastLineChart from './react/graphs/forecastLineChart.jsx'
+import WindForecastPolarChart from './react/graphs/forecastPolarCharts.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -20,6 +21,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <div className='large-container body'>
         <div className='menu-item'>
           <TempForecastLineChart location="92692"/>
+        </div>
+      </div>
+      <div> 
+        <div className='large-container body'>
+          <WindForecastPolarChart location="92692"/>
         </div>
       </div>
     </div>

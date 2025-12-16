@@ -143,6 +143,25 @@ async function GetForecastTempRange(location) {
   }
 }
 
+async function GetForecastWindVal(location) {
+  if (!validateLocation(location)) {
+    return {
+      error: 'Invalid location',
+      message: 'Location must be a valid string'
+    };
+  }
+
+  try {
+    const apiResponse = await weatherClient.GetForecastWindVal(location);
+    return apiResponse;
+  } catch (error) {
+    return {
+      error: 'Failed to fetch weather data',
+      message: error.message
+    };
+  }
+}
+
 /**
  * Validate location input
  * @param {string} location - Location to validate
@@ -154,5 +173,5 @@ function validateLocation(location) {
 }
 
 export { GetCurrentWeatherData, GetCurrentWindVal, GetCurrentTempVal, 
-         GetForecastWeatherData, GetForecastTempVal, GetForecastTempRange 
+         GetForecastWeatherData, GetForecastTempVal, GetForecastTempRange, GetForecastWindVal 
 };

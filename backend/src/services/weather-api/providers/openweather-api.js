@@ -77,6 +77,17 @@ export class OpenWeatherAPI extends WeatherAPI {
 
     return ranges ?? null;
   }
+
+  async GetForecastWindVal(location) {
+    const data = await this.GetForecastWeatherData(location);
+    const wind = [];
+
+    for (const windi of data.list) {
+      wind[windi] = windi.wind
+    }
+
+    return wind ?? null;
+  }
 }
 
 // Helper Functions
