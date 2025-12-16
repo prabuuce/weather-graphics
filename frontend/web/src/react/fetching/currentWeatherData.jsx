@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { use } from 'react'
+import PropTypes from 'prop-types'
 
 function GetCurrentWeatherData({type, location}) {
   const [weatherData, setWeatherData] = useState(null)
@@ -39,7 +39,7 @@ function GetCurrentTempVal({type, location}) {
       })
   }, [location, type])
 
-  return <pre className='pretty-json'>{JSON.stringify(temperatureValue, null, 2)+'°C'}</pre>
+  return JSON.stringify(temperatureValue) + '°C'
 
 }
 
@@ -63,5 +63,20 @@ function GetCurrentWindVal({type, location}) {
   return <pre className='pretty-json'>{JSON.stringify(windValue, null, 2)}</pre>
 
 }
+
+GetCurrentWeatherData.propTypes = {
+    type: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+};
+
+GetCurrentTempVal.propTypes = {
+    type: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+};
+
+GetCurrentWindVal.propTypes = {
+    type: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+};
 
 export { GetCurrentWeatherData, GetCurrentTempVal, GetCurrentWindVal };

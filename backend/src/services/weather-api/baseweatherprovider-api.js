@@ -48,20 +48,26 @@ export class WeatherAPI {
   async GetCurrentWindVal(/* location */) {
     throw new Error('GetCurrentWindVal must be implemented by subclasses');
   }
-  // // eslint-disable-next-line class-methods-use-this
-  // async getMinutelyForecast(/* location, days */) {
-  //   throw new Error('getMinutelyForecast must be implemented by subclasses');
-  // }
 
-  // // eslint-disable-next-line class-methods-use-this
-  // async getHourlyForecast(/* location, days */) {
-  //   throw new Error('getHourlyForecast must be implemented by subclasses');
-  // }
+  // eslint-disable-next-line class-methods-use-this
+  async GetForecastWeatherData(/* location, days */) {
+    throw new Error('GetForecastWeatherData must be implemented by subclasses');
+  }
 
-  // // eslint-disable-next-line class-methods-use-this
-  // async getDailyForecast(/* location, days */) {
-  //   throw new Error('getDailyForecast must be implemented by subclasses');
-  // }
+  // eslint-disable-next-line class-methods-use-this
+  async GetForecastTempVal(/* location, days */) {
+     throw new Error('GetForecastTempVal must be implemented by subclasses');
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  async GetForecastTempRange(/* location, days */) {
+     throw new Error('GetForecastTempRange must be implemented by subclasses');
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  async GetForecastWindVal(/* location, days */) {
+    throw new Error('GetForecastWindVal must be implemented by subclasses');
+  }
 
   /**
    * Helper that performs the HTTP request with shared auth/query params.

@@ -17,32 +17,6 @@ export class OpenWeatherAPI extends WeatherAPI {
     this.baseUrl = options.baseUrl || 'https://api.openweathermap.org/data/2.5';
   }
   
-  async GetCurrentTempVal(location) {
-      
-    const data = await this.GetCurrentWeatherData(location);
-    const temperature = data.main.temp
-    return temperature ?? null;
-  }
-
-  async GetCurrentWindVal(location) {
-      
-    const data = await this.GetCurrentWeatherData(location);
-    const wind = data.wind
-    return wind ?? null;
-  }
-
-  async GetCurrentWeatherData(location) {
-    const data = await this.GetCurrentWeatherData(location);
-    return data;
-  }
-
-  /////////////////////////////////////////////////////////////
-
-  async GetForecastWeatherData(location) {
-    const data = await this.GetForecastWeatherData(location);
-    return data;
-  }
-
   // Wrapper functions corresponding to the REST API Endpoints
   async GetCurrentWeatherData(location) {  
       await this.validateOptions();  
@@ -55,6 +29,21 @@ export class OpenWeatherAPI extends WeatherAPI {
       const response = await this.request("/weather", params)
       return response;
   }
+
+  async GetCurrentTempVal(location) {
+    const data = await this.GetCurrentWeatherData(location);
+    const temperature = data.main.temp
+    return temperature ?? null;
+  }
+
+  async GetCurrentWindVal(location) {
+    const data = await this.GetCurrentWeatherData(location);
+    const wind = data.wind
+    return wind ?? null;
+  }
+
+
+  /////////////////////////////////////////////////////////////
 
   async GetForecastWeatherData(location) {
     await this.validateOptions();
@@ -77,7 +66,20 @@ export class OpenWeatherAPI extends WeatherAPI {
     }  
     return temperatures ?? null;
   }
+
+  async GetForecastTempRange(location) {
+    const data = await this.GetForecastWeatherData(location);
+    const ranges = {};
+
+    for (const timestamp of data.list) {
+      ranges[timestamp.dt_txt] = [timestamp.main.temp_min, timestamp.main.temp_max];
+    }  
+
+    return ranges ?? null;
+  }
 }
+
+// Helper Functions
 
 function buildLocationParams(location) {
   if (!location) {

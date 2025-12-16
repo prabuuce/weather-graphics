@@ -5,21 +5,21 @@ import './css/sass-css/index.css'
 import './css/flex.css'
 import './css/json.css'
 import {GetCurrentWeatherData, GetCurrentTempVal, GetCurrentWindVal} from './react/fetching/currentWeatherData.jsx'
-import {GetForecastWeatherData, GetForecastTempVal} from './react/fetching/forecastWeatherData.jsx'
+import {GetForecastWeatherData} from './react/fetching/forecastWeatherData.jsx'
 
-import ForecastLineChart from './react/graphs/forecastLineCharts.jsx'
+import TempForecastLineChart from './react/graphs/forecastLineChart.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <div className='Row'>
       <div className='large-container menu'>
         <div className="menu-item">
-          <GetCurrentTempVal type='main.temp' location="92692"/>
+          <h2><GetCurrentTempVal type='main.temp' location="92692"/></h2>
         </div>
       </div>   
       <div className='large-container body'>
         <div className='menu-item'>
-          <ForecastLineChart/>
+          <TempForecastLineChart location="92692"/>
         </div>
       </div>
     </div>

@@ -28,8 +28,9 @@ body {
 
 h1, h2, h3 {
   font-family: Arial, sans-serif;
-  font-size: 50px;
+  font-size: clamp(1.5rem, 4vw, 50px);
   padding: 10px;
+  word-break: break-word;
 }
 
 p {
