@@ -18,7 +18,7 @@ function GetForecastWeatherData({type, location}) {
       })
   }, [location, type])
 
-  return <pre className='pretty-json'>{JSON.stringify(weatherForecastData, null, 2)}</pre>
+  return JSON.stringify(weatherForecastData)
 
 }
 
@@ -67,37 +67,24 @@ function GetForecastTempRange({location}) {
 }
 
 function GetForecastWindVal({type, location}) {
-  const [windValue, setWindValue] = useState(null)
+  // Use an empty array as the safe default while fetching
+  const [windValue, setWindValue] = useState([])
 
   useEffect(() => {
     // Get weather data for a specific location (e.g., zip code 92692)
     fetch(`/api/weather/forecast/wind/${location}`)
       .then(res => res.json())
       .then(data => {
-        console.log("Wind value: ", data);
-        setWindValue(data);
+        console.log("Wind data: ", data);
+        setWindValue(data || []);
       })
       .catch(err => {
         console.error('Error connecting to backend:', err)
       })
   }, [location, type])
 
-  return <pre className='pretty-json'>{JSON.stringify(windValue, null, 2)}</pre>
+  return windValue
 
 }
-
-GetForecastWeatherData.propTypes = {
-    type: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
-};
-
-GetForecastTempVal.propTypes = {
-    location: PropTypes.string.isRequired,
-};
-
-GetForecastWindVal.propTypes = {
-    type: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
-};
 
 export { GetForecastWeatherData, GetForecastTempVal, GetForecastTempRange, GetForecastWindVal };

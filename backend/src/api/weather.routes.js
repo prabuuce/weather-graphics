@@ -11,7 +11,8 @@ import {
 
   GetForecastWeatherData,
   GetForecastTempVal,
-  GetForecastTempRange
+  GetForecastTempRange,
+  GetForecastWindVal
 } from '../services/weather.service.js';
 
 export async function weatherRoutes(fastify, options) {
@@ -146,7 +147,7 @@ export async function weatherRoutes(fastify, options) {
     }
   });
 
-    fastify.get('/forecast/temperature/wind/:location', async (request, reply) => {
+    fastify.get('/forecast/wind/:location', async (request, reply) => {
     const { location } = request.params;
     try {
       const weatherData = await GetForecastWindVal(location);

@@ -18,14 +18,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <h2><GetCurrentTempVal type='main.temp' location="92692"/></h2>
         </div>
       </div>   
-      <div className='large-container body'>
-        <div className='menu-item'>
-          <TempForecastLineChart location="92692"/>
+      <div className="large-container">
+        <div className='body'>
+          <div className='menu-item'>
+            <TempForecastLineChart location="92692"/>
+          </div>
         </div>
-      </div>
-      <div> 
-        <div className='large-container body'>
-          <WindForecastPolarChart location="92692"/>
+        <div className='body'> 
+          <div className='menu-item'>
+            <WindForecastPolarChart location="92692"/>
+          </div>
         </div>
       </div>
     </div>
@@ -43,7 +45,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <GetCurrentWeatherData type='main.temp' location="92692"/> 
         </div>
         <div className='menu-item'>
-          <GetForecastWeatherData type='main.temp' location="92692"/> 
+          <pre className='pretty-json'> <GetForecastWeatherData type='main.temp' location="92692"/> </pre>
         </div>
       </div>
     </div>

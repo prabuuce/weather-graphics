@@ -1,11 +1,10 @@
 .Row{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
 
     margin: 10px;
 }
 
-.body {
+.large-container {
     flex-grow: 1;
 }

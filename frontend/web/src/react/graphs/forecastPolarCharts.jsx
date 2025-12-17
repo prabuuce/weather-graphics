@@ -3,24 +3,29 @@ import HighchartsReact from 'highcharts-react-official'
 import 'highcharts/modules/exporting';
 import highchartsMore from 'highcharts/highcharts-more';
 
-import { GetForecastWindVal } from '../fetching/forecastWeatherData.jsx';
+import { GetForecastWindVal, GetForecastWeatherData } from '../fetching/forecastWeatherData.jsx';
 import PropTypes from 'prop-types';
 
-Highcharts.seriesTypes.line.prototype.getPointSpline = Highcharts.seriesTypes.spline.prototype.getPointSpline; // Rounds line chart lines.
-
 const WindForecastPolarChart = ({ location }) => {
-    Highcharts.chart('container', {
+    const windData = GetForecastWindVal({ location });
+
+    // Guard: wait until windData is a non-empty array
+    if (!Array.isArray(windData) || windData.length === 0) {
+        return null; // or show a loading placeholder
+    }
+
+    // Don't mutate hook state directly; create a processed copy trimmed to first two values
+    const processedWindData = windData.map(w => Array.isArray(w) ? w.slice(0, 2).reverse() : w).slice(0, 10).sort();
+    
+
+    const options = {
 
         chart: {
             polar: true
         },
 
         title: {
-            text: 'Highcharts Polar Chart'
-        },
-
-        subtitle: {
-            text: 'Also known as Radar Chart'
+            text: 'Wind Speed + Angle'
         },
 
         pane: {
@@ -29,7 +34,7 @@ const WindForecastPolarChart = ({ location }) => {
         },
 
         xAxis: {
-            tickInterval: 45,
+            tickInterval: 20,
             min: 0,
             max: 360,
             labels: {
@@ -41,32 +46,23 @@ const WindForecastPolarChart = ({ location }) => {
             min: 0
         },
 
-        plotOptions: {
-            series: {
-                pointStart: 0,
-                pointInterval: 45
-            },
-            column: {
-                pointPadding: 0,
-                groupPadding: 0
-            }
-        },
-
         series: [{
-            type: 'column',
-            name: 'Column',
-            data: [8, 7, 6, 5, 4, 3, 2, 1],
-            pointPlacement: 'between'
-        }, {
-            type: 'line',
-            name: 'Line',
-            data: [1, 2, 3, 4, 5, 6, 7, 8]
-        }, {
             type: 'area',
-            name: 'Area',
-            data: [1, 8, 2, 7, 3, 6, 4, 5]
+            name: 'Speed',
+            data: processedWindData
         }]
-    });
+    }
+
+    return (
+        <HighchartsReact
+            highcharts={Highcharts}
+            options={options}
+        />
+    );
+}
+
+WindForecastPolarChart.propTypes = {
+    location: PropTypes.string.isRequired
 }
 
 export default WindForecastPolarChart

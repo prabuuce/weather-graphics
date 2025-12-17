@@ -80,13 +80,13 @@ export class OpenWeatherAPI extends WeatherAPI {
 
   async GetForecastWindVal(location) {
     const data = await this.GetForecastWeatherData(location);
-    const wind = [];
+    const winds = [];
 
-    for (const windi of data.list) {
-      wind[windi] = windi.wind
+    for (const val of data.list) {
+      winds.push(Object.values(val["wind"]))
     }
 
-    return wind ?? null;
+    return winds ?? null
   }
 }
 
