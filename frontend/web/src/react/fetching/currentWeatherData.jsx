@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-function GetCurrentWeatherData({type, location}) {
+function GetCurrentWeatherData({location}) {
   const [weatherData, setWeatherData] = useState(null)
 
 
@@ -16,13 +16,13 @@ function GetCurrentWeatherData({type, location}) {
       .catch(err => {
         console.error('Error connecting to backend:', err)
       })
-  }, [location, type])
+  }, [location])
 
   return <pre className='pretty-json'>{JSON.stringify(weatherData, null, 2)}</pre>
 
 }
 
-function GetCurrentTempVal({type, location}) {
+function GetCurrentTempVal({location}) {
   const [temperatureValue, setTemperatureValue] = useState(null)
 
 
@@ -37,13 +37,13 @@ function GetCurrentTempVal({type, location}) {
       .catch(err => {
         console.error('Error connecting to backend:', err)
       })
-  }, [location, type])
+  }, [location])
 
   return JSON.stringify(temperatureValue) + '°C'
 
 }
 
-function GetCurrentWindVal({type, location}) {
+function GetCurrentWindVal({location}) {
   const [windValue, setWindValue] = useState(null)
 
 
@@ -58,25 +58,48 @@ function GetCurrentWindVal({type, location}) {
       .catch(err => {
         console.error('Error connecting to backend:', err)
       })
-  }, [location, type])
+  }, [location])
 
-  return <pre className='pretty-json'>{JSON.stringify(windValue, null, 2)}</pre>
+  return JSON.stringify(windValue)
 
 }
 
+function GetCurrentDateLoc({location}) {
+  const [dateLocValue, setDateLocValue] = useState(null)
+
+  useEffect(() => {
+    fetch(`/api/weather/current/dateloc/${location}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log("Date/Location value: ", data);
+        setDateLocValue(data);
+      })
+      .catch(err => {
+        console.error('Error connecting to backend:', err)
+      })
+  }, [location])
+
+  if (dateLocValue === null) {
+    return dateLocValue
+  }
+
+  return dateLocValue[0] + ', ' + dateLocValue[1]
+}
+
+GetCurrentDateLoc.propTypes = {
+    location: PropTypes.string.isRequired,
+};
+
 GetCurrentWeatherData.propTypes = {
-    type: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
 };
 
 GetCurrentTempVal.propTypes = {
-    type: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
 };
 
 GetCurrentWindVal.propTypes = {
-    type: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
 };
 
-export { GetCurrentWeatherData, GetCurrentTempVal, GetCurrentWindVal };
+export { GetCurrentWeatherData, GetCurrentTempVal, GetCurrentWindVal, GetCurrentDateLoc };

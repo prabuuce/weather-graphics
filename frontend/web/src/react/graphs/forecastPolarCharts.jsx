@@ -3,24 +3,25 @@ import HighchartsReact from 'highcharts-react-official'
 import 'highcharts/modules/exporting';
 import highchartsMore from 'highcharts/highcharts-more';
 
-import { GetForecastWindVal, GetForecastWeatherData } from '../fetching/forecastWeatherData.jsx';
+import { GetForecastWindVal } from '../fetching/forecastWeatherData.jsx';
 import PropTypes from 'prop-types';
 
 const WindForecastPolarChart = ({ location }) => {
     const windData = GetForecastWindVal({ location });
+    const series = [];
 
-    // Guard: wait until windData is a non-empty array
-    if (!Array.isArray(windData) || windData.length === 0) {
-        return null; // or show a loading placeholder
-    }
+    console.log(windData)
+
+    
 
     // Don't mutate hook state directly; create a processed copy trimmed to first two values
-    const processedWindData = windData.map(w => Array.isArray(w) ? w.slice(0, 2).reverse() : w).slice(0, 10).sort();
+    // const processedWindData = windData.map(w => Array.isArray(w) ? w.slice(0, 2).reverse() : w).slice(0, 10).sort();
     
 
     const options = {
 
         chart: {
+            backgroundColor: 'rgba(0, 0, 0, 0)',
             polar: true
         },
 
@@ -49,7 +50,7 @@ const WindForecastPolarChart = ({ location }) => {
         series: [{
             type: 'area',
             name: 'Speed',
-            data: processedWindData
+            data: [[23, 1]] // processedWindData
         }]
     }
 
@@ -63,6 +64,11 @@ const WindForecastPolarChart = ({ location }) => {
 
 WindForecastPolarChart.propTypes = {
     location: PropTypes.string.isRequired
+}
+
+// Helper functions
+function splitByDate(datedObject) {
+
 }
 
 export default WindForecastPolarChart

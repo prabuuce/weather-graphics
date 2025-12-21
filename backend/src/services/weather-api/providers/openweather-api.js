@@ -42,6 +42,13 @@ export class OpenWeatherAPI extends WeatherAPI {
     return wind ?? null;
   }
 
+  async GetCurrentDateLoc(location) {
+    const data = await this.GetCurrentWeatherData(location);
+    const name = data.name
+    const time = data.dt
+    return [name, new Date(time * 1000).toLocaleDateString()] ?? null;
+  }
+
 
   /////////////////////////////////////////////////////////////
 
@@ -80,10 +87,10 @@ export class OpenWeatherAPI extends WeatherAPI {
 
   async GetForecastWindVal(location) {
     const data = await this.GetForecastWeatherData(location);
-    const winds = [];
+    const winds = {};
 
     for (const val of data.list) {
-      winds.push(Object.values(val["wind"]))
+      winds[new Date(val["dt"] * 1000).toLocaleString()] = Object.values(val["wind"])
     }
 
     return winds ?? null

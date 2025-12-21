@@ -1,10 +1,23 @@
+
+
 .Row{
+    flex-grow: 1;
+
     display: flex;
     flex-direction: row;
 
     margin: 10px;
 }
 
-.large-container {
+.container {
     flex-grow: 1;
+    max-width: 75%;
+}
+
+.widget { 
+    flex-basis: 25%;
+    min-width: 25%;
+
+    display: flex;
+    flex-direction: column;
 }

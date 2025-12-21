@@ -49,6 +49,10 @@ export class WeatherAPI {
     throw new Error('GetCurrentWindVal must be implemented by subclasses');
   }
 
+  async GetCurrentDateLoc(/* location */) {
+    throw new Error('GetCurrentDateLoc must be implemented by subclasses')
+  }
+
   // eslint-disable-next-line class-methods-use-this
   async GetForecastWeatherData(/* location, days */) {
     throw new Error('GetForecastWeatherData must be implemented by subclasses');

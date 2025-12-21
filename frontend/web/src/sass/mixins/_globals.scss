@@ -1,0 +1,44 @@
+/* Variables */
+
+$bg-color: #FDE9C9;
+$bg-color-2: #cebda3;
+$body-color: linear-gradient(180deg,rgba(169, 29, 29, 1) 9%, rgb(145, 31, 31) 93%);
+$item-color: linear-gradient(180deg,rgba(218, 73, 73, 1) 9%, rgb(191, 39, 39) 93%);
+$accent-color: #4F1C4C;
+
+$border-radius: 20px;
+$spacing: 20px;
+
+/* Universal Element Styling */
+
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  box-sizing: border-box;
+
+  font-family: 'Courier New', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+
+  color: $bg-color;
+}
+
+/* Mixins */
+
+@mixin widget {
+    background: $item-color;
+    margin: $spacing;
+    padding: $spacing;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    border-radius: $border-radius
+}
+
+@mixin container {
+  background: $body-color;
+  border-radius: $border-radius;
+
+  margin: $spacing;
+  padding: 5px;
+}

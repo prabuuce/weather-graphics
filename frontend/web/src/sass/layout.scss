@@ -1,0 +1,53 @@
+@use "mixins/globals";
+@use "mixins/sizing";
+
+/* Custom classes */
+
+.Row {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: globals.$bg-color;
+}
+
+.container {
+  @include globals.container();
+}
+
+.widget {
+  @include globals.widget();
+}
+
+#search-bar {
+  @include globals.widget();
+  @include sizing.hshort();
+  @include sizing.wlong();
+  background: globals.$bg-color-2;
+  color: globals.$accent-color;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 0px;
+}
+
+#bottom-row {
+  padding: 30px;
+  padding-top: 100px;
+  margin-top: 20px;
+
+  background: linear-gradient(180deg,rgba(255, 255, 255, 0) 0%, rgba(79, 28, 76, 1) 38%);
+}
+
+/* Sizing wrappers */
+.wlong {
+  @include sizing.wlong();
+}
+
+.wshort {
+  @include sizing.wshort();
+}
+
+.hshort {
+  @include sizing.hshort();
+}

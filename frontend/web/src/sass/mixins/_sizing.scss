@@ -1,0 +1,11 @@
+@mixin wlong {
+    min-width: 93%;
+}
+
+@mixin wshort {
+    flex-grow: 0.5;
+}
+
+@mixin hshort {
+    max-height: 400px;
+}

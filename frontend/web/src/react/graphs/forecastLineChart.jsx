@@ -2,9 +2,11 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official'
 import 'highcharts/modules/exporting';
 import highchartsMore from 'highcharts/highcharts-more';
+import annotations from 'highcharts/modules/annotations';
 
 import { GetForecastTempVal, GetForecastTempRange } from '../fetching/forecastWeatherData.jsx';
 import PropTypes from 'prop-types';
+
 
 Highcharts.seriesTypes.line.prototype.getPointSpline = Highcharts.seriesTypes.spline.prototype.getPointSpline; // Rounds line chart lines.
 
@@ -13,8 +15,9 @@ const TempForecastLineChart = ({ location }) => {
     const rangeObj = GetForecastTempRange({ location });
 
     // Build aligned arrays sorted by date so the arearange matches the line
+    const length = 6;
     const tempDates = Object.keys(tempObj || {}).sort((a,b) => new Date(a) - new Date(b));
-    const tempEntries = tempDates.map(dateStr => [new Date(dateStr).getTime(), Number(tempObj[dateStr]) || 0]);
+    const tempEntries = tempDates.map(dateStr => [new Date(dateStr).getTime(), Number(tempObj[dateStr]) || 0]).slice(0, length);
 
     const rangeEntries = tempDates.map(dateStr => {
         const val = (rangeObj || {})[dateStr];
@@ -54,11 +57,37 @@ const TempForecastLineChart = ({ location }) => {
         }
 
         return [new Date(dateStr).getTime(), lowNum || 0, highNum || 0];
-    });
+    }).slice(0, length);
+    
+    // Ensure Highcharts modules are initialized so 'arearange' and annotations work
+    // Some bundlers export the module initializer as a default property, so handle both cases.
+    (function initHighchartsModule(mod, name) {
+        const initializer = (typeof mod === 'function') ? mod : (mod && typeof mod.default === 'function' ? mod.default : null);
+        if (initializer) {
+            try {
+                initializer(Highcharts);
+            } catch (e) {
+                console.warn(`Failed to initialize Highcharts ${name} module:`, e);
+            }
+        } else {
+            console.warn(`Highcharts ${name} module is not a function; skipping initialization.`, mod);
+        }
+    })(annotations, 'annotations');
+    
+    // Build safe annotations only for points that exist
 
-    // Debug logs to verify data shapes
-    console.log('tempEntries:', tempEntries.slice(0,5));
-    console.log('rangeEntries:', rangeEntries.slice(0,5));
+    const annotationLabels = [].reduce((acc, idx, i) => {
+        const pt = tempEntries[idx];
+        if (pt) {
+            acc.push({
+                point: { x: pt[0], y: pt[1], xAxis: 0, yAxis: 0 },
+                shape: "rect",
+                ...{ padding: 20 },
+                ...{ overflow: 'justify' }
+            });
+        }
+        return acc;
+    }, []);
 
     const options = {
         tooltip: {
@@ -77,6 +106,7 @@ const TempForecastLineChart = ({ location }) => {
         },
 
         chart: {
+            backgroundColor: 'rgba(0, 0, 0, 0)',
             type: 'line'
         },
         title: {
@@ -110,7 +140,9 @@ const TempForecastLineChart = ({ location }) => {
             marker: {
                 enabled: false
             }
-        }]
+        }],
+
+        annotations: annotationLabels.length ? [{ labels: annotationLabels }] : []
     };
 
     return (

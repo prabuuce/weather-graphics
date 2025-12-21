@@ -79,6 +79,30 @@ async function GetCurrentTempVal(location) {
   }
 }
 
+/**
+ * Get current date for a location
+ * @param {string} location - Location name or coordinates
+ * @returns {Promise<Object>} Date data
+ */
+async function GetCurrentDateLoc(location) {
+  if (!validateLocation(location)) {
+    return {
+      error: 'Invalid location',
+      message: 'Location must be a valid string'
+    };
+  }
+
+  try {
+    const apiResponse = await weatherClient.GetCurrentDateLoc(location);
+    return apiResponse;
+  } catch (error) {
+    return {
+      error: 'Failed to fetch weather data',
+      message: error.message
+    };
+  }
+}
+
 /////////////////////////////////////////////////////////
 /**
  * Get Forecast weather data for a location
@@ -172,6 +196,6 @@ function validateLocation(location) {
   return location && location.trim().length > 0;
 }
 
-export { GetCurrentWeatherData, GetCurrentWindVal, GetCurrentTempVal, 
+export { GetCurrentWeatherData, GetCurrentWindVal, GetCurrentTempVal, GetCurrentDateLoc,
          GetForecastWeatherData, GetForecastTempVal, GetForecastTempRange, GetForecastWindVal 
 };

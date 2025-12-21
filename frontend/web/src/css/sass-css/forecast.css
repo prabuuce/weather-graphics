@@ -1,0 +1,35 @@
+/* Variables */
+/* Universal Element Styling */
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  box-sizing: border-box;
+  font-family: "Courier New", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: #FDE9C9;
+}
+
+/* Mixins */
+#forecast-list {
+  background: linear-gradient(180deg, rgb(218, 73, 73) 9%, rgb(191, 39, 39) 93%);
+  margin: 20px;
+  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 20px;
+  background: #FDE9C9;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.forecast-list-item {
+  color: #4F1C4C;
+  flex-grow: 1;
+}
+
+/*# sourceMappingURL=forecast.css.map */

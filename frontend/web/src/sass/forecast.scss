@@ -1,0 +1,20 @@
+@use "mixins/globals";
+
+#forecast-list {
+  @include globals.widget();
+
+  background: globals.$bg-color;
+
+  display: flex;
+  flex-direction: row;
+
+  padding-bottom: 5px;
+  padding-top: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.forecast-list-item {
+  color: globals.$accent-color;
+  flex-grow: 1;
+}
