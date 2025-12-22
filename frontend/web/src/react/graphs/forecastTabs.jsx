@@ -24,7 +24,7 @@ const ForecastTabs = ({ location, activeIndex, onSelectTab }) => {
                     </Accordion.Header>
                     <Accordion.Body>
                         <div className="widget" style={{margin: "0px"}}>
-                            Merry Christmas
+                            Hello world!
                         </div>
                     </Accordion.Body>
                 </Accordion.Item>

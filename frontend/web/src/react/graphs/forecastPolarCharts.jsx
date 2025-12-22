@@ -8,14 +8,11 @@ import PropTypes from 'prop-types';
 
 const WindForecastPolarChart = ({ location }) => {
     const windData = GetForecastWindVal({ location });
-    const series = [];
 
     console.log(windData)
 
-    
-
     // Don't mutate hook state directly; create a processed copy trimmed to first two values
-    // const processedWindData = windData.map(w => Array.isArray(w) ? w.slice(0, 2).reverse() : w).slice(0, 10).sort();
+    const processedWindData = windData.map(w => Array.isArray(w) ? w.slice(0, 2).reverse() : w).slice(0, 10).sort();
     
 
     const options = {
@@ -50,7 +47,7 @@ const WindForecastPolarChart = ({ location }) => {
         series: [{
             type: 'area',
             name: 'Speed',
-            data: [[23, 1]] // processedWindData
+            data: processedWindData
         }]
     }
 

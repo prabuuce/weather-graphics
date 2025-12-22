@@ -9,29 +9,22 @@ import './css/sass-css/layout.css'
 import './css/flex.css'
 import './css/json.css'
 
-import {GetCurrentWeatherData, GetCurrentTempVal, GetCurrentWindVal, GetCurrentDateLoc} from './react/fetching/currentWeatherData.jsx'
-import {GetForecastWeatherData} from './react/fetching/forecastWeatherData.jsx'
-
-import TempForecastLineChart from './react/graphs/forecastLineChart.jsx'
 import WindForecastPolarChart from './react/graphs/forecastPolarCharts.jsx'
 
-import ForecastTabs from './react/graphs/forecastTabs.jsx'
-
 function App() {
-  const [location, setLocation] = useState('92692');
-  const [locationInput, setLocationInput] = useState('');
-  const [activeForecastTab, setActiveForecastTab] = useState('0');
+    const [location, setLocation] = useState('92692');
+    const [locationInput, setLocationInput] = useState('');
 
-  const processLocationInput = () => {
-    // Validate non-empty input and only update if it's different
-    const value = locationInput.trim();
-    const validLocation = value.length > 0 && value !== location;
-    if (validLocation) {
-      setLocation(value);
+    const processLocationInput = () => {
+        // Validate non-empty input and only update if it's different
+        const value = locationInput.trim();
+        const validLocation = value.length > 0 && value !== location;
+        if (validLocation) {
+        setLocation(value);
+        }
     }
-  }
 
-  return (
+    return (
     <>
       <input
         id="search-bar"
@@ -46,16 +39,12 @@ function App() {
       <div className='Row'>
         <div className='container menu'>
           <div className="widget">
-            <h2><GetCurrentTempVal type='main.temp' location={location}/></h2>
-            <b><GetCurrentDateLoc location={location}/></b>
-            <GetCurrentWindVal location={location}/>
+            <h2></h2>
+            <b></b>
+
           </div>
           <div>
-            <ForecastTabs 
-              location={location}
-              activeIndex={activeForecastTab}
-              onSelectTab={setActiveForecastTab}
-            />
+
           </div>
           <div className="widget">
 
@@ -63,13 +52,15 @@ function App() {
         </div>   
         <div className="container body">
           <div className='widget'>
-            <TempForecastLineChart 
-              location={location}
-              activeIndex={activeForecastTab}
-            />
+
           </div>
+          <div className="Row">
           <div className="widget">
             <WindForecastPolarChart location={location}/>
+          </div>          
+          <div className="widget">
+                <WindForecastPolarChart location={location}/>
+          </div>
           </div>
         </div>
       </div>
@@ -78,7 +69,7 @@ function App() {
         <a href="/api/weather/forecast/92692">Forecast Weather</a>
       </div>
     </>
-  );
+    );
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -86,4 +77,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>
 );
-

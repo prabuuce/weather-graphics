@@ -26,7 +26,7 @@ export class OpenWeatherAPI extends WeatherAPI {
         ...buildLocationParams(location)
       };
       
-      const response = await this.request("/weather", params)
+      const response = await this.request(undefined, "/weather", params)
       return response;
   }
 
@@ -60,7 +60,7 @@ export class OpenWeatherAPI extends WeatherAPI {
       ...buildLocationParams(location)
     };
     
-    const response = await this.request("/forecast", params)
+    const response = await this.request(undefined, "/forecast", params)
     return response;
   }
 
@@ -87,13 +87,31 @@ export class OpenWeatherAPI extends WeatherAPI {
 
   async GetForecastWindVal(location) {
     const data = await this.GetForecastWeatherData(location);
-    const winds = {};
+    const winds = [];
 
     for (const val of data.list) {
-      winds[new Date(val["dt"] * 1000).toLocaleString()] = Object.values(val["wind"])
+      winds.push(Object.values(val["wind"]))
     }
 
     return winds ?? null
+  }
+
+  /////////////////////////////////////////////////
+
+  async GetWeatherMap(location, date, zoom, data) {
+    await this.validateOptions();
+    const params = {
+      data,
+      zoom,
+      x, 
+      x,
+      [this.authParamName]: this.apiKey,
+      date,
+      ...buildLocationParams(location)
+    };
+    
+    const response = await this.request("https://maps.openweathermap.org/maps/2.0/weather/", "/1h", params)
+    return response;
   }
 }
 

@@ -79,10 +79,10 @@ export class WeatherAPI {
    * @param {Record<string, string|number>} params
    * @returns {Promise<any>}
    */
-  async request(path, params = {}) {
+  async request(baseUrl = this.baseUrl, path, params = {}) {
     console.log("Running this.request()")
 
-    const url = new URL(`${this.baseUrl}${path}`);
+    const url = new URL(`${baseUrl}${path}`);
     url.searchParams.set(this.authParamName, this.apiKey);
     url.searchParams.set('units', this.units);
 
@@ -96,6 +96,7 @@ export class WeatherAPI {
 
     const response = await fetch(url.toString());
     if (!response.ok) {
+      const body = await response.text();
       throw new Error(`Weather API error (${response.status}): ${body}`);
     }
 
