@@ -11,7 +11,7 @@
 }
 
 /* Mixins */
-#forecast-list {
+.forecast-list {
   background: linear-gradient(180deg, rgb(218, 73, 73) 9%, rgb(191, 39, 39) 93%);
   margin: 20px;
   padding: 20px;
@@ -30,6 +30,8 @@
 .forecast-list-item {
   color: #4F1C4C;
   flex-grow: 1;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 /*# sourceMappingURL=forecast.css.map */

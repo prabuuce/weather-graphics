@@ -72,7 +72,6 @@ export class WeatherAPI {
   async GetForecastWindVal(/* location, days */) {
     throw new Error('GetForecastWindVal must be implemented by subclasses');
   }
-
   /**
    * Helper that performs the HTTP request with shared auth/query params.
    * Subclasses can call this to avoid duplicating fetch logic.

@@ -3,6 +3,7 @@ import HighchartsReact from 'highcharts-react-official'
 import 'highcharts/modules/exporting';
 import highchartsMore from 'highcharts/highcharts-more';
 import annotations from 'highcharts/modules/annotations';
+import { useEffect, useRef } from 'react';
 
 import { GetForecastTempVal, GetForecastTempRange } from '../fetching/forecastWeatherData.jsx';
 import PropTypes from 'prop-types';
@@ -10,9 +11,37 @@ import PropTypes from 'prop-types';
 
 Highcharts.seriesTypes.line.prototype.getPointSpline = Highcharts.seriesTypes.spline.prototype.getPointSpline; // Rounds line chart lines.
 
-const TempForecastLineChart = ({ location }) => {
+const TempForecastLineChart = ({ location, activeIndex }) => {
+    const chartRef = useRef(null);
     const tempObj = GetForecastTempVal({ location });
     const rangeObj = GetForecastTempRange({ location });
+
+    // Sync chart selection with active tab
+    useEffect(() => {
+        if (chartRef.current && chartRef.current.chart) {
+            const chart = chartRef.current.chart;
+            const series = chart.series[0]; // Assuming temperature is the first series
+            
+            if (series && series.points) {
+                const pointIndex = parseInt(activeIndex, 10);
+                const point = series.points[pointIndex];
+                
+                if (point) {
+                    // Clear previous selection
+                    if (chart.hoverPoint) {
+                        chart.hoverPoint.onMouseOut();
+                    }
+                    
+                    // Select new point
+                    point.onMouseOver();
+                    chart.tooltip.refresh(point);
+                    
+                    // Optional: Visually select the point if you want it to persist
+                    // point.select(true, false); 
+                }
+            }
+        }
+    }, [activeIndex]);
 
     // Build aligned arrays sorted by date so the arearange matches the line
     const length = 6;
@@ -149,12 +178,14 @@ const TempForecastLineChart = ({ location }) => {
         <HighchartsReact
             highcharts={Highcharts}
             options={options}
+            ref={chartRef}
         />
     );
 };
 
 TempForecastLineChart.propTypes = {
     location: PropTypes.string.isRequired,
+    activeIndex: PropTypes.string,
 };
 
 export default TempForecastLineChart;

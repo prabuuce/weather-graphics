@@ -1,6 +1,6 @@
 @use "mixins/globals";
 
-#forecast-list {
+.forecast-list {
   @include globals.widget();
 
   background: globals.$bg-color;
@@ -17,4 +17,6 @@
 .forecast-list-item {
   color: globals.$accent-color;
   flex-grow: 1;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }

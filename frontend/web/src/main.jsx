@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
+import './sass/bootstrap-custom.scss'; // Import custom Bootstrap SCSS
 
 import './css/sass-css/elements.css'
 import './css/sass-css/forecast.css'
@@ -19,6 +20,7 @@ import ForecastTabs from './react/graphs/forecastTabs.jsx'
 function App() {
   const [location, setLocation] = useState('92692');
   const [locationInput, setLocationInput] = useState('');
+  const [activeForecastTab, setActiveForecastTab] = useState('0');
 
   const processLocationInput = () => {
     // Validate non-empty input and only update if it's different
@@ -48,13 +50,20 @@ function App() {
             <b><GetCurrentDateLoc location={location}/></b>
           </div>
           <div>
-            <ForecastTabs location={location}/>
+            <ForecastTabs 
+              location={location}
+              activeIndex={activeForecastTab}
+              onSelectTab={setActiveForecastTab}
+            />
           </div>
         </div>   
         <div className="container">
           <div className='body'>
             <div className='widget'>
-              <TempForecastLineChart location={location}/>
+              <TempForecastLineChart 
+                location={location}
+                activeIndex={activeForecastTab}
+              />
             </div>
           </div>
           <div className='body'> 
