@@ -12,7 +12,7 @@ import {GetCurrentWeatherData, GetCurrentTempVal, GetCurrentWindVal, GetCurrentD
 import {GetForecastWeatherData} from './react/fetching/forecastWeatherData.jsx'
 
 import TempForecastLineChart from './react/graphs/forecastLineChart.jsx'
-import WindForecastPolarChart from './react/graphs/forecastPolarCharts.jsx'
+import WindForecastPolarChart from './react/graphs/windForecastPolarChart.jsx'
 
 import ForecastTabs from './react/graphs/forecastTabs.jsx'
 

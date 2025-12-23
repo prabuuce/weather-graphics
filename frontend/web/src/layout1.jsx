@@ -10,8 +10,6 @@ import './css/sass-css/layout.css'
 import './css/json.css'
 
 import WindForecastPolarChart from './react/graphs/windForecastPolarChart.jsx'
-import WeatherMapChart from './react/graphs/weatherMapChart.jsx';
-import HighchartsExampleMap from './react/graphs/exampleHighchartMap.jsx';
 
 function App() {
     const [location, setLocation] = useState('92692');
@@ -42,7 +40,7 @@ function App() {
                     >🔎</button>
                 </div>
                 <div className='layout'>
-                    <div className='cell' style={{ "--widthPercent": "10%", "--heightPercent": "100%", "flex-direction": "column" }}>
+                    <div className='cell' style={{ "--widthPercent": "30%", "--heightPercent": "100%", "flex-direction": "column" }}>
                         <div className="widget" style={{ "--widthPercent": "100%","--heightPercent": "40%" }}>
                             hello world!
                         </div>
@@ -50,11 +48,8 @@ function App() {
                             hello world!
                         </div>
                     </div>
-                    <div className="cell" style={{ "--widthPercent": "90%", "--heightPercent": "100%", "flex-direction": "column" }}>
+                    <div className="cell" style={{ "--widthPercent": "70%", "--heightPercent": "100%", "flex-direction": "column" }}>
                         <div className="cell" style={{ "--widthPercent": "100%", "--heightPercent": "50%", "flex-direction": "row" }}>
-                            <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "100%"}}>
-                                
-                            </div>
                             <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "100%"}}>
                                 
                             </div>
@@ -63,9 +58,7 @@ function App() {
                             <div className="widget" style={{ "--widthPercent": "50%", "--heightPercent": "100%" }}>
                                 <WindForecastPolarChart location={location} />
                             </div>
-                            <div className="widget" style={{ "--widthPercent": "50%", "--heightPercent": "100%" }}>
-                                <HighchartsExampleMap />
-                            </div>
+                            <div className="widget" style={{ "--widthPercent": "50%", "--heightPercent": "100%" }}></div>
                         </div>
                     </div>
                 </div>

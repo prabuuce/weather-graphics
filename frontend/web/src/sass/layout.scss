@@ -11,12 +11,13 @@
   display: flex;
   flex-direction: row;
 
-  margin: globals.$margin;
+  margin: globals.$layout_margin;
+;
 }
 
 .cell {
   @include globals.container();
-  display : "flex";
+  display: flex;
   width: var(--widthPercent);
   height: var(--heightPercent);
 }

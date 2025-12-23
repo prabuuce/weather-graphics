@@ -16,7 +16,8 @@ $bg-color: $color-4;
 
 $border-radius: 20px;
 $padding: 20px;
-$margin: 5px;
+$widget_margin: 10px;
+$layout_margin: 20px;
 
 /* Universal Element Styling */
 
@@ -28,8 +29,6 @@ $margin: 5px;
 
   font-family: 'Courier New', Arial, Helvetica, sans-serif;
   font-size: 20px;
-
-
 }
 
 /* Mixins */
@@ -37,15 +36,13 @@ $margin: 5px;
 @mixin container {
   background: $container-color;
   border-radius: $border-radius;
-
-  margin: $margin;
-  padding: $padding/2;
 }
 
 @mixin widget {
-    background: $widget-color;
-    padding-top: $padding/2;
-    padding-bottom: $padding/2;
-    margin: $margin;
-    border-radius: $border-radius
+  background: $widget-color;
+  border-radius: $border-radius;
+
+  margin: $widget_margin;
+  padding: $padding;
+
 }
