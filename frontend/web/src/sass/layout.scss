@@ -11,21 +11,24 @@
   display: flex;
   flex-direction: row;
 
-  margin: globals.$layout_margin;
+  margin: globals.$spacing;
 ;
 }
 
 .cell {
   @include globals.container();
   display: flex;
-  width: var(--widthPercent);
-  height: var(--heightPercent);
+  max-width: var(--widthPercent);
+  max-height: var(--heightPercent);
+  flex-grow: 1;
 }
 
 .widget {
   @include globals.widget();
-  height: var(--heightPercent);
-  width: var(--widthPercent);
+  display: flex;
+  max-height: var(--heightPercent);
+  max-width: var(--widthPercent);
+  flex-grow: 1;
 }
 
 #search-bar {

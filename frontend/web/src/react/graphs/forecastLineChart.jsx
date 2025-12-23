@@ -1,7 +1,6 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official'
 import 'highcharts/modules/exporting';
-import highchartsMore from 'highcharts/highcharts-more';
 import annotations from 'highcharts/modules/annotations';
 import { useEffect, useRef } from 'react';
 
@@ -179,6 +178,7 @@ const TempForecastLineChart = ({ location, activeIndex }) => {
             highcharts={Highcharts}
             options={options}
             ref={chartRef}
+            containerProps={{ style: { width: "100%" } }}
         />
     );
 };

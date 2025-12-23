@@ -10,8 +10,10 @@ import './css/sass-css/layout.css'
 import './css/json.css'
 
 import WindForecastPolarChart from './react/graphs/windForecastPolarChart.jsx'
-import WeatherMapChart from './react/graphs/weatherMapChart.jsx';
 import HighchartsExampleMap from './react/graphs/exampleHighchartMap.jsx';
+import MapChart from './react/graphs/mapChart.jsx';
+import WeatherHoneycombMap from './react/graphs/weatherHoneycombMap.jsx';
+import HumidityGaugeChart from './react/graphs/humidityGaugeChart.jsx';
 
 function App() {
     const [location, setLocation] = useState('92692');
@@ -44,8 +46,8 @@ function App() {
                 <div className='layout'>
                     <div className='cell' style={{ "--widthPercent": "10%", "--heightPercent": "100%", "flex-direction": "column" }}>
                         <div className="widget" style={{ "--widthPercent": "100%","--heightPercent": "40%" }}>
-                            hello world!
-                        </div>
+{/*                             <HumidityGaugeChart />
+ */}                        </div>
                         <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "60%" }}>
                             hello world!
                         </div>
@@ -53,10 +55,10 @@ function App() {
                     <div className="cell" style={{ "--widthPercent": "90%", "--heightPercent": "100%", "flex-direction": "column" }}>
                         <div className="cell" style={{ "--widthPercent": "100%", "--heightPercent": "50%", "flex-direction": "row" }}>
                             <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "100%"}}>
-                                
+                                <MapChart />
                             </div>
                             <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "100%"}}>
-                                
+                                <WeatherHoneycombMap />
                             </div>
                         </div>
                         <div className="cell" style={{ "--widthPercent": "100%", "--heightPercent": "50%", "flex-direction": "row" }}>

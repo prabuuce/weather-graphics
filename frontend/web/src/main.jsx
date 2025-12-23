@@ -15,6 +15,7 @@ import TempForecastLineChart from './react/graphs/forecastLineChart.jsx'
 import WindForecastPolarChart from './react/graphs/windForecastPolarChart.jsx'
 
 import ForecastTabs from './react/graphs/forecastTabs.jsx'
+import HumidityGaugeChart from './react/graphs/humidityGaugeChart.jsx';
 
 function App() {
   const [location, setLocation] = useState('92692');
@@ -45,11 +46,7 @@ function App() {
       <div className='layout'>
         <div className='container menu'>
           <div className="widget">
-            <h2 style={{marginBottom: "0px"}}><GetCurrentTempVal type='main.temp' location={location}/></h2>
-            <small>Feels Like: 25 deg</small>
-            <small>Temp Range: 12 - 35 deg</small>
-            <small>Wind: 3km/h @ 127 deg</small>
-            <small>Humidity: 53%</small>
+            <img src="frontend/web/src/imgs/sunny.png" />
           </div>
           <div>
             <ForecastTabs 
@@ -71,6 +68,9 @@ function App() {
           </div>
           <div className="widget">
             <WindForecastPolarChart location={location}/>
+          </div>
+          <div className="widget">
+            <HumidityGaugeChart />
           </div>
         </div>
       </div>

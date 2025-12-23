@@ -15,7 +15,7 @@ const ForecastTabs = ({ location, activeIndex, onSelectTab }) => {
     }
 
     return (
-        <Accordion activeKey={activeIndex} onSelect={onSelectTab}>
+        <Accordion activeKey={activeIndex} onSelect={onSelectTab} style={{"flexGrow": 1}}>
             {[...Array(numForecastItems)].map((_, index) => (
                 <Accordion.Item eventKey={String(index)} key={index}>
                     <Accordion.Header className="forecast-list">
@@ -24,7 +24,14 @@ const ForecastTabs = ({ location, activeIndex, onSelectTab }) => {
                     </Accordion.Header>
                     <Accordion.Body>
                         <div className="widget" style={{margin: "0px"}}>
-                            Hello world!
+                            <div style={{"display": "flex", "flexDirection": "column"}}>
+                                <small>Feels Like: 25</small>
+                                <small>Temp Range: 12 - 35</small>
+                            </div>
+                            <div style={{"display": "flex", "flexDirection": "column"}}>
+                                <small>Wind: 3km/h @ 127 deg</small>
+                                <small>Humidity: 53%</small>
+                            </div>
                         </div>
                     </Accordion.Body>
                 </Accordion.Item>

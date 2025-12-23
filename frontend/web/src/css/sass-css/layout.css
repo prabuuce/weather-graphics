@@ -7,6 +7,7 @@
   box-sizing: border-box;
   font-family: "Courier New", Arial, Helvetica, sans-serif;
   font-size: 20px;
+  color: #fde9c9;
 }
 
 /* Mixins */
@@ -24,28 +25,32 @@
 .cell {
   background: linear-gradient(180deg, rgb(169, 29, 29) 9%, rgb(145, 31, 31) 93%);
   border-radius: 20px;
+  margin: 20px;
   display: flex;
-  width: var(--widthPercent);
-  height: var(--heightPercent);
+  max-width: var(--widthPercent);
+  max-height: var(--heightPercent);
+  flex-grow: 1;
 }
 
 .widget {
   background: linear-gradient(180deg, rgb(218, 73, 73) 9%, rgb(191, 39, 39) 93%);
   border-radius: 20px;
-  margin: 10px;
+  margin: 20px;
   padding: 20px;
-  height: var(--heightPercent);
-  width: var(--widthPercent);
+  display: flex;
+  max-height: var(--heightPercent);
+  max-width: var(--widthPercent);
+  flex-grow: 1;
 }
 
 #search-bar {
   background: linear-gradient(180deg, rgb(218, 73, 73) 9%, rgb(191, 39, 39) 93%);
   border-radius: 20px;
-  margin: 10px;
+  margin: 20px;
   padding: 20px;
   max-height: 400px;
   min-width: 93%;
-  background: #c5c5c5;
+  background: #d5c6ae;
   color: #4F1C4C;
   padding-top: 10px;
   padding-bottom: 10px;
