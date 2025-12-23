@@ -3,7 +3,7 @@
 .forecast-list {
   @include globals.widget();
 
-  background: globals.$bg-color;
+  background: globals.$forecast-list-color;
 
   display: flex;
   flex-direction: row;

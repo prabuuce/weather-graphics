@@ -4,6 +4,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+
 body {
   background: globals.$bg-color;
   border-radius: globals.$border-radius;
@@ -18,8 +19,12 @@ p {
   font-size: 17.5px;
 }
 
+small {
+  font-size: 15px;
+}
+
 button {
-    background: globals.$bg-color-2;
+    background: globals.$search-color;
 
     padding: 5px;
     padding-left: 9px;

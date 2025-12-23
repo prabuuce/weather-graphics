@@ -7,7 +7,6 @@
   box-sizing: border-box;
   font-family: "Courier New", Arial, Helvetica, sans-serif;
   font-size: 20px;
-  color: #FDE9C9;
 }
 
 /* Mixins */
@@ -16,7 +15,7 @@ code {
 }
 
 body {
-  background: #FDE9C9;
+  background: #000000;
   border-radius: 20px;
 }
 
@@ -29,8 +28,12 @@ p {
   font-size: 17.5px;
 }
 
+small {
+  font-size: 15px;
+}
+
 button {
-  background: #cebda3;
+  background: #c5c5c5;
   padding: 5px;
   padding-left: 9px;
   padding-right: 9px;

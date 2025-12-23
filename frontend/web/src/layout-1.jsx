@@ -6,7 +6,6 @@ import './css/sass-css/elements.css'
 import './css/sass-css/forecast.css'
 import './css/sass-css/layout.css'
 
-import './css/flex.css'
 import './css/json.css'
 
 import WindForecastPolarChart from './react/graphs/forecastPolarCharts.jsx'
@@ -36,7 +35,7 @@ function App() {
         type="button"
         onClick={processLocationInput}
       >🔎</button>
-      <div className='Row'>
+      <div className='layout'>
         <div className='container menu'>
           <div className="widget">
             <h2></h2>

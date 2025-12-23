@@ -7,43 +7,49 @@
   box-sizing: border-box;
   font-family: "Courier New", Arial, Helvetica, sans-serif;
   font-size: 20px;
-  color: #FDE9C9;
 }
 
 /* Mixins */
 /* Custom classes */
-.Row {
+.layout {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #FDE9C9;
+  color: linear-gradient(180deg, rgb(218, 73, 73) 9%, rgb(191, 39, 39) 93%);
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
 }
 
-.container {
+.cell {
   background: linear-gradient(180deg, rgb(169, 29, 29) 9%, rgb(145, 31, 31) 93%);
   border-radius: 20px;
-  margin: 20px;
-  padding: 5px;
+  margin: 5px;
+  padding: 10px;
+  display: "flex";
+  width: var(--widthPercent);
+  height: var(--heightPercent);
 }
 
 .widget {
   background: linear-gradient(180deg, rgb(218, 73, 73) 9%, rgb(191, 39, 39) 93%);
-  margin: 20px;
-  padding: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 5px;
   border-radius: 20px;
+  height: var(--heightPercent);
+  width: var(--widthPercent);
 }
 
 #search-bar {
   background: linear-gradient(180deg, rgb(218, 73, 73) 9%, rgb(191, 39, 39) 93%);
-  margin: 20px;
-  padding: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 5px;
   border-radius: 20px;
   max-height: 400px;
   min-width: 93%;
-  background: #cebda3;
+  background: #c5c5c5;
   color: #4F1C4C;
   padding-top: 10px;
   padding-bottom: 10px;

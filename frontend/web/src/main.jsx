@@ -6,7 +6,6 @@ import './css/sass-css/elements.css'
 import './css/sass-css/forecast.css'
 import './css/sass-css/layout.css'
 
-import './css/flex.css'
 import './css/json.css'
 
 import {GetCurrentWeatherData, GetCurrentTempVal, GetCurrentWindVal, GetCurrentDateLoc} from './react/fetching/currentWeatherData.jsx'
@@ -43,12 +42,14 @@ function App() {
         type="button"
         onClick={processLocationInput}
       >🔎</button>
-      <div className='Row'>
+      <div className='layout'>
         <div className='container menu'>
           <div className="widget">
-            <h2><GetCurrentTempVal type='main.temp' location={location}/></h2>
-            <b><GetCurrentDateLoc location={location}/></b>
-            <GetCurrentWindVal location={location}/>
+            <h2 style={{marginBottom: "0px"}}><GetCurrentTempVal type='main.temp' location={location}/></h2>
+            <small>Feels Like: 25 deg</small>
+            <small>Temp Range: 12 - 35 deg</small>
+            <small>Wind: 3km/h @ 127 deg</small>
+            <small>Humidity: 53%</small>
           </div>
           <div>
             <ForecastTabs 

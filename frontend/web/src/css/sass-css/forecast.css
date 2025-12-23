@@ -7,18 +7,16 @@
   box-sizing: border-box;
   font-family: "Courier New", Arial, Helvetica, sans-serif;
   font-size: 20px;
-  color: #FDE9C9;
 }
 
 /* Mixins */
 .forecast-list {
   background: linear-gradient(180deg, rgb(218, 73, 73) 9%, rgb(191, 39, 39) 93%);
-  margin: 20px;
-  padding: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 5px;
   border-radius: 20px;
-  background: #FDE9C9;
+  background: #000000;
   display: flex;
   flex-direction: row;
   padding-bottom: 5px;

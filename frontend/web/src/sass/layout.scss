@@ -2,26 +2,36 @@
 @use "mixins/sizing";
 
 /* Custom classes */
-
-.Row {
+.layout {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: globals.$bg-color;
+  color: globals.$layout-color;
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: row;
+
+  margin: globals.$margin;
 }
 
-.container {
+.cell {
   @include globals.container();
+  display : "flex";
+  width: var(--widthPercent);
+  height: var(--heightPercent);
 }
 
 .widget {
   @include globals.widget();
+  height: var(--heightPercent);
+  width: var(--widthPercent);
 }
 
 #search-bar {
   @include globals.widget();
   @include sizing.hshort();
   @include sizing.wlong();
-  background: globals.$bg-color-2;
+  background: globals.$search-color;
   color: globals.$accent-color;
 
   padding-top: 10px;
@@ -51,3 +61,5 @@
 .hshort {
   @include sizing.hshort();
 }
+
+// USELESS
