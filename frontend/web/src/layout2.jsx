@@ -10,9 +10,6 @@ import './css/sass-css/layout.css'
 import './css/json.css'
 
 import WindForecastPolarChart from './react/graphs/windForecastPolarChart.jsx'
-import HighchartsExampleMap from './react/graphs/exampleHighchartMap.jsx';
-import MapChart from './react/graphs/mapChart.jsx';
-import WeatherHoneycombMap from './react/graphs/weatherHoneycombMap.jsx';
 import HumidityGaugeChart from './react/graphs/humidityGaugeChart.jsx';
 
 function App() {
@@ -55,10 +52,10 @@ function App() {
                     <div className="cell" style={{ "--widthPercent": "90%", "--heightPercent": "100%", "flex-direction": "column" }}>
                         <div className="cell" style={{ "--widthPercent": "100%", "--heightPercent": "50%", "flex-direction": "row" }}>
                             <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "100%"}}>
-                                <MapChart />
+                                
                             </div>
                             <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "100%"}}>
-                                <WeatherHoneycombMap />
+                                
                             </div>
                         </div>
                         <div className="cell" style={{ "--widthPercent": "100%", "--heightPercent": "50%", "flex-direction": "row" }}>
@@ -66,7 +63,7 @@ function App() {
                                 <WindForecastPolarChart location={location} />
                             </div>
                             <div className="widget" style={{ "--widthPercent": "50%", "--heightPercent": "100%" }}>
-                                <HighchartsExampleMap />
+                                
                             </div>
                         </div>
                     </div>

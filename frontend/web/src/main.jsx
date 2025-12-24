@@ -46,7 +46,10 @@ function App() {
       <div className='layout'>
         <div className='container menu'>
           <div className="widget">
-            <img src="frontend/web/src/imgs/sunny.png" />
+            <img 
+              src="/imgs/clear.png" 
+              alt="Description of icon" 
+            />
           </div>
           <div>
             <ForecastTabs 
@@ -61,13 +64,9 @@ function App() {
         </div>   
         <div className="container body">
           <div className='widget'>
-            <TempForecastLineChart 
-              location={location}
-              activeIndex={activeForecastTab}
-            />
           </div>
           <div className="widget">
-            <WindForecastPolarChart location={location}/>
+            <WindForecastPolarChart location={location} activeIndex={activeForecastTab}/>
           </div>
           <div className="widget">
             <HumidityGaugeChart />

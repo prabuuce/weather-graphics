@@ -1,13 +1,23 @@
-import { GetForecastTempVal } from "../fetching/forecastWeatherData.jsx";
+import { GetForecastTempVal, GetForecastWindVal, GetForecastTempRange, GetForecastFeelsLike, GetForecastHumidity } from "../fetching/forecastWeatherData.jsx";
 import React from 'react';
 import PropTypes from 'prop-types';
 import Accordion from 'react-bootstrap/Accordion';
 
 const ForecastTabs = ({ location, activeIndex, onSelectTab }) => {
-    const forecastData = GetForecastTempVal({ location });
-    const times = Object.keys(forecastData);
-    const temps = Object.values(forecastData);
-    const numForecastItems = Math.min(5, times.length);
+    const forecastTemps = GetForecastTempVal({ location });
+    const forecastWind = GetForecastWindVal({ location });
+    const forecastRange = GetForecastTempRange({ location });
+    const forecastFeels = GetForecastFeelsLike({ location });
+    const forecastHumidity = GetForecastHumidity({ location });
+
+    const times = Object.keys(forecastTemps);
+    const temps = Object.values(forecastTemps);
+    const wind = Object.values(forecastWind);
+    const tempRanges = Object.values(forecastRange);
+    const feelsLike = Object.values(forecastFeels);
+    const humidity = Object.values(forecastHumidity);
+
+    const numForecastItems = Math.min(5, times.length, temps.length, wind.length, tempRanges.length);
 
     // If there's no data yet, show a loading message
     if (times.length === 0) {
@@ -20,17 +30,18 @@ const ForecastTabs = ({ location, activeIndex, onSelectTab }) => {
                 <Accordion.Item eventKey={String(index)} key={index}>
                     <Accordion.Header className="forecast-list">
                         <span className="forecast-list-item">{times[index]}</span>
-                        <span className="forecast-list-item">{temps[index]}</span>
+                        <span className="forecast-list-item">{temps[index]}°C</span>
                     </Accordion.Header>
                     <Accordion.Body>
                         <div className="widget" style={{margin: "0px"}}>
-                            <div style={{"display": "flex", "flexDirection": "column"}}>
-                                <small>Feels Like: 25</small>
-                                <small>Temp Range: 12 - 35</small>
+                            <div style={{"display": "flex", "flexDirection": "column", "margin": "10px"}}>
+                                <small>Feels Like: {feelsLike[index]}°C</small>
+                                <small>Temp Range: {tempRanges[index][0]}°C - {tempRanges[index][1]}°C</small>
                             </div>
-                            <div style={{"display": "flex", "flexDirection": "column"}}>
-                                <small>Wind: 3km/h @ 127 deg</small>
-                                <small>Humidity: 53%</small>
+                            <hr/>
+                            <div style={{"display": "flex", "flexDirection": "column", "margin": "10px"}}>
+                                <small>Humidity: {humidity[index]}%</small>
+                                <small>Wind: {wind[index][0]}mph @ {wind[index][1]} deg</small>
                             </div>
                         </div>
                     </Accordion.Body>

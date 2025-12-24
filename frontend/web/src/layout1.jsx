@@ -10,7 +10,7 @@ import './css/sass-css/layout.css'
 import './css/json.css'
 
 import TempForecastLineChart from './react/graphs/forecastLineChart.jsx';
-import { GetCurrentDateLoc, GetCurrentTempVal } from './react/fetching/currentWeatherData.jsx';
+import { GetCurrentDateLoc, GetCurrentTempVal, GetCurrentHumidity, GetCurrentFeelsLike, GetCurrentTempRange, GetCurrentWindVal } from './react/fetching/currentWeatherData.jsx';
 import ForecastTabs from './react/graphs/forecastTabs.jsx';
 
 import WindForecastPolarChart from './react/graphs/windForecastPolarChart.jsx'
@@ -47,13 +47,20 @@ function App() {
                 </div>
                 <div className='layout'>
                     <div className='cell' style={{ "--widthPercent": "30%", "--heightPercent": "100%", "flexDirection": "column" }}>
-                        <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "25%", "flexDirection": "column" }}>
-                            <b><GetCurrentDateLoc location={location} /></b>
-                            <h2 style={{marginBottom: "0px"}}><GetCurrentTempVal type='main.temp' location={location}/></h2>
-                            <small>Feels Like: 25 deg</small>
-                            <small>Temp Range: 12 - 35 deg</small>
-                            <small>Wind: 3km/h @ 127 deg</small>
-                            <small>Humidity: 53%</small>
+                        <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "22%", "flexDirection": "column" }}>
+                            <b><GetCurrentDateLoc location={location}/></b>
+                            <h2 style={{marginBottom: "0px"}}><GetCurrentTempVal type='main.temp' location={location}/>°C</h2>
+                            <div style={{"display": "flex", "flexDirection": "row"}}>
+                                <div style={{"display": "flex", "flexDirection": "column", "margin": "10px"}}>
+                                    <small>Feels Like: <GetCurrentFeelsLike location={location}/>°C</small>
+                                    <small>Temp Range: {GetCurrentTempRange({ "location": location })[0]}°C - {GetCurrentTempRange({ "location": location })[1]}°C</small>
+                                </div>
+                                <hr/>
+                                <div style={{"display": "flex", "flexDirection": "column", "margin": "10px"}}>
+                                    <small>Wind: {GetCurrentWindVal({ "location": location })["speed"]}mph @ {GetCurrentWindVal({"location": location })["deg"]} deg</small>
+                                    <small>Humidity: <GetCurrentHumidity location={location}/>%</small>
+                                </div>
+                            </div>
                         </div>
                         <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "75%" }}>
                             <ForecastTabs 
@@ -72,10 +79,10 @@ function App() {
                         </div>
                         <div className="cell" style={{ "--widthPercent": "100%", "--heightPercent": "50%", "flexDirection": "row"}}>
                             <div className="widget" style={{ "--widthPercent": "50%", "--heightPercent": "100%" }}>
-                                <WindForecastPolarChart location={location} />
+                                <WindForecastPolarChart location={location} activeIndex={activeForecastTab} />
                             </div>
                             <div className="widget" style={{ "--widthPercent": "50%", "--heightPercent": "100%" }}>
-                                <HumidityGaugeChart/>
+                                <HumidityGaugeChart location={location}/>
                             </div>
                         </div>
                     </div>

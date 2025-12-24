@@ -9,9 +9,14 @@ import {
   GetCurrentTempVal,
   GetCurrentWeatherData,
   GetCurrentDateLoc,
+  GetCurrentHumidity,
+  GetCurrentFeelsLike,
+  GetCurrentTempRange,
 
   GetForecastWeatherData,
   GetForecastTempVal,
+  GetForecastFeelsLike,
+  GetForecastHumidity,
   GetForecastTempRange,
   GetForecastWindVal
 } from '../services/weather.service.js';
@@ -27,6 +32,7 @@ export async function weatherRoutes(fastify, options) {
         'GET /api/weather/current/temperature/:location',
         'GET /api/weather/current/wind/:location',
         'GET /api/weather/current/dateloc/:location',
+        'GET /api/weather/current/humidity/:location',
 
         'GET /api/weather/forecast/:location',
         'GET /api/weather/forecast/temperature/:location',
@@ -111,6 +117,63 @@ export async function weatherRoutes(fastify, options) {
     }
   });
 
+  // GET /api/weather/current/humidity/:location
+  fastify.get('/current/humidity/:location', async (request, reply) => {
+    const { location } = request.params;
+    try {
+      const weatherData = await GetCurrentHumidity(location);
+      if (weatherData?.error) {
+        const statusCode = weatherData.error === 'Invalid location' ? 400 : 502;
+        return reply.code(statusCode).send(weatherData);
+      }
+      return reply.code(200).send(weatherData);
+    } catch (error) {
+      fastify.log.error(error);
+      return reply.code(500).send({
+        error: 'Failed to fetch weather data in weather.routes',
+        message: error.message
+      });
+    }
+  });
+
+  // GET /api/weather/current/feelslike/:location
+  fastify.get('/current/feelslike/:location', async (request, reply) => {
+    const { location } = request.params;
+    try {
+      const weatherData = await GetCurrentFeelsLike(location);
+      if (weatherData?.error) {
+        const statusCode = weatherData.error === 'Invalid location' ? 400 : 502;
+        return reply.code(statusCode).send(weatherData);
+      }
+      return reply.code(200).send(weatherData);
+    } catch (error) {
+      fastify.log.error(error);
+      return reply.code(500).send({
+        error: 'Failed to fetch weather data in weather.routes',
+        message: error.message
+      });
+    }
+  });
+
+  // GET /api/weather/current/temperature/range/:location
+  fastify.get('/current/temperature/range/:location', async (request, reply) => {
+    const { location } = request.params;
+    try {
+      const weatherData = await GetCurrentTempRange(location);
+      if (weatherData?.error) {
+        const statusCode = weatherData.error === 'Invalid location' ? 400 : 502;
+        return reply.code(statusCode).send(weatherData);
+      }
+      return reply.code(200).send(weatherData);
+    } catch (error) {
+      fastify.log.error(error);
+      return reply.code(500).send({
+        error: 'Failed to fetch weather data in weather.routes',
+        message: error.message
+      });
+    }
+  });
+
   ////////////////////////////////////////////////////////////
 
   fastify.get('/forecast/:location', async (request, reply) => {
@@ -136,6 +199,42 @@ export async function weatherRoutes(fastify, options) {
     const { location } = request.params;
     try {
       const weatherData = await GetForecastTempVal(location);
+      if (weatherData?.error) {
+        const statusCode = weatherData.error === 'Invalid location' ? 400 : 502;
+        return reply.code(statusCode).send(weatherData);
+      }
+      return reply.code(200).send(weatherData);
+    } catch (error) {
+      fastify.log.error(error);
+      return reply.code(500).send({
+        error: 'Failed to fetch weather data in weather.routes',
+        message: error.message
+      });
+    }
+  });
+
+  fastify.get('/forecast/feelslike/:location', async (request, reply) => {
+    const { location } = request.params;
+    try {
+      const weatherData = await GetForecastFeelsLike(location);
+      if (weatherData?.error) {
+        const statusCode = weatherData.error === 'Invalid location' ? 400 : 502;
+        return reply.code(statusCode).send(weatherData);
+      }
+      return reply.code(200).send(weatherData);
+    } catch (error) {
+      fastify.log.error(error);
+      return reply.code(500).send({
+        error: 'Failed to fetch weather data in weather.routes',
+        message: error.message
+      });
+    }
+  });
+
+  fastify.get('/forecast/humidity/:location', async (request, reply) => {
+    const { location } = request.params;
+    try {
+      const weatherData = await GetForecastHumidity(location);
       if (weatherData?.error) {
         const statusCode = weatherData.error === 'Invalid location' ? 400 : 502;
         return reply.code(statusCode).send(weatherData);

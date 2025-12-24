@@ -49,6 +49,25 @@ export class OpenWeatherAPI extends WeatherAPI {
     return [name, new Date(time * 1000).toLocaleDateString()] ?? null;
   }
 
+  async GetCurrentHumidity(location) {
+    const data = await this.GetCurrentWeatherData(location);
+    const humidity = data.main.humidity;
+    return humidity ?? null;
+  }
+
+  async GetCurrentFeelsLike(location) {
+    const data = await this.GetCurrentWeatherData(location);
+    const feelsLike = data.main.feels_like;
+    return feelsLike ?? null;
+  }
+
+  async GetCurrentTempRange(location) {
+    const data = await this.GetCurrentWeatherData(location);
+    const min = data.main.temp_min;
+    const max = data.main.temp_max;
+    return [min, max] ?? null;
+  }
+
 
   /////////////////////////////////////////////////////////////
 
@@ -74,6 +93,26 @@ export class OpenWeatherAPI extends WeatherAPI {
     return temperatures ?? null;
   }
 
+  async GetForecastFeelsLike(location) {
+    const data = await this.GetForecastWeatherData(location);
+    const feelsLike = {};
+
+    for (const timestamp of data.list) {
+      feelsLike[timestamp.dt_txt] = timestamp.main.feels_like;
+    }  
+    return feelsLike ?? null;
+  }
+
+  async GetForecastHumidity(location) {
+    const data = await this.GetForecastWeatherData(location);
+    const humidity = {};
+
+    for (const timestamp of data.list) {
+      humidity[timestamp.dt_txt] = timestamp.main.humidity;
+    }  
+    return humidity ?? null;
+  }
+
   async GetForecastTempRange(location) {
     const data = await this.GetForecastWeatherData(location);
     const ranges = {};
@@ -87,10 +126,10 @@ export class OpenWeatherAPI extends WeatherAPI {
 
   async GetForecastWindVal(location) {
     const data = await this.GetForecastWeatherData(location);
-    const winds = [];
+    const winds = {};
 
     for (const val of data.list) {
-      winds.push(Object.values(val["wind"]))
+      winds[val.dt_txt] = Object.values(val["wind"]);
     }
 
     return winds ?? null

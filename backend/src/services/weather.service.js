@@ -103,6 +103,80 @@ async function GetCurrentDateLoc(location) {
   }
 }
 
+/**
+ * Get current humidity for a location
+ * @param {string} location - Location name or coordinates
+ * @returns {Promise<Object>} Humidity data
+ */
+async function GetCurrentHumidity(location) {
+  if (!validateLocation(location)) {
+    return {
+      error: 'Invalid location',
+      message: 'Location must be a valid string'
+    };
+  }
+
+  try {
+    const apiResponse = await weatherClient.GetCurrentHumidity(location);
+    return apiResponse;
+  } catch (error) {
+    return {
+      error: 'Failed to fetch weather data',
+      message: error.message
+    };
+  }
+}
+
+/**
+ * Get current feels like temperature for a location
+ * @param {string} location - Location name or coordinates
+ * @returns {Promise<Object>} Feels like temperature data
+ */
+async function GetCurrentFeelsLike(location) {
+  if (!validateLocation(location)) {
+    return {
+      error: 'Invalid location',
+      message: 'Location must be a valid string'
+    };
+  }
+
+  try {
+    const apiResponse = await weatherClient.GetCurrentFeelsLike(location);
+    return apiResponse;
+  } catch (error) {
+    return {
+      error: 'Failed to fetch weather data',
+      message: error.message
+    };
+  }
+}
+
+/**
+ * Get current temperature range for a location
+ * @param {string} location - Location name or coordinates
+ * @returns {Promise<Object>} Temperature range data [min, max]
+ */
+async function GetCurrentTempRange(location) {
+  if (!validateLocation(location)) {
+    return {
+      error: 'Invalid location',
+      message: 'Location must be a valid string'
+    };
+  }
+
+  try {
+    const apiResponse = await weatherClient.GetCurrentTempRange(location);
+    return apiResponse;
+  } catch (error) {
+    return {
+      error: 'Failed to fetch weather data',
+      message: error.message
+    };
+  }
+}
+
+
+
 /////////////////////////////////////////////////////////
 /**
  * Get Forecast weather data for a location
@@ -147,6 +221,86 @@ async function GetForecastTempVal(location) {
     };
   }
 }
+
+async function GetForecastFeelsLike(location) {
+
+  if (!validateLocation(location)) {
+
+    return {
+
+      error: 'Invalid location',
+
+      message: 'Location must be a valid string'
+
+    };
+
+  }
+
+
+
+  try {
+
+    const apiResponse = await weatherClient.GetForecastFeelsLike(location);
+
+    return apiResponse;
+
+  } catch (error) {
+
+    return {
+
+      error: 'Failed to fetch weather data in weather.service',
+
+      message: error.message
+
+    };
+
+  }
+
+}
+
+
+
+async function GetForecastHumidity(location) {
+
+  if (!validateLocation(location)) {
+
+    return {
+
+      error: 'Invalid location',
+
+      message: 'Location must be a valid string'
+
+    };
+
+  }
+
+
+
+  try {
+
+    const apiResponse = await weatherClient.GetForecastHumidity(location);
+
+    return apiResponse;
+
+  } catch (error) {
+
+    return {
+
+      error: 'Failed to fetch weather data in weather.service',
+
+      message: error.message
+
+    };
+
+  }
+
+}
+
+
+
+
+
+
 
 async function GetForecastTempRange(location) {
   if (!validateLocation(location)) {
@@ -196,6 +350,6 @@ function validateLocation(location) {
   return location && location.trim().length > 0;
 }
 
-export { GetCurrentWeatherData, GetCurrentWindVal, GetCurrentTempVal, GetCurrentDateLoc,
-         GetForecastWeatherData, GetForecastTempVal, GetForecastTempRange, GetForecastWindVal 
+export { GetCurrentWeatherData, GetCurrentWindVal, GetCurrentTempVal, GetCurrentDateLoc, GetCurrentHumidity, GetCurrentFeelsLike, GetCurrentTempRange,
+         GetForecastWeatherData, GetForecastTempVal, GetForecastFeelsLike, GetForecastHumidity, GetForecastTempRange, GetForecastWindVal 
 };

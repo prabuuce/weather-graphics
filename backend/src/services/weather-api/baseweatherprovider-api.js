@@ -54,6 +54,11 @@ export class WeatherAPI {
   }
 
   // eslint-disable-next-line class-methods-use-this
+  async GetCurrentHumidity(/* location */) {
+    throw new Error('GetCurrentHumidity must be implemented by subclasses')
+  }
+
+  // eslint-disable-next-line class-methods-use-this
   async GetForecastWeatherData(/* location, days */) {
     throw new Error('GetForecastWeatherData must be implemented by subclasses');
   }

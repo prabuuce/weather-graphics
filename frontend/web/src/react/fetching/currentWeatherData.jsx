@@ -25,11 +25,11 @@ function GetCurrentWeatherData({location}) {
 }
 
 function GetCurrentTempVal({location}) {
-  return JSON.stringify(requestToBackend(`current/temperature/${location}`)) + '°C'
+  return JSON.stringify(requestToBackend(`current/temperature/${location}`))
 }
 
 function GetCurrentWindVal({location}) {
-  const [windValue, setWindValue] = useState(null)
+  const [windValue, setWindValue] = useState([])
 
 
   useEffect(() => {
@@ -38,14 +38,14 @@ function GetCurrentWindVal({location}) {
       .then(res => res.json())
       .then(data => {
         console.log("Wind value: ", data);
-        setWindValue(data);
+        setWindValue(data || []);
       })
       .catch(err => {
         console.error('Error connecting to backend:', err)
       })
   }, [location])
 
-  return JSON.stringify(windValue)
+  return windValue;
 
 }
 
@@ -71,7 +71,75 @@ function GetCurrentDateLoc({location}) {
   return dateLocValue[0] + ', ' + dateLocValue[1]
 }
 
+function GetCurrentHumidity({location}) {
+  const [humidityValue, setHumidityValue] = useState(null)
+
+  useEffect(() => {
+    fetch(`/api/weather/current/humidity/${location}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log("Humidity value: ", data);
+        setHumidityValue(data);
+      })
+      .catch(err => {
+        console.error('Error connecting to backend:', err)
+      })
+  }, [location])
+
+  return humidityValue
+}
+
+function GetCurrentFeelsLike({location}) {
+  const [feelsLikeValue, setFeelsLikeValue] = useState(null)
+
+  useEffect(() => {
+    fetch(`/api/weather/current/feelslike/${location}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log("Feels like value: ", data);
+        setFeelsLikeValue(data);
+      })
+      .catch(err => {
+        console.error('Error connecting to backend:', err)
+      })
+  }, [location])
+
+  return feelsLikeValue
+}
+
+function GetCurrentTempRange({location}) {
+  const [tempRangeValue, setTempRangeValue] = useState([])
+
+  useEffect(() => {
+    fetch(`/api/weather/current/temperature/range/${location}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log("Temp range value: ", data);
+        setTempRangeValue(data || []);
+      })
+      .catch(err => {
+        console.error('Error connecting to backend:', err)
+      })
+  }, [location])
+
+  return tempRangeValue
+}
+
+
+
 GetCurrentDateLoc.propTypes = {
+    location: PropTypes.string.isRequired,
+};
+
+GetCurrentHumidity.propTypes = {
+    location: PropTypes.string.isRequired,
+};
+
+GetCurrentFeelsLike.propTypes = {
+    location: PropTypes.string.isRequired,
+};
+
+GetCurrentTempRange.propTypes = {
     location: PropTypes.string.isRequired,
 };
 
@@ -87,4 +155,4 @@ GetCurrentWindVal.propTypes = {
     location: PropTypes.string.isRequired,
 };
 
-export { GetCurrentWeatherData, GetCurrentTempVal, GetCurrentWindVal, GetCurrentDateLoc };
+export { GetCurrentWeatherData, GetCurrentTempVal, GetCurrentWindVal, GetCurrentDateLoc, GetCurrentHumidity, GetCurrentFeelsLike, GetCurrentTempRange };
