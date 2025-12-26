@@ -17,6 +17,8 @@ import WindForecastPolarChart from './react/graphs/windForecastPolarChart.jsx'
 import ForecastTabs from './react/graphs/forecastTabs.jsx'
 import HumidityGaugeChart from './react/graphs/humidityGaugeChart.jsx';
 
+import { WeatherIconSelector } from './react/component/weatherIcon/weatherIcons.jsx';
+
 function App() {
   const [location, setLocation] = useState('92692');
   const [locationInput, setLocationInput] = useState('');
@@ -46,10 +48,7 @@ function App() {
       <div className='layout'>
         <div className='container menu'>
           <div className="widget">
-            <img 
-              src="/imgs/clear.png" 
-              alt="Description of icon" 
-            />
+            <WeatherIconSelector location={location} />
           </div>
           <div>
             <ForecastTabs 

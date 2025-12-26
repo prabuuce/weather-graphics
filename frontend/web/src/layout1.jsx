@@ -15,6 +15,7 @@ import ForecastTabs from './react/graphs/forecastTabs.jsx';
 
 import WindForecastPolarChart from './react/graphs/windForecastPolarChart.jsx'
 import HumidityGaugeChart from './react/graphs/humidityGaugeChart.jsx';
+import { WeatherIconSelector } from './react/component/weatherIcon/weatherIcons.jsx';
 
 function App() {
     const [location, setLocation] = useState('92692');
@@ -48,7 +49,7 @@ function App() {
                 <div className='layout'>
                     <div className='cell' style={{ "--widthPercent": "30%", "--heightPercent": "100%", "flexDirection": "column" }}>
                             <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "22%", "flexDirection": "row" }}>
-                                <img src="/imgs/drizzle.png" alt="Weather Icon" />
+                                <WeatherIconSelector location={location}/>
                                 <div style={{"flexDirection": "column"}}>
                                     <b><GetCurrentDateLoc location={location}/></b>
                                     <h2 style={{marginBottom: "0px"}}><GetCurrentTempVal type='main.temp' location={location}/>°C</h2>

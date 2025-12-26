@@ -72,7 +72,8 @@ export class OpenWeatherAPI extends WeatherAPI {
     const data = await this.GetCurrentWeatherData(location);
     const main = data.weather[0].main;
     const desc = data.weather[0].description;
-    return [main, desc] ?? null;
+    const id = data.weather[0].id;
+    return [main, desc, id] ?? null;
   }
 
 

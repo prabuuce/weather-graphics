@@ -11,7 +11,7 @@ const HumidityGaugeChart = (location) => {
             backgroundColor: 'rgba(0, 0, 0, 0)'
         },
 
-        title: null,
+        title: "Humidity",
 
         pane: {
             center: ['50%', '85%'],

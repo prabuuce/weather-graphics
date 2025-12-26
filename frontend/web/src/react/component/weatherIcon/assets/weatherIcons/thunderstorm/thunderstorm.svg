@@ -1,0 +1,14 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gCloudStorm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#90A4AE"/>
+      <stop offset="100%" stop-color="#546E7A"/>
+    </linearGradient>
+    <linearGradient id="gBolt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF59D"/>
+      <stop offset="100%" stop-color="#FBC02D"/>
+    </linearGradient>
+  </defs>
+  <path d="M20 60 A 18 18 0 0 1 38 42 A 25 25 0 0 1 80 55 A 15 15 0 0 1 80 75 H 20 Z" fill="url(#gCloudStorm)"/>
+  <path d="M45 70 L35 85 H45 L40 100 L55 80 H48 L53 70 Z" fill="url(#gBolt)" stroke="#FFA000" stroke-width="1"/>
+</svg>

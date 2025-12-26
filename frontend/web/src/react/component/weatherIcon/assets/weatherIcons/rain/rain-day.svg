@@ -1,0 +1,20 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gCloudRain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E3F2FD"/>
+      <stop offset="100%" stop-color="#90CAF9"/>
+    </linearGradient>
+    <linearGradient id="gSun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFEB3B"/>
+      <stop offset="100%" stop-color="#FBC02D"/>
+    </linearGradient>
+    <linearGradient id="gRain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4FC3F7"/>
+      <stop offset="100%" stop-color="#0288D1"/>
+    </linearGradient>
+  </defs>
+  <circle cx="65" cy="40" r="15" fill="url(#gSun)"/>
+  <path d="M25 70 A 15 15 0 0 1 40 50 A 20 20 0 0 1 75 65 A 10 10 0 0 1 75 85 H 25 Z" fill="url(#gCloudRain)"/>
+  <path d="M45 90 Q45 98 40 100 Q35 98 35 90 Q35 85 40 82 Q45 85 45 90" fill="url(#gRain)"/>
+  <path d="M65 90 Q65 98 60 100 Q55 98 55 90 Q55 85 60 82 Q65 85 65 90" fill="url(#gRain)"/>
+</svg>

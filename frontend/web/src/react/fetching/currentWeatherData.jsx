@@ -125,7 +125,23 @@ function GetCurrentTempRange({location}) {
   return tempRangeValue
 }
 
+function GetCurrentWeatherType({location}) {
+  const [weatherTypeValue, setWeatherTypeValue] = useState()
 
+  useEffect(() => {
+    fetch(`/api/weather/current/type/${location}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log("Weather type value: ", data);
+        setWeatherTypeValue(data);
+      })
+      .catch(err => {
+        console.error('Error connecting to backend:', err)
+      })
+  }, [location])
+
+  return weatherTypeValue
+}
 
 GetCurrentDateLoc.propTypes = {
     location: PropTypes.string.isRequired,
@@ -143,6 +159,10 @@ GetCurrentTempRange.propTypes = {
     location: PropTypes.string.isRequired,
 };
 
+GetCurrentWeatherType.propTypes = {
+    location: PropTypes.string.isRequired,
+};
+
 GetCurrentWeatherData.propTypes = {
     location: PropTypes.string.isRequired,
 };
@@ -155,4 +175,4 @@ GetCurrentWindVal.propTypes = {
     location: PropTypes.string.isRequired,
 };
 
-export { GetCurrentWeatherData, GetCurrentTempVal, GetCurrentWindVal, GetCurrentDateLoc, GetCurrentHumidity, GetCurrentFeelsLike, GetCurrentTempRange };
+export { GetCurrentWeatherData, GetCurrentTempVal, GetCurrentWindVal, GetCurrentDateLoc, GetCurrentHumidity, GetCurrentFeelsLike, GetCurrentTempRange, GetCurrentWeatherType };
