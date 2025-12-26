@@ -2,7 +2,7 @@
  * Weather Service
  */
 
-import { setCache, getCache } from '../utils/cache.util.js';
+import { setCache, getCache } from '../../utils/cache.util.js';
 import { getWeatherClient } from './weather-api/factory.service.js';
 
 const weatherClient = getWeatherClient("openweather");
@@ -166,6 +166,30 @@ async function GetCurrentTempRange(location) {
 
   try {
     const apiResponse = await weatherClient.GetCurrentTempRange(location);
+    return apiResponse;
+  } catch (error) {
+    return {
+      error: 'Failed to fetch weather data',
+      message: error.message
+    };
+  }
+}
+
+/**
+ * Get current weather type for a location
+ * @param {string} location - Location name or coordinates
+ * @returns {Promise<Object>} Weather type data [main, description]
+ */
+async function GetCurrentWeatherType(location) {
+  if (!validateLocation(location)) {
+    return {
+      error: 'Invalid location',
+      message: 'Location must be a valid string'
+    };
+  }
+
+  try {
+    const apiResponse = await weatherClient.GetCurrentWeatherType(location);
     return apiResponse;
   } catch (error) {
     return {
@@ -350,6 +374,6 @@ function validateLocation(location) {
   return location && location.trim().length > 0;
 }
 
-export { GetCurrentWeatherData, GetCurrentWindVal, GetCurrentTempVal, GetCurrentDateLoc, GetCurrentHumidity, GetCurrentFeelsLike, GetCurrentTempRange,
+export { GetCurrentWeatherData, GetCurrentWindVal, GetCurrentTempVal, GetCurrentDateLoc, GetCurrentHumidity, GetCurrentFeelsLike, GetCurrentTempRange, GetCurrentWeatherType,
          GetForecastWeatherData, GetForecastTempVal, GetForecastFeelsLike, GetForecastHumidity, GetForecastTempRange, GetForecastWindVal 
 };

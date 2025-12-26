@@ -17,6 +17,7 @@ $font-color: $color-4;
 
 $border-radius: 20px;
 $spacing: 20px;
+$adaptive-size: calc(1vw + 1vh);
 
 /* Universal Element Styling */
 
@@ -27,7 +28,7 @@ $spacing: 20px;
   box-sizing: border-box;
 
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: calc(#{$adaptive-size} * 0.6);
   color: $font-color;
 }
 

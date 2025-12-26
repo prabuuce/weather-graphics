@@ -47,18 +47,21 @@ function App() {
                 </div>
                 <div className='layout'>
                     <div className='cell' style={{ "--widthPercent": "30%", "--heightPercent": "100%", "flexDirection": "column" }}>
-                        <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "22%", "flexDirection": "column" }}>
-                            <b><GetCurrentDateLoc location={location}/></b>
-                            <h2 style={{marginBottom: "0px"}}><GetCurrentTempVal type='main.temp' location={location}/>°C</h2>
-                            <div style={{"display": "flex", "flexDirection": "row"}}>
-                                <div style={{"display": "flex", "flexDirection": "column", "margin": "10px"}}>
-                                    <small>Feels Like: <GetCurrentFeelsLike location={location}/>°C</small>
-                                    <small>Temp Range: {GetCurrentTempRange({ "location": location })[0]}°C - {GetCurrentTempRange({ "location": location })[1]}°C</small>
-                                </div>
-                                <hr/>
-                                <div style={{"display": "flex", "flexDirection": "column", "margin": "10px"}}>
-                                    <small>Wind: {GetCurrentWindVal({ "location": location })["speed"]}mph @ {GetCurrentWindVal({"location": location })["deg"]} deg</small>
-                                    <small>Humidity: <GetCurrentHumidity location={location}/>%</small>
+                            <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "22%", "flexDirection": "row" }}>
+                                <img src="/imgs/drizzle.png" alt="Weather Icon" />
+                                <div style={{"flexDirection": "column"}}>
+                                    <b><GetCurrentDateLoc location={location}/></b>
+                                    <h2 style={{marginBottom: "0px"}}><GetCurrentTempVal type='main.temp' location={location}/>°C</h2>
+                                    <div style={{"display": "flex", "flexDirection": "row"}}>
+                                        <div style={{"display": "flex", "flexDirection": "column", "margin": "10px"}}>
+                                            <small>Feels Like: <GetCurrentFeelsLike location={location}/>°C</small>
+                                            <small>Temp Range: { GetCurrentTempRange({ "location": location })[0] }°C - { GetCurrentTempRange({ "location": location })[1] }°C</small>
+                                        </div>
+                                        <hr/>
+                                        <div style={{"display": "flex", "flexDirection": "column", "margin": "10px"}}>
+                                            <small>Wind: {GetCurrentWindVal({ "location": location })["speed"]}mph @ {GetCurrentWindVal({"location": location })["deg"]} deg</small>
+                                            <small>Humidity: <GetCurrentHumidity location={location}/>%</small>
+                                        </div>
                                 </div>
                             </div>
                         </div>

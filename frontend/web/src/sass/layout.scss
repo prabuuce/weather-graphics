@@ -12,23 +12,25 @@
   flex-direction: row;
 
   margin: globals.$spacing;
-;
 }
 
 .cell {
   @include globals.container();
   display: flex;
-  max-width: var(--widthPercent);
+  max-width: calc(var(--widthPercent) - 40px);
   max-height: var(--heightPercent);
   flex-grow: 1;
+  min-width: 0;
 }
 
 .widget {
   @include globals.widget();
   display: flex;
   max-height: var(--heightPercent);
-  max-width: var(--widthPercent);
+  max-width: calc(var(--widthPercent) - 40px);
   flex-grow: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 #search-bar {

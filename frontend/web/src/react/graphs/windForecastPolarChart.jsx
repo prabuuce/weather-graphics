@@ -82,7 +82,7 @@ const WindForecastPolarChart = ({ location, activeIndex }) => {
             highcharts={Highcharts}
             options={options}
             ref={chartRef}
-            containerProps={{ style: { width: "100%", height: "100%" } }}
+            containerProps={{ style: { flex: "1", height: "100%", minWidth: "0" } }}
         />
     );
 }

@@ -68,6 +68,13 @@ export class OpenWeatherAPI extends WeatherAPI {
     return [min, max] ?? null;
   }
 
+  async GetCurrentWeatherType(location) {
+    const data = await this.GetCurrentWeatherData(location);
+    const main = data.weather[0].main;
+    const desc = data.weather[0].description;
+    return [main, desc] ?? null;
+  }
+
 
   /////////////////////////////////////////////////////////////
 

@@ -167,7 +167,7 @@ const TempForecastLineChart = ({ location, activeIndex }) => {
             zIndex: 0,
             marker: {
                 enabled: false
-            }
+            } 
         }],
 
         annotations: annotationLabels.length ? [{ labels: annotationLabels }] : []
@@ -178,7 +178,7 @@ const TempForecastLineChart = ({ location, activeIndex }) => {
             highcharts={Highcharts}
             options={options}
             ref={chartRef}
-            containerProps={{ style: { width: "100%" } }}
+            containerProps={{ style: { flex: "1", height: "100%", minWidth: "0" } }}
         />
     );
 };

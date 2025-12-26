@@ -93,7 +93,7 @@ const HumidityGaugeChart = (location) => {
         <HighchartsReact
             highcharts={Highcharts}
             options={options}
-            containerProps={{ style: { width: "100%", height: "100%" } }}
+            containerProps={{ style: { flex: "1", height: "100%", minWidth: "0" } }}
         />
     );
 };

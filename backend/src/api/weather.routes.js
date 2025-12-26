@@ -12,6 +12,7 @@ import {
   GetCurrentHumidity,
   GetCurrentFeelsLike,
   GetCurrentTempRange,
+  GetCurrentWeatherType,
 
   GetForecastWeatherData,
   GetForecastTempVal,
@@ -19,7 +20,7 @@ import {
   GetForecastHumidity,
   GetForecastTempRange,
   GetForecastWindVal
-} from '../services/weather.service.js';
+} from '../services/weather/weather.service.js';
 
 export async function weatherRoutes(fastify, options) {
   // GET /api/weather
@@ -33,11 +34,12 @@ export async function weatherRoutes(fastify, options) {
         'GET /api/weather/current/wind/:location',
         'GET /api/weather/current/dateloc/:location',
         'GET /api/weather/current/humidity/:location',
+        'GET /api/weather/current/type/:location',
 
         'GET /api/weather/forecast/:location',
         'GET /api/weather/forecast/temperature/:location',
         'GET /api/weather/forecast/temperature/range/:location',
-        'GET /api/weather/forecat/wind/:location'
+        'GET /api/weather/forecast/wind/:location'
       ]
     };
   });
@@ -160,6 +162,26 @@ export async function weatherRoutes(fastify, options) {
     const { location } = request.params;
     try {
       const weatherData = await GetCurrentTempRange(location);
+      if (weatherData?.error) {
+        const statusCode = weatherData.error === 'Invalid location' ? 400 : 502;
+        return reply.code(statusCode).send(weatherData);
+      }
+      return reply.code(200).send(weatherData);
+    } catch (error) {
+      fastify.log.error(error);
+      return reply.code(500).send({
+        error: 'Failed to fetch weather data in weather.routes',
+        message: error.message
+      });
+    }
+  });
+
+  // GET /api/weather/current/type/:location
+  // Fetches the general weather type (e.g., Rain, Clear) and description
+  fastify.get('/current/type/:location', async (request, reply) => {
+    const { location } = request.params;
+    try {
+      const weatherData = await GetCurrentWeatherType(location);
       if (weatherData?.error) {
         const statusCode = weatherData.error === 'Invalid location' ? 400 : 502;
         return reply.code(statusCode).send(weatherData);

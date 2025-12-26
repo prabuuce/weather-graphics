@@ -30,7 +30,7 @@ const ForecastTabs = ({ location, activeIndex, onSelectTab }) => {
                 <Accordion.Item eventKey={String(index)} key={index}>
                     <Accordion.Header className="forecast-list">
                         <span className="forecast-list-item">{times[index]}</span>
-                        <span className="forecast-list-item">{temps[index]}°C</span>
+                        <span className="forecast-list-item" style={{textAlign: "right"}}>{temps[index]}°C</span>
                     </Accordion.Header>
                     <Accordion.Body>
                         <div className="widget" style={{margin: "0px"}}>

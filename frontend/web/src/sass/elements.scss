@@ -11,16 +11,12 @@ body {
 }
 
 h1, h2, h3 {
-  font-size: clamp(1.5rem, 4vw, 50px);
+  font-size: calc(globals.$adaptive-size);
   word-break: break-word;
 }
 
-p {
-  font-size: 17.5px;
-}
-
 small {
-  font-size: 15px;
+  font-size: calc(globals.$adaptive-size * 0.4);
 }
 
 button {
@@ -35,4 +31,10 @@ button {
 
 hr {
   margin: 0 10px 0 10px;
+}
+
+img {
+  margin-right: 15px;
+  width: calc(globals.$adaptive-size * 5);
+  height: calc(globals.$adaptive-size * 5);
 }
