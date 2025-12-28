@@ -16,6 +16,7 @@ import ForecastTabs from './react/graphs/forecastTabs.jsx';
 import WindForecastPolarChart from './react/graphs/windForecastPolarChart.jsx'
 import HumidityGaugeChart from './react/graphs/humidityGaugeChart.jsx';
 import { WeatherIconSelector } from './react/component/weatherIcon/weatherIcons.jsx';
+import { CurrentWeatherDetails, WeatherDetails } from './react/component/weatherDetails.jsx';
 
 function App() {
     const [location, setLocation] = useState('92692');
@@ -48,23 +49,8 @@ function App() {
                 </div>
                 <div className='layout'>
                     <div className='cell' style={{ "--widthPercent": "30%", "--heightPercent": "100%", "flexDirection": "column" }}>
-                            <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "22%", "flexDirection": "row" }}>
-                                <WeatherIconSelector location={location}/>
-                                <div style={{"flexDirection": "column"}}>
-                                    <b><GetCurrentDateLoc location={location}/></b>
-                                    <h2 style={{marginBottom: "0px"}}><GetCurrentTempVal type='main.temp' location={location}/>°C</h2>
-                                    <div style={{"display": "flex", "flexDirection": "row"}}>
-                                        <div style={{"display": "flex", "flexDirection": "column", "margin": "10px"}}>
-                                            <small>Feels Like: <GetCurrentFeelsLike location={location}/>°C</small>
-                                            <small>Temp Range: { GetCurrentTempRange({ "location": location })[0] }°C - { GetCurrentTempRange({ "location": location })[1] }°C</small>
-                                        </div>
-                                        <hr/>
-                                        <div style={{"display": "flex", "flexDirection": "column", "margin": "10px"}}>
-                                            <small>Wind: {GetCurrentWindVal({ "location": location })["speed"]}mph @ {GetCurrentWindVal({"location": location })["deg"]} deg</small>
-                                            <small>Humidity: <GetCurrentHumidity location={location}/>%</small>
-                                        </div>
-                                </div>
-                            </div>
+                        <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "22%"}}>
+                            <CurrentWeatherDetails location={location} />
                         </div>
                         <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "75%" }}>
                             <ForecastTabs 
@@ -75,20 +61,20 @@ function App() {
                         </div>
                     </div>
                     <div className="cell" style={{ "--widthPercent": "70%", "--heightPercent": "100%", "flexDirection": "column" }}>
-                        <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "100%"}}>
-                            <TempForecastLineChart 
-                            location={location}
-                            activeIndex={activeForecastTab}
-                            />
-                        </div>
-                        <div className="cell" style={{ "--widthPercent": "100%", "--heightPercent": "50%", "flexDirection": "row"}}>
-                            <div className="widget" style={{ "--widthPercent": "50%", "--heightPercent": "100%" }}>
-                                <WindForecastPolarChart location={location} activeIndex={activeForecastTab} />
+                            <div className="widget" style={{ "--widthPercent": "100%", "--heightPercent": "100%"}}>
+                                <TempForecastLineChart 
+                                location={location}
+                                activeIndex={activeForecastTab}
+                                />
                             </div>
-                            <div className="widget" style={{ "--widthPercent": "50%", "--heightPercent": "100%" }}>
-                                <HumidityGaugeChart location={location}/>
+                            <div className="cell" style={{ "--widthPercent": "100%", "--heightPercent": "50%", "flexDirection": "row"}}>
+                                <div className="widget" style={{ "--widthPercent": "50%", "--heightPercent": "100%" }}>
+                                    <WindForecastPolarChart location={location} activeIndex={activeForecastTab} />
+                                </div>
+                                <div className="widget" style={{ "--widthPercent": "50%", "--heightPercent": "100%" }}>
+                                    <HumidityGaugeChart location={location}/>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </div>
 

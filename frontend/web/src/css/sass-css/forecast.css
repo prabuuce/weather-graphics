@@ -1,12 +1,16 @@
 /* Variables */
 /* Universal Element Styling */
+html {
+  font-size: clamp(15px, 1.5vw, 25px);
+}
+
 * {
   margin: 0;
   padding: 0;
   line-height: 1.5;
   box-sizing: border-box;
   font-family: sans-serif;
-  font-size: calc(calc(1vw + 1vh) * 0.6);
+  font-size: 1rem;
   color: #fde9c9;
 }
 

@@ -5,10 +5,12 @@
       <stop offset="100%" stop-color="#B3E5FC"/>
     </linearGradient>
   </defs>
-  <path d="M20 65 A 18 18 0 0 1 38 47 A 25 25 0 0 1 80 60 A 15 15 0 0 1 80 80 H 20 Z" fill="url(#gCloudSnow)"/>
-  <g stroke="#81D4FA" stroke-width="2" stroke-linecap="round">
-    <path d="M30 85 L38 93 M38 85 L30 93 M34 83 L34 95" />
-    <path d="M50 85 L58 93 M58 85 L50 93 M54 83 L54 95" />
-    <path d="M70 85 L78 93 M78 85 L70 93 M74 83 L74 95" />
+  <g transform="translate(0, -20)">
+    <path d="M20 65 A 18 18 0 0 1 38 47 A 25 25 0 0 1 80 60 A 15 15 0 0 1 80 80 H 20 Z" fill="url(#gCloudSnow)"/>
+    <g stroke="#81D4FA" stroke-width="2" stroke-linecap="round">
+      <path d="M30 85 L38 93 M38 85 L30 93 M34 83 L34 95" />
+      <path d="M50 85 L58 93 M58 85 L50 93 M54 83 L54 95" />
+      <path d="M70 85 L78 93 M78 85 L70 93 M74 83 L74 95" />
+    </g>
   </g>
 </svg>

@@ -13,15 +13,14 @@ function GetCurrentWeatherData({location}) {
       .then(res => res.json())
       .then(data => {
         console.log("Weather data: ", data);
-        setWeatherData(data);
+        setWeatherData(data || {});
       })
       .catch(err => {
         console.error('Error connecting to backend:', err)
       })
   }, [location])
 
-  return <pre className='pretty-json'>{JSON.stringify(weatherData, null, 2)}</pre>
-
+  return weatherData;
 }
 
 function GetCurrentTempVal({location}) {

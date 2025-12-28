@@ -4,7 +4,7 @@ import highchartsMore from 'highcharts/highcharts-more';
 import solidGauge from 'highcharts/modules/solid-gauge';
 import { GetCurrentHumidity } from '../fetching/currentWeatherData';
 
-const HumidityGaugeChart = (location) => {
+const HumidityGaugeChart = ({ location }) => {
     const options = {
         chart: {
             type: 'solidgauge',
@@ -75,7 +75,7 @@ const HumidityGaugeChart = (location) => {
 
         series: [{
             name: 'Humidity',
-            data: [GetCurrentHumidity(location)],
+            data: [GetCurrentHumidity({ location })],
             dataLabels: {
                 format:
                 '<div style="text-align:center">' +

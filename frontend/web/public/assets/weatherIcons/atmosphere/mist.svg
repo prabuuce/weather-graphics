@@ -6,7 +6,7 @@
       <stop offset="100%" stop-color="#CFD8DC" stop-opacity="0.3"/>
     </linearGradient>
   </defs>
-  <rect x="15" y="35" width="70" height="8" rx="4" fill="url(#gMist)"/>
-  <rect x="25" y="50" width="50" height="8" rx="4" fill="url(#gMist)"/>
-  <rect x="15" y="65" width="70" height="8" rx="4" fill="url(#gMist)"/>
+  <rect x="15" y="31" width="70" height="8" rx="4" fill="url(#gMist)"/>
+  <rect x="25" y="46" width="50" height="8" rx="4" fill="url(#gMist)"/>
+  <rect x="15" y="61" width="70" height="8" rx="4" fill="url(#gMist)"/>
 </svg>

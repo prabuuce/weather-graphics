@@ -9,8 +9,10 @@
       <stop offset="100%" stop-color="#29B6F6"/>
     </linearGradient>
   </defs>
-  <path d="M20 65 A 18 18 0 0 1 38 47 A 25 25 0 0 1 80 60 A 15 15 0 0 1 80 80 H 20 Z" fill="url(#gCloudDrizzle)"/>
-  <rect x="30" y="85" width="4" height="10" rx="2" fill="url(#gDrizzle)"/>
-  <rect x="48" y="85" width="4" height="10" rx="2" fill="url(#gDrizzle)"/>
-  <rect x="66" y="85" width="4" height="10" rx="2" fill="url(#gDrizzle)"/>
+  <g transform="translate(0, -20)">
+    <path d="M20 65 A 18 18 0 0 1 38 47 A 25 25 0 0 1 80 60 A 15 15 0 0 1 80 80 H 20 Z" fill="url(#gCloudDrizzle)"/>
+    <rect x="30" y="85" width="4" height="10" rx="2" fill="url(#gDrizzle)"/>
+    <rect x="48" y="85" width="4" height="10" rx="2" fill="url(#gDrizzle)"/>
+    <rect x="66" y="85" width="4" height="10" rx="2" fill="url(#gDrizzle)"/>
+  </g>
 </svg>

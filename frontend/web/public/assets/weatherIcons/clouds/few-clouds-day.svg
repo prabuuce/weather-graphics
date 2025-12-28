@@ -9,6 +9,8 @@
       <stop offset="100%" stop-color="#FBC02D"/>
     </linearGradient>
   </defs>
-  <circle cx="65" cy="40" r="15" fill="url(#gSun)"/>
-  <path d="M25 75 A 15 15 0 0 1 40 55 A 20 20 0 0 1 75 70 A 10 10 0 0 1 75 90 H 25 A 7.5 7.5 0 0 1 25 75 Z" fill="url(#gCloudBlue)"/>
+  <g transform="translate(0, -8)">
+    <circle cx="65" cy="40" r="15" fill="url(#gSun)"/>
+    <path d="M25 75 A 15 15 0 0 1 40 55 A 20 20 0 0 1 75 70 A 10 10 0 0 1 75 90 H 25 A 7.5 7.5 0 0 1 25 75 Z" fill="url(#gCloudBlue)"/>
+  </g>
 </svg>

@@ -1,12 +1,16 @@
 /* Variables */
 /* Universal Element Styling */
+html {
+  font-size: clamp(15px, 1.5vw, 25px);
+}
+
 * {
   margin: 0;
   padding: 0;
   line-height: 1.5;
   box-sizing: border-box;
   font-family: sans-serif;
-  font-size: calc(calc(1vw + 1vh) * 0.6);
+  font-size: 1rem;
   color: #fde9c9;
 }
 
@@ -21,12 +25,12 @@ body {
 }
 
 h1, h2, h3 {
-  font-size: calc(1vw + 1vh);
+  font-size: 2rem;
   word-break: break-word;
 }
 
 small {
-  font-size: calc((1vw + 1vh) * 0.4);
+  font-size: 0.6rem;
 }
 
 button {
@@ -43,8 +47,9 @@ hr {
 
 img {
   margin-right: 15px;
-  width: calc((1vw + 1vh) * 5);
-  height: calc((1vw + 1vh) * 5);
+  width: 6.5rem;
+  height: 6.5rem;
+  text-align: center;
 }
 
 /*# sourceMappingURL=elements.css.map */

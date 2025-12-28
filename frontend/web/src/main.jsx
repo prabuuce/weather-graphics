@@ -18,6 +18,7 @@ import ForecastTabs from './react/graphs/forecastTabs.jsx'
 import HumidityGaugeChart from './react/graphs/humidityGaugeChart.jsx';
 
 import { WeatherIconSelector } from './react/component/weatherIcon/weatherIcons.jsx';
+import { CurrentWeatherDetails } from './react/component/weatherDetails.jsx';
 
 function App() {
   const [location, setLocation] = useState('92692');
@@ -58,17 +59,18 @@ function App() {
             />
           </div>
           <div className="widget">
-
+            <CurrentWeatherDetails location={location} /> 
           </div>
         </div>   
         <div className="container body">
           <div className='widget'>
+            <TempForecastLineChart location={location} activeIndex={activeForecastTab} />
           </div>
           <div className="widget">
             <WindForecastPolarChart location={location} activeIndex={activeForecastTab}/>
           </div>
           <div className="widget">
-            <HumidityGaugeChart />
+            <HumidityGaugeChart location={location} />
           </div>
         </div>
       </div>
