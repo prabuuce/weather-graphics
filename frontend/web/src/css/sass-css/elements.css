@@ -1,55 +1,9 @@
-/* Variables */
-/* Universal Element Styling */
-html {
-  font-size: clamp(15px, 1.5vw, 25px);
-}
-
-* {
+html, body {
   margin: 0;
   padding: 0;
-  line-height: 1.5;
-  box-sizing: border-box;
-  font-family: sans-serif;
-  font-size: 1rem;
-  color: #fde9c9;
-}
-
-/* Mixins */
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-body {
-  background: #fde9c9;
-  border-radius: 20px;
-}
-
-h1, h2, h3 {
-  font-size: 2rem;
-  word-break: break-word;
-}
-
-small {
-  font-size: 0.6rem;
-}
-
-button {
-  background: #d5c6ae;
-  padding: 5px;
-  padding-left: 9px;
-  padding-right: 9px;
-  border-radius: 100%;
-}
-
-hr {
-  margin: 0 10px 0 10px;
-}
-
-img {
-  margin-right: 15px;
-  width: 6.5rem;
-  height: 6.5rem;
-  text-align: center;
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
 }
 
 /*# sourceMappingURL=elements.css.map */

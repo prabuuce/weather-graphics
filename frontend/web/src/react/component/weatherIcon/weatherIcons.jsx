@@ -10,7 +10,7 @@ export const WeatherIconSelector = ({ location }) => {
         return (
             <div>
                  {/* Fallback/Loading icon */}
-                <img src={`${baseFilePath}weatherIcons/assets/icons/clear/clear-day.svg`} alt="Loading Weather Icon" />
+                <img className="weather-icon" src={`${baseFilePath}weatherIcons/assets/icons/clear/clear-day.svg`} alt="Loading Weather Icon" />
             </div>
         );
     }
@@ -28,7 +28,7 @@ export const WeatherIconSelector = ({ location }) => {
 
     return (
         <div title={weatherDescription}>
-            <img src={dir} alt={weatherDescription || "Weather Icon"} />
+            <img className="weather-icon" src={dir} alt={weatherDescription || "Weather Icon"} />
         </div>
     );
 };

@@ -4,6 +4,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 yarn.lock
+.sass-cache/
 
 # Build outputs
 dist/
@@ -89,3 +90,6 @@ coverage/
 
 # Config
 config/keys.json
+
+# AI
+.gemini/

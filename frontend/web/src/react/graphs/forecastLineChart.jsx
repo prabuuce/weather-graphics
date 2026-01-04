@@ -1,12 +1,12 @@
 import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official'
+import HighchartsReact from 'highcharts-react-official';
 import 'highcharts/modules/exporting';
+import highcharts3d from 'highcharts/highcharts-3d';
 import annotations from 'highcharts/modules/annotations';
 import { useEffect, useRef } from 'react';
 
 import { GetForecastTempVal, GetForecastTempRange } from '../fetching/forecastWeatherData.jsx';
 import PropTypes from 'prop-types';
-
 
 Highcharts.seriesTypes.line.prototype.getPointSpline = Highcharts.seriesTypes.spline.prototype.getPointSpline; // Rounds line chart lines.
 
@@ -36,7 +36,7 @@ const TempForecastLineChart = ({ location, activeIndex }) => {
                     chart.tooltip.refresh(point);
                     
                     // Optional: Visually select the point if you want it to persist
-                    // point.select(true, false); 
+                    point.select(true, false); 
                 }
             }
         }
@@ -135,7 +135,13 @@ const TempForecastLineChart = ({ location, activeIndex }) => {
 
         chart: {
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            type: 'line'
+            type: 'area',
+            options3d: {
+                enabled: true,
+                alpha: 15,
+                beta: 50,
+                depth: 200
+            }
         },
         title: {
             text: 'Temperature Forecast'
@@ -149,7 +155,8 @@ const TempForecastLineChart = ({ location, activeIndex }) => {
         yAxis: {
             title: {
                 text: 'Temperature (°C)'
-            }
+            },
+            visible: false
         },
 
         series: [{
@@ -163,7 +170,7 @@ const TempForecastLineChart = ({ location, activeIndex }) => {
             data: rangeEntries,
             linkedTo: ':previous',
             color: Highcharts.getOptions().colors[0],
-            fillOpacity: 0.3,
+            fillOpacity: 0.6,
             zIndex: 0,
             marker: {
                 enabled: false

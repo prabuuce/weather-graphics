@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import '../../sass/bootstrap-custom.scss'; // Import custom Bootstrap SCSS
 
 import '../../css/sass-css/elements.css'
-import '../../css/sass-css/forecast.css'
+import '../../css/sass-css/weather.css'
 import '../../css/sass-css/layout.css'
 import '../../css/json.css'
 
