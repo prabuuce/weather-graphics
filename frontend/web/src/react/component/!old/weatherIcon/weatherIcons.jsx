@@ -1,4 +1,4 @@
-import { GetCurrentWeatherType } from "../../fetching/currentWeatherData";
+import { GetCurrentWeatherType } from "../../../!old/fetching/currentWeatherData";
 import weatherIconsConfig from "./weather-icon-config.json";
 
 export const WeatherIconSelector = ({ location }) => {

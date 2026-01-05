@@ -1,0 +1,14 @@
+@use "../layout";
+
+.search {
+    @include layout.container();
+
+    color: layout.$secondary-text-color;
+
+    border-radius: 30px;
+
+    max-width: 15%;
+    max-height: 2%;
+
+    font-size: layout.$text-small;
+}

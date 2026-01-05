@@ -1,4 +1,3 @@
-# Convert sass to css
-cd frontend/web && npx sass --watch src/sass:src/css/sass-css
+#!/bin/bash
+npx sass --watch frontend/web/src/styling/sass:frontend/web/src/styling/css/sass-css
 
-echo "Done!"

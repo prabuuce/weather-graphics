@@ -1,4 +1,4 @@
-import { GetForecastTempVal, GetForecastWindVal, GetForecastTempRange, GetForecastFeelsLike, GetForecastHumidity } from "../fetching/forecastWeatherData.jsx";
+import { GetForecastTempVal, GetForecastWindVal, GetForecastTempRange, GetForecastFeelsLike, GetForecastHumidity } from "../../fetching/forecastWeatherData.jsx";
 import React from 'react';
 import PropTypes from 'prop-types';
 import Accordion from 'react-bootstrap/Accordion';

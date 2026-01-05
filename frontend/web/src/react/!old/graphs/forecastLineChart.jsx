@@ -5,7 +5,7 @@ import highcharts3d from 'highcharts/highcharts-3d';
 import annotations from 'highcharts/modules/annotations';
 import { useEffect, useRef } from 'react';
 
-import { GetForecastTempVal, GetForecastTempRange } from '../fetching/forecastWeatherData.jsx';
+import { GetForecastTempVal, GetForecastTempRange } from '../../fetching/forecastWeatherData.jsx';
 import PropTypes from 'prop-types';
 
 Highcharts.seriesTypes.line.prototype.getPointSpline = Highcharts.seriesTypes.spline.prototype.getPointSpline; // Rounds line chart lines.
