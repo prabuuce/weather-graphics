@@ -1,0 +1,10 @@
+@use "../layout.scss";
+
+.chart {
+    @include layout.container(); 
+
+    border-color: rgba(0, 0, 0, 0);
+    background-color: layout.$color-3;
+
+    flex-grow: 1;
+}

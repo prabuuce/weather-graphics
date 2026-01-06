@@ -4,11 +4,11 @@
   "description": "Web client for Weather Graphics application",
   "type": "module",
   "scripts": {
-    "dev": "mkdir -p public/assets/weatherIcons && cp -r src/react/component/weatherIcon/assets/weatherIcons/* public/assets/weatherIcons/ && vite",
-    "build": "mkdir -p public/assets/weatherIcons && cp -r src/react/component/weatherIcon/assets/weatherIcons/* public/assets/weatherIcons/ && vite build",
+    "dev": "vite",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "sass": "sass --watch src/sass:src/css/sass-css"
+    "sass": "sass --watch src/styling/sass:src/styling/css/sass-css"
   },
   "dependencies": {
     "axios": "^1.6.2",

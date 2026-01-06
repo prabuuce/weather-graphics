@@ -54,4 +54,17 @@
   width: 100%;
 }
 
-/*# sourceMappingURL=layout.css.map */
+.weather-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.current-weather {
+  align-self: flex-start;
+}
+
+.forecast-weather {
+  margin-left: auto;
+}
+
+/*# sourceMappingURL=weathers.css.map */

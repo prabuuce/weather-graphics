@@ -1,0 +1,14 @@
+@use "../layout";
+
+.weather-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.current-weather {
+    align-self: flex-start;
+}
+
+.forecast-weather {
+    margin-left: auto;
+}

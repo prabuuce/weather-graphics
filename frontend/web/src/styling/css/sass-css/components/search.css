@@ -1,7 +1,9 @@
 #page {
   display: grid;
-  grid-template-areas: "body body body body body body body body body body body menu menu" "body body body body body body body body body body body menu menu" "body body body body body body body body body body body menu menu" "body body body body body body body body body body body menu menu" "body body body body body body body body body body body menu menu" "body body body body body body body body body body body menu menu" "footer footer footer footer footer footer footer footer footer footer footer footer footer";
-  background: #fff1ea;
+  grid-template-areas: "body body body body body body body body body menu menu menu" "body body body body body body body body body menu menu menu" "body body body body body body body body body menu menu menu" "body body body body body body body body body menu menu menu" "body body body body body body body body body menu menu menu" "body body body body body body body body body menu menu menu" "footer footer footer footer footer footer footer footer footer footer footer footer";
+  grid-template-rows: repeat(6, 1fr) auto;
+  grid-template-columns: repeat(12, 1fr);
+  background: linear-gradient(to bottom, #fff1ea, #dfd0c8);
   margin: 0;
   padding: 5px;
   min-width: 100vw;
@@ -11,18 +13,21 @@
 }
 
 #page > #body {
-  background: #fff1ea;
+  background: rgba(0, 0, 0, 0);
   border-color: #8c2f39;
   border-style: solid;
   border-width: 1px;
   border-radius: 10px;
   margin: 5px;
   padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   grid-area: body;
 }
 
 #page > #menu {
-  background: #fff1ea;
+  background: rgba(0, 0, 0, 0);
   border-color: #8c2f39;
   border-style: solid;
   border-width: 1px;
@@ -39,19 +44,18 @@
   font-size: clamp(0.25rem, 0.75vw, 0.75rem);
   margin: -5px;
   padding: 5px;
-  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 80px;
 }
 #page > #footer > .footer-content {
-  position: absolute;
-  top: 50%;
-  left: 15px;
-  width: 100%;
   margin: 0;
-  padding: 0;
+  padding-left: 15px;
+  width: 100%;
 }
 
 .search {
-  background: #fff1ea;
+  background: rgba(0, 0, 0, 0);
   border-color: #8c2f39;
   border-style: solid;
   border-width: 1px;
@@ -60,8 +64,7 @@
   padding: 15px;
   color: #6a6a6a;
   border-radius: 30px;
-  max-width: 15%;
-  max-height: 2%;
+  align-self: flex-start;
   font-size: clamp(0.25rem, 0.75vw, 0.75rem);
 }
 

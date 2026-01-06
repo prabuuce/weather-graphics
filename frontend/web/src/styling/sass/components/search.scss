@@ -6,9 +6,7 @@
     color: layout.$secondary-text-color;
 
     border-radius: 30px;
-
-    max-width: 15%;
-    max-height: 2%;
-
+    
+    align-self: flex-start;
     font-size: layout.$text-small;
 }

@@ -8,15 +8,18 @@ import { StyledEngineProvider, ThemeProvider } from '@mui/material'
 import InitMui from './styling/mui/globals';
 
 // CSS
-import "./styling/css/sass-css/layout.css"
-import "./styling/css/sass-css/custom/search.css"
-
-import "./styling/css/sass-css/elements.css"
+import "./styling/css/sass-css/layout.css";
+import "./styling/css/sass-css/elements.css";
 
 // Custom Web Components
 import SearchBar from './react/component/SearchBar';
-import { ForecastAreaChart } from './react/component/charts/ForecastAreaChart';
+import "./styling/css/sass-css/components/search.css"; 
 
+
+import "./styling/css/sass-css/components/weathers.css"
+
+
+import "./styling/css/sass-css/components/charts.css";
 
 // Setting up Material UI
 const theme = InitMui();
@@ -29,7 +32,11 @@ function App() {
       <div id="page">
         <div id="body">
           <SearchBar />
-          <ForecastAreaChart location={location}/>
+          <div className="chart"> insert chart here </div>
+          <div className="weather-container">
+            <div className="current-weather"> insert weather widget here</div>
+            <div className="forecast-weather"> insert weather widget here</div>
+          </div>
         </div>
         <div id="menu">
           Hello World!

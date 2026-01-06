@@ -7,6 +7,7 @@ import { sizing } from '../../styling/globals/tokens';
 const SearchBar = () => {
   return (
     <TextField
+      className="search"
       label="Search"
       variant="outlined"
       size="small"
