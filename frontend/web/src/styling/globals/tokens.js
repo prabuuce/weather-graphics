@@ -1,7 +1,8 @@
 export const colors = {
   color1: '#fff1ea',
-  color2: '#8c2f39',
-  color3: '#461220',
+  color2: '#a9a09bff',
+  color3: '#8c2f39',
+  color4: '#461220',
   text: '#000000',
   secondaryText: '#6a6a6a',
   darkSecondaryText: '#fff1eab1'

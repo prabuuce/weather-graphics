@@ -1,0 +1,9 @@
+@use "./layout";
+
+.text-widget {
+    background: layout.$color-1;
+    color: layout.$color-3;
+
+    padding: 5px;
+    border-radius: 10px;
+}

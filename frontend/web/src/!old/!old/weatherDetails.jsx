@@ -8,7 +8,7 @@ import '../../css/sass-css/layout.css'
 import '../../css/json.css'
 
 import { WeatherIconSelector } from './weatherIcon/weatherIcons.jsx';
-import { GetCurrentWeatherData } from '../../!old/fetching/currentWeatherData.jsx';
+import { GetCurrentWeatherData } from '../fetching/currentWeatherData.js';
 import { useEffect } from 'react';
 
 export const CurrentWeatherDetails = ({ location }) => {

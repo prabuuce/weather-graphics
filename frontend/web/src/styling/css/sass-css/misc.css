@@ -54,4 +54,11 @@
   width: 100%;
 }
 
-/*# sourceMappingURL=layout.css.map */
+.text-widget {
+  background: #fff1ea;
+  color: #8c2f39;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+/*# sourceMappingURL=misc.css.map */

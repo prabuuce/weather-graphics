@@ -1,5 +1,5 @@
 $color-1: #fff1ea;
-$color-2: #dfd0c8;
+$color-2: #a9a09bff;
 $color-3: #8c2f39;
 $color-4: #461220;
 $secondary-text-color: #6a6a6a;
@@ -7,6 +7,7 @@ $dark-secondary-text-color: #fff1eab1;
 
 $text-normal: clamp(0.5rem, 1vw, 1rem);
 $text-small: clamp(0.25rem, 0.75vw, 0.75rem);
+$text-large: clamp(0.75rem, 3vw, 2rem);
 
 $container-spacing: 5px;
 
@@ -24,7 +25,7 @@ $container-spacing: 5px;
     grid-template-rows: repeat(6, 1fr) auto;
     grid-template-columns: repeat(12, 1fr);
 
-    background: linear-gradient(to bottom, $color-1, $color-2);
+    background: $color-1;
 
     margin: 0;
     padding: $container-spacing;
@@ -93,3 +94,4 @@ $container-spacing: 5px;
         width: 100%;
     }
 }
+

@@ -5,10 +5,25 @@
     flex-direction: row;
 }
 
-.current-weather {
+.weather-widget {
+    @include layout.container();
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    border-color: layout.$color-2;
+
     align-self: flex-start;
+
+    > * > * > * {
+        margin: layout.$container-spacing;
+    }
 }
 
 .forecast-weather {
+    @include layout.container();
+    
     margin-left: auto;
 }

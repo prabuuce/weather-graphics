@@ -1,3 +1,5 @@
+@use "./layout";
+
 html {
     font-size: 16px;
     box-sizing: border-box;
@@ -13,4 +15,26 @@ body {
 
     height: 100%;
     width: 100%;
+}
+
+@mixin h($modifier) {
+    font-size: calc(layout.$text-large / $modifier);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    @include h(1)
+}
+
+h2 {
+    @include h(2)
+}
+
+h3 {
+    @include h(3)
+}
+
+p {
+    font-size: layout.$text-small;
+    align-content: center;
 }

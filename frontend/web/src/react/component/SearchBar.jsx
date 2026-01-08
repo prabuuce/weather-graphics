@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TextField } from '@mui/material';
 
-import { sizing } from '../../styling/globals/tokens';
+import { sizing, radius } from '../../styling/globals/tokens';
 
 const SearchBar = () => {
   return (
@@ -13,7 +13,7 @@ const SearchBar = () => {
       size="small"
       InputProps={{
         style: {
-          borderRadius: "30px",
+          borderRadius: radius.border,
           fontSize: sizing.textSmall
         }
       }}

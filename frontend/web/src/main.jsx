@@ -15,8 +15,10 @@ import "./styling/css/sass-css/elements.css";
 import SearchBar from './react/component/SearchBar';
 import "./styling/css/sass-css/components/search.css"; 
 
+import WeatherWidget from './react/component/WeatherWidget';
+import "./styling/css/sass-css/components/weathers.css";
 
-import "./styling/css/sass-css/components/weathers.css"
+import GetCurrentWeatherData from './react/fetching/currentWeatherData';
 
 
 import "./styling/css/sass-css/components/charts.css";
@@ -26,6 +28,7 @@ const theme = InitMui();
 
 function App() {
   const [location, setLocation] = useState("92692");
+  const weatherData = GetCurrentWeatherData({ location });
 
   return (
     <>
@@ -33,10 +36,7 @@ function App() {
         <div id="body">
           <SearchBar />
           <div className="chart"> insert chart here </div>
-          <div className="weather-container">
-            <div className="current-weather"> insert weather widget here</div>
-            <div className="forecast-weather"> insert weather widget here</div>
-          </div>
+          <WeatherWidget weatherData={weatherData} />
         </div>
         <div id="menu">
           Hello World!
@@ -44,6 +44,7 @@ function App() {
         <div id="footer">
           <div className="footer-content">
             Made by the <a href="https://github.com/thetrollingwizard" >best dev on the planet</a>
+            Weather icons made by <a href="https://www.flaticon.com/free-icons/climate" title="climate icons">kerismaker - Flaticon</a>
           </div>
         </div>
       </div>

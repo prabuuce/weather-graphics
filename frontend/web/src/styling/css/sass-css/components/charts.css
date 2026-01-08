@@ -3,7 +3,7 @@
   grid-template-areas: "body body body body body body body body body menu menu menu" "body body body body body body body body body menu menu menu" "body body body body body body body body body menu menu menu" "body body body body body body body body body menu menu menu" "body body body body body body body body body menu menu menu" "body body body body body body body body body menu menu menu" "footer footer footer footer footer footer footer footer footer footer footer footer";
   grid-template-rows: repeat(6, 1fr) auto;
   grid-template-columns: repeat(12, 1fr);
-  background: linear-gradient(to bottom, #fff1ea, #dfd0c8);
+  background: #fff1ea;
   margin: 0;
   padding: 5px;
   min-width: 100vw;
@@ -63,7 +63,6 @@
   margin: 5px;
   padding: 15px;
   border-color: rgba(0, 0, 0, 0);
-  background-color: #8c2f39;
   flex-grow: 1;
 }
 
