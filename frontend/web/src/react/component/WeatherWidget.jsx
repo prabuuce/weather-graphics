@@ -32,7 +32,7 @@ const WeatherWidget = ({ weatherData }) => {
 
     return (
         <CssVarsProvider theme={theme}>
-            <div className='weather-widget' style={{ width: "40%", aspectRatio: "2/1" }}>
+            <div className='weather-widget' style={{ width: "40%", aspectRatio: "5/2" }}>
                 <div style={{ flex: "1", display: "flex", justifyContent: "center", alignSelf: "center" }}>
                     <WeatherImg weatherData={weatherData} style={{ width: "80%", height: "auto" }}/>
                 </div>
@@ -44,7 +44,7 @@ const WeatherWidget = ({ weatherData }) => {
                         <p> {weatherData["main"]["temp_min"]}° ~ {weatherData["main"]["temp_max"]}° </p>
                     </div>
 
-                    <Divider sx={{ p: "10px" }}/>
+                    <Divider sx={{ margin: "10px" }}/>
 
                     <div>
                         <p>Feels Like: {weatherData["main"]["feels_like"]}° </p>

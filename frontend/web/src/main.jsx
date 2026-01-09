@@ -20,6 +20,9 @@ import WeatherAccordian from './react/component/Accordian';
 
 
 // Charts
+import ForecastAreaChart from './react/component/charts/ForecastAreaChart';
+import WindPolarChart from './react/component/charts/WindPolarChart';
+import HumidityBarChart from './react/component/charts/HumidityBarChart';
 
 
 import "./styling/css/sass-css/components/charts.css";
@@ -34,11 +37,16 @@ function App() {
       <div id="page">
         <div id="body">
           <SearchBar location={location} setLocation={setLocation} />
-          <div className="chart"> insert chart here </div>
+          <ForecastAreaChart forecastWeatherData={forecastWeatherData} />
           <WeatherWidget weatherData={weatherData} />
         </div>
         <div id="menu">
-          
+          <div className="polar-chart">
+            <WindPolarChart forecastWeatherData={forecastWeatherData} />
+          </div>
+          <div style={{ height: '150px', marginTop: '20px' }}>
+            <HumidityBarChart weatherData={weatherData} />
+          </div>
         </div>
         <div id="footer">
           <div className="footer-content">

@@ -18,7 +18,17 @@ function GetForecastWeatherData({ location }) {
       })
   }, [location])
 
-  return weatherForecastData
+  const handler = {
+    get: function(target, prop, receiver) {
+      if (weatherForecastData === null) {
+        return "Loading..."
+      }
+
+      return weatherForecastData[prop]
+    }
+  }
+
+  return new Proxy({}, handler);
 
 }
 
