@@ -1,7 +1,4 @@
-import Card from '@mui/joy/Card';
-import CardCover from '@mui/joy/CardCover';
-import CardContent from '@mui/joy/CardContent';
-import AspectRatio from '@mui/joy/AspectRatio';
+import Divider from '@mui/joy/Divider';
 
 import { CssVarsProvider } from '@mui/joy/styles';
 import { InitJoy } from '../../styling/mui/globals';
@@ -10,7 +7,6 @@ import { InitJoy } from '../../styling/mui/globals';
 import { colors } from "../../styling/globals/tokens.js"
 import '../../styling/css/sass-css/components/weathers.css'
 import '../../styling/css/sass-css/misc.css'
-import { Divider } from '@mui/material';
 
 const WeatherImg = ({ weatherData, ...props }) => {
     // Check if weatherData and necessary properties exist to avoid crash
@@ -32,10 +28,10 @@ const WeatherImg = ({ weatherData, ...props }) => {
 }
 
 const WeatherWidget = ({ weatherData }) => {
-    const joyTheme = InitJoy();
+    const theme = InitJoy();
 
     return (
-        <CssVarsProvider theme={joyTheme}>
+        <CssVarsProvider theme={theme}>
             <div className='weather-widget' style={{ width: "40%", aspectRatio: "2/1" }}>
                 <div style={{ flex: "1", display: "flex", justifyContent: "center", alignSelf: "center" }}>
                     <WeatherImg weatherData={weatherData} style={{ width: "80%", height: "auto" }}/>

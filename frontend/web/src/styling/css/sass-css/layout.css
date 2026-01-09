@@ -35,6 +35,9 @@
   margin: 5px;
   padding: 15px;
   grid-area: menu;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 #page > #footer {

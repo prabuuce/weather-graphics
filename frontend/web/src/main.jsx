@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { TextField } from '@mui/material'
-import { Card, CardContent } from '@mui/material';
-import { StyledEngineProvider, ThemeProvider } from '@mui/material'
-
-import InitMui from './styling/mui/globals';
+import GetCurrentWeatherData from './react/fetching/currentWeatherData';
+import GetForecastWeatherData from './react/fetching/forecastWeatherData';
 
 // CSS
 import "./styling/css/sass-css/layout.css";
@@ -18,28 +15,30 @@ import "./styling/css/sass-css/components/search.css";
 import WeatherWidget from './react/component/WeatherWidget';
 import "./styling/css/sass-css/components/weathers.css";
 
-import GetCurrentWeatherData from './react/fetching/currentWeatherData';
+//////
+import WeatherAccordian from './react/component/Accordian';
+
+
+// Charts
 
 
 import "./styling/css/sass-css/components/charts.css";
 
-// Setting up Material UI
-const theme = InitMui();
-
 function App() {
   const [location, setLocation] = useState("92692");
   const weatherData = GetCurrentWeatherData({ location });
+  const forecastWeatherData = GetForecastWeatherData({ location });
 
   return (
     <>
       <div id="page">
         <div id="body">
-          <SearchBar />
+          <SearchBar location={location} setLocation={setLocation} />
           <div className="chart"> insert chart here </div>
           <WeatherWidget weatherData={weatherData} />
         </div>
         <div id="menu">
-          Hello World!
+          
         </div>
         <div id="footer">
           <div className="footer-content">
@@ -54,9 +53,7 @@ function App() {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <App />
   </React.StrictMode>
 );
 
