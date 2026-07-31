@@ -1,0 +1,17 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gSun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFEB3B"/>
+      <stop offset="100%" stop-color="#FBC02D"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="22" fill="url(#gSun)"/>
+  <path d="M50 15 Q55 22 50 25 Q45 22 50 15" fill="url(#gSun)" />
+  <path d="M50 85 Q55 78 50 75 Q45 78 50 85" fill="url(#gSun)" />
+  <path d="M15 50 Q22 55 25 50 Q22 45 15 50" fill="url(#gSun)" />
+  <path d="M85 50 Q78 55 75 50 Q78 45 85 50" fill="url(#gSun)" />
+  <path d="M25 25 Q32 32 35 28 Q28 25 25 25" fill="url(#gSun)" />
+  <path d="M75 75 Q68 68 65 72 Q72 75 75 75" fill="url(#gSun)" />
+  <path d="M25 75 Q32 68 35 72 Q28 75 25 75" fill="url(#gSun)" />
+  <path d="M75 25 Q68 32 65 28 Q72 25 75 25" fill="url(#gSun)" />
+</svg>

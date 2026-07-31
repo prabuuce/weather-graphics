@@ -1,0 +1,222 @@
+{
+  "200": {
+    "description": "thunderstorm with light rain",
+    "icon": "weatherIcons/thunderstorm/thunderstorm.svg"
+  },
+  "201": {
+    "description": "thunderstorm with rain",
+    "icon": "weatherIcons/thunderstorm/thunderstorm.svg"
+  },
+  "202": {
+    "description": "thunderstorm with heavy rain",
+    "icon": "weatherIcons/thunderstorm/thunderstorm.svg"
+  },
+  "210": {
+    "description": "light thunderstorm",
+    "icon": "weatherIcons/thunderstorm/thunderstorm.svg"
+  },
+  "211": {
+    "description": "thunderstorm",
+    "icon": "weatherIcons/thunderstorm/thunderstorm.svg"
+  },
+  "212": {
+    "description": "heavy thunderstorm",
+    "icon": "weatherIcons/thunderstorm/thunderstorm.svg"
+  },
+  "221": {
+    "description": "ragged thunderstorm",
+    "icon": "weatherIcons/thunderstorm/thunderstorm.svg"
+  },
+  "230": {
+    "description": "thunderstorm with light drizzle",
+    "icon": "weatherIcons/thunderstorm/thunderstorm.svg"
+  },
+  "231": {
+    "description": "thunderstorm with drizzle",
+    "icon": "weatherIcons/thunderstorm/thunderstorm.svg"
+  },
+  "232": {
+    "description": "thunderstorm with heavy drizzle",
+    "icon": "weatherIcons/thunderstorm/thunderstorm.svg"
+  },
+  "300": {
+    "description": "light intensity drizzle",
+    "icon": "weatherIcons/drizzle/drizzle.svg"
+  },
+  "301": {
+    "description": "drizzle",
+    "icon": "weatherIcons/drizzle/drizzle.svg"
+  },
+  "302": {
+    "description": "heavy intensity drizzle",
+    "icon": "weatherIcons/drizzle/drizzle.svg"
+  },
+  "310": {
+    "description": "light intensity drizzle rain",
+    "icon": "weatherIcons/drizzle/drizzle.svg"
+  },
+  "311": {
+    "description": "drizzle rain",
+    "icon": "weatherIcons/drizzle/drizzle.svg"
+  },
+  "312": {
+    "description": "heavy intensity drizzle rain",
+    "icon": "weatherIcons/drizzle/drizzle.svg"
+  },
+  "313": {
+    "description": "shower rain and drizzle",
+    "icon": "weatherIcons/drizzle/drizzle.svg"
+  },
+  "314": {
+    "description": "heavy shower rain and drizzle",
+    "icon": "weatherIcons/drizzle/drizzle.svg"
+  },
+  "321": {
+    "description": "shower drizzle",
+    "icon": "weatherIcons/drizzle/drizzle.svg"
+  },
+  "500": {
+    "description": "light rain",
+    "icon": "weatherIcons/rain/rain-day.svg"
+  },
+  "501": {
+    "description": "moderate rain",
+    "icon": "weatherIcons/rain/rain-day.svg"
+  },
+  "502": {
+    "description": "heavy intensity rain",
+    "icon": "weatherIcons/rain/rain-day.svg"
+  },
+  "503": {
+    "description": "very heavy rain",
+    "icon": "weatherIcons/rain/rain-day.svg"
+  },
+  "504": {
+    "description": "extreme rain",
+    "icon": "weatherIcons/rain/rain-day.svg"
+  },
+  "511": {
+    "description": "freezing rain",
+    "icon": "weatherIcons/snow/snow.svg"
+  },
+  "520": {
+    "description": "light intensity shower rain",
+    "icon": "weatherIcons/rain/shower-rain.svg"
+  },
+  "521": {
+    "description": "shower rain",
+    "icon": "weatherIcons/rain/shower-rain.svg"
+  },
+  "522": {
+    "description": "heavy intensity shower rain",
+    "icon": "weatherIcons/rain/shower-rain.svg"
+  },
+  "531": {
+    "description": "ragged shower rain",
+    "icon": "weatherIcons/rain/shower-rain.svg"
+  },
+  "600": {
+    "description": "light snow",
+    "icon": "weatherIcons/snow/snow.svg"
+  },
+  "601": {
+    "description": "snow",
+    "icon": "weatherIcons/snow/snow.svg"
+  },
+  "602": {
+    "description": "heavy snow",
+    "icon": "weatherIcons/snow/snow.svg"
+  },
+  "611": {
+    "description": "sleet",
+    "icon": "weatherIcons/snow/snow.svg"
+  },
+  "612": {
+    "description": "light shower sleet",
+    "icon": "weatherIcons/snow/snow.svg"
+  },
+  "613": {
+    "description": "shower sleet",
+    "icon": "weatherIcons/snow/snow.svg"
+  },
+  "615": {
+    "description": "light rain and snow",
+    "icon": "weatherIcons/snow/snow.svg"
+  },
+  "616": {
+    "description": "rain and snow",
+    "icon": "weatherIcons/snow/snow.svg"
+  },
+  "620": {
+    "description": "light shower snow",
+    "icon": "weatherIcons/snow/snow.svg"
+  },
+  "621": {
+    "description": "shower snow",
+    "icon": "weatherIcons/snow/snow.svg"
+  },
+  "622": {
+    "description": "heavy shower snow",
+    "icon": "weatherIcons/snow/snow.svg"
+  },
+  "701": {
+    "description": "mist",
+    "icon": "weatherIcons/atmosphere/mist.svg"
+  },
+  "711": {
+    "description": "smoke",
+    "icon": "weatherIcons/atmosphere/mist.svg"
+  },
+  "721": {
+    "description": "haze",
+    "icon": "weatherIcons/atmosphere/mist.svg"
+  },
+  "731": {
+    "description": "sand/dust whirls",
+    "icon": "weatherIcons/atmosphere/mist.svg"
+  },
+  "741": {
+    "description": "fog",
+    "icon": "weatherIcons/atmosphere/mist.svg"
+  },
+  "751": {
+    "description": "sand",
+    "icon": "weatherIcons/atmosphere/mist.svg"
+  },
+  "761": {
+    "description": "dust",
+    "icon": "weatherIcons/atmosphere/mist.svg"
+  },
+  "762": {
+    "description": "volcanic ash",
+    "icon": "weatherIcons/atmosphere/mist.svg"
+  },
+  "771": {
+    "description": "squalls",
+    "icon": "weatherIcons/atmosphere/mist.svg"
+  },
+  "781": {
+    "description": "tornado",
+    "icon": "weatherIcons/atmosphere/mist.svg"
+  },
+  "800": {
+    "description": "clear sky",
+    "icon": "weatherIcons/clear/clear-day.svg"
+  },
+  "801": {
+    "description": "few clouds: 11-25%",
+    "icon": "weatherIcons/clouds/few-clouds-day.svg"
+  },
+  "802": {
+    "description": "scattered clouds: 25-50%",
+    "icon": "weatherIcons/clouds/scattered-clouds.svg"
+  },
+  "803": {
+    "description": "broken clouds: 51-84%",
+    "icon": "weatherIcons/clouds/overcast-clouds.svg"
+  },
+  "804": {
+    "description": "overcast clouds: 85-100%",
+    "icon": "weatherIcons/clouds/overcast-clouds.svg"
+  }
+}

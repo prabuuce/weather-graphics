@@ -1,0 +1,41 @@
+@use "mixins/globals";
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+
+body {
+  background: globals.$bg-color;
+  border-radius: globals.$border-radius;
+}
+
+h1, h2, h3 {
+  font-size: 2rem;
+  word-break: break-word;
+}
+
+small {
+  font-size: 0.6rem;
+}
+
+button {
+    background: globals.$search-color;
+
+    padding: 5px;
+    padding-left: 9px;
+    padding-right: 9px;
+
+    border-radius: 100%;
+}
+
+hr {
+  margin: 0 10px 0 10px;
+}
+
+img {
+  margin-right: 15px;
+  width: 6.5rem;
+  height: 6.5rem;
+  text-align: center;
+}

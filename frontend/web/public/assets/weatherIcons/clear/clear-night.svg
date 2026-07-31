@@ -1,0 +1,11 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gMoon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF9C4"/>
+      <stop offset="100%" stop-color="#FBC02D"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(0, -5)">
+    <path d="M70 50 C 70 70 55 80 40 75 C 50 85 75 80 85 55 C 80 30 55 25 40 30 C 55 25 70 35 70 50 Z" fill="url(#gMoon)"/>
+  </g>
+</svg>

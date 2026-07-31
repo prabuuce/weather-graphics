@@ -1,0 +1,11 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gCloudBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e2ebf4"/>
+      <stop offset="100%" stop-color="#8bb1eb"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(0, -17)">
+    <path d="M20 70 A 18 18 0 0 1 38 52 A 25 25 0 0 1 80 65 A 15 15 0 0 1 80 85 H 20 A 7.5 7.5 0 0 1 20 70 Z" fill="url(#gCloudBlue)"/>
+  </g>
+</svg>

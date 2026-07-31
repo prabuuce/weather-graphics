@@ -36,7 +36,7 @@ Example file: `backend/src/services/weather.service.js`
 
 ```javascript
 // ✅ DO: Add business logic here
-export async function getCurrentWeather(location) {
+export async function GetCurrentWeatherData(location) {
   // 1. Validate input
   // 2. Check cache
   // 3. Call external API

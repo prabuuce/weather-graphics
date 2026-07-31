@@ -1,0 +1,18 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gCloudRain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E3F2FD"/>
+      <stop offset="100%" stop-color="#90CAF9"/>
+    </linearGradient>
+    <linearGradient id="gRain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4FC3F7"/>
+      <stop offset="100%" stop-color="#0288D1"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(0, -22)">
+    <path d="M20 65 A 18 18 0 0 1 38 47 A 25 25 0 0 1 80 60 A 15 15 0 0 1 80 80 H 20 Z" fill="url(#gCloudRain)"/>
+    <path d="M35 85 Q35 95 30 98 Q25 95 25 85 Q25 80 30 75 Q35 80 35 85" fill="url(#gRain)"/>
+    <path d="M55 85 Q55 95 50 98 Q45 95 45 85 Q45 80 50 75 Q55 80 55 85" fill="url(#gRain)"/>
+    <path d="M75 85 Q75 95 70 98 Q65 95 65 85 Q65 80 70 75 Q75 80 75 85" fill="url(#gRain)"/>
+  </g>
+</svg>

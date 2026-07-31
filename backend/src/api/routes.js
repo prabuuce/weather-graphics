@@ -1,4 +1,5 @@
 import { weatherRoutes } from './weather.routes.js';
+import { mapRoutes } from './map.routes.js';
 
 /**
  * Register all API routes
@@ -10,6 +11,9 @@ export async function registerRoutes(fastify) {
   // Register weather routes
   await fastify.register(weatherRoutes, { prefix: `${apiPrefix}/weather` });
 
+  // Register map routes
+  await fastify.register(mapRoutes, { prefix: `${apiPrefix}/map` });
+
   // Root API endpoint
   fastify.get(apiPrefix, async (request, reply) => {
     return {
@@ -17,7 +21,8 @@ export async function registerRoutes(fastify) {
       version: '1.0.0',
       endpoints: {
         health: '/health',
-        weather: `${apiPrefix}/weather`
+        weather: `${apiPrefix}/weather`,
+        map: `${apiPrefix}/map`
       }
     };
   });

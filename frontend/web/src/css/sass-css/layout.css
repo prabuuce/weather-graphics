@@ -1,0 +1,89 @@
+/* Variables */
+/* Universal Element Styling */
+html {
+  font-size: clamp(15px, 1.5vw, 25px);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: 1rem;
+  color: #fde9c9;
+}
+
+/* Mixins */
+/* Custom classes */
+.layout {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: linear-gradient(180deg, rgb(218, 73, 73) 9%, rgb(191, 39, 39) 93%);
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+}
+
+.cell {
+  background: linear-gradient(180deg, rgb(169, 29, 29) 9%, rgb(145, 31, 31) 93%);
+  border-radius: 20px;
+  margin: 20px;
+  display: flex;
+  max-width: calc(var(--widthPercent) - 40px);
+  max-height: var(--heightPercent);
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.widget {
+  background: linear-gradient(180deg, rgb(218, 73, 73) 9%, rgb(191, 39, 39) 93%);
+  border-radius: 20px;
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  max-height: var(--heightPercent);
+  max-width: calc(var(--widthPercent) - 40px);
+  flex-grow: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+#search-bar {
+  background: linear-gradient(180deg, rgb(218, 73, 73) 9%, rgb(191, 39, 39) 93%);
+  border-radius: 20px;
+  margin: 20px;
+  padding: 20px;
+  max-height: 400px;
+  min-width: 93%;
+  background: #d5c6ae;
+  color: #4F1C4C;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 0px;
+}
+
+#bottom-row {
+  padding: 30px;
+  padding-top: 100px;
+  margin-top: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(79, 28, 76) 38%);
+}
+
+/* Sizing wrappers */
+.wlong {
+  min-width: 93%;
+}
+
+.wshort {
+  flex-grow: 0.5;
+}
+
+.hshort {
+  max-height: 400px;
+}
+
+/*# sourceMappingURL=layout.css.map */
