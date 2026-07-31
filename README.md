@@ -1,7 +1,7 @@
 # Weather Graphics
 A weather graphics application with backend service and multiple frontend clients.
 
-**NOTE: Change branch to experiment-dex to see an updated UI**
+**NOTE: Change branch to experimental-dev to see an updated UI**
 
 ## Getting Started
 
